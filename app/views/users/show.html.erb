@@ -1,0 +1,17 @@
+<div id="profile">
+  <h2>Profile</h2>
+  <p>
+    <strong>First name: </strong><%= @user.first_name %>
+  </p>
+  <p>
+    <strong>Last name: </strong><%= @user.last_name %>
+  </p>
+  <p>
+    <strong>Username: </strong><%= @user.username %>
+  </p>
+
+  <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn blue">
+    <%= button_to "Edit Profile", dashboard_edit_path, method: :get %>
+  </div>
+
+</div>

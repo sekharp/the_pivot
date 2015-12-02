@@ -5,9 +5,9 @@ class Cart
     @contents = contents || {}
   end
 
-  def add_sticker(sticker_id)
-    contents[sticker_id.to_s] ||= 0
-    contents[sticker_id.to_s] += 1
+  def add_project(project_id, amount)
+    contents[project_id.to_s] ||= 0
+    contents[project_id.to_s] += amount
   end
 
   def subtract_sticker(sticker_id)
@@ -34,10 +34,10 @@ class Cart
     contents[sticker_id.to_s]
   end
 
-  def stickers
-    contents.map do |sticker_id, quantity|
-      sticker = Sticker.find(sticker_id)
-      CartSticker.new(sticker, quantity)
+  def projects
+    contents.map do |project_id, amount|
+      project = Project.find(project_id)
+      CartProject.new(project, amount)
     end
   end
 end

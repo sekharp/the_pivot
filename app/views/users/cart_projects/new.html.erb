@@ -1,0 +1,10 @@
+<div class="lend-form">
+  <%= form_for(:cart_project, url: { controller: :cart_projects, action: :create }) do |f| %>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+
+    <%= f.hidden_field :project_id, value: @project.id %>
+
+    <%= f.submit "Lend!" %>
+  <% end %>
+</div>

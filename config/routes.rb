@@ -20,5 +20,10 @@ Rails.application.routes.draw do
     resources :stickers, only: [:new, :create, :index, :edit, :update]
   end
 
+  namespace :users, path: ":user", as: :user do
+    resources :projects, only: [:show]
+    resources :cart_projects, only: [:create, :new]
+  end
+
   get '*unmatched_route', to: 'application#not_found'
 end

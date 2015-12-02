@@ -13972,3 +13972,1210 @@ Processing by ProjectsController#index as HTML
   Rendered projects/index.html.erb within layouts/application (1.4ms)
 Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
   [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36m (221.1ms)[0m  [1mDROP DATABASE IF EXISTS "sticker_shop_test"[0m
+  [1m[35m (336.0ms)[0m  CREATE DATABASE "sticker_shop_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (9.6ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "title" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "slug" character varying) 
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "order_stickers" ("id" serial primary key, "quantity" integer, "order_id" integer, "sticker_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_order_stickers_on_order_id" ON "order_stickers" USING btree ("order_id")
+  [1m[36m (1.9ms)[0m  [1mCREATE  INDEX  "index_order_stickers_on_sticker_id" ON "order_stickers" USING btree ("sticker_id")[0m
+  [1m[35m (5.9ms)[0m  CREATE TABLE "orders" ("id" serial primary key, "status" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.6ms)[0m  [1mCREATE  INDEX  "index_orders_on_user_id" ON "orders" USING btree ("user_id")[0m
+  [1m[35m (6.2ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying, "image_url" character varying, "goal_amount" decimal(8,2), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "category_id" integer, "description" text, "retired" boolean DEFAULT 'f', "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp, "borrower_id" integer) 
+  [1m[36m (1.7ms)[0m  [1mCREATE  INDEX  "index_projects_on_borrower_id" ON "projects" USING btree ("borrower_id")[0m
+  [1m[35m (1.7ms)[0m  CREATE  INDEX  "index_projects_on_category_id" ON "projects" USING btree ("category_id")
+  [1m[36m (6.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "role" integer DEFAULT 0, "street_address" character varying, "city" character varying, "state" character varying, "zip" character varying) [0m
+  [1m[35m (2.8ms)[0m  ALTER TABLE "order_stickers" ADD CONSTRAINT "fk_rails_a163a7139d"
+FOREIGN KEY ("order_id")
+  REFERENCES "orders" ("id")
+
+  [1m[36m (1.8ms)[0m  [1mALTER TABLE "order_stickers" ADD CONSTRAINT "fk_rails_64d393616e"
+FOREIGN KEY ("sticker_id")
+  REFERENCES "projects" ("id")
+[0m
+  [1m[35m (3.3ms)[0m  ALTER TABLE "orders" ADD CONSTRAINT "fk_rails_f868b47f6a"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (2.5ms)[0m  [1mALTER TABLE "projects" ADD CONSTRAINT "fk_rails_2ad2693164"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151201214401')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151109233140')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151110014522')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151110014651')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151110162749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151110222025')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151111025316')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151112021959')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151114022109')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151114184730')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151114193643')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151115161330')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151116224156')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151117153302')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151117192957')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151117203807')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151118202532')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151119020639')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151119162543')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151201214013')
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------------
+OrderTest: test_is_finished_if_status_includes_completed_or_cancelled
+---------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.8ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'jason' LIMIT 1
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "jason"], ["password_digest", "$2a$04$5kd41snRMN2AsBh7B18tButIpQBumah5h6JMkEIKXnIZ.30imZn7W"], ["created_at", "2015-12-02 02:25:18.972247"], ["updated_at", "2015-12-02 02:25:18.972247"]]
+  [1m[35m (0.6ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["status", "completed"], ["user_id", 1], ["created_at", "2015-12-02 02:25:19.032363"], ["updated_at", "2015-12-02 02:25:19.032363"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'bob' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["username", "bob"], ["password_digest", "$2a$04$rFZg2QtQdJLQru1S15S8ru8ZZ6sx0ObcrN7sDDjdLROjT4wf3d5t2"], ["created_at", "2015-12-02 02:25:19.037942"], ["updated_at", "2015-12-02 02:25:19.037942"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["status", "Cancelled"], ["user_id", 1], ["created_at", "2015-12-02 02:25:19.040075"], ["updated_at", "2015-12-02 02:25:19.040075"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+OrderTest: test_: Order should belong to user. 
+-----------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------
+OrderTest: test_: Order should have many order_stickers. 
+---------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------------------
+OrderTest: test_is_no_finished_if_status_includes_paid_or_ordered
+-----------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'jason' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "jason"], ["password_digest", "$2a$04$UWCJ3v.MAIvw4P2MNIUiwOtATO/gSit84gWmSSTtszGZ9UQpcbzz6"], ["created_at", "2015-12-02 02:25:19.050639"], ["updated_at", "2015-12-02 02:25:19.050639"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["status", "Paid"], ["user_id", 3], ["created_at", "2015-12-02 02:25:19.053060"], ["updated_at", "2015-12-02 02:25:19.053060"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'bob' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["username", "bob"], ["password_digest", "$2a$04$kdq2RvREaAh3n9ec6bHjbOVccubNKLzO3Fp7rHO2qit8tACjXMAj6"], ["created_at", "2015-12-02 02:25:19.056753"], ["updated_at", "2015-12-02 02:25:19.056753"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["status", "Ordered"], ["user_id", 3], ["created_at", "2015-12-02 02:25:19.058651"], ["updated_at", "2015-12-02 02:25:19.058651"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------------------------
+ViewSpecificOrderTest: test_authenticated_user_can_see_specific_past_order
+--------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'Sekhar' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Sekhar"], ["password_digest", "$2a$04$rAct0Xatt7MJVEiTOu2.7eJ8zMSXuXO85S2MWl6f8RsldRWyYQZsu"], ["created_at", "2015-12-02 02:25:19.064101"], ["updated_at", "2015-12-02 02:25:19.064101"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:19 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.7ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_navbar.html.erb (0.9ms)
+Completed 200 OK in 1029ms (Views: 1012.2ms | ActiveRecord: 1.5ms)
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (268.9ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 274ms (Views: 273.5ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"Sekhar", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "Sekhar"]]
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.8ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered layouts/_navbar.html.erb (2.3ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["status", "ordered"], ["user_id", 5], ["created_at", "2015-12-02 02:25:20.472407"], ["updated_at", "2015-12-02 02:25:20.472407"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/orders" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by OrdersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mOrder Load (0.3ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 5]]
+  Rendered orders/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.6ms)
+Started GET "/orders/5" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mOrderSticker Load (0.5ms)[0m  [1mSELECT "order_stickers".* FROM "order_stickers" WHERE "order_stickers"."order_id" = $1[0m  [["order_id", 5]]
+  Rendered orders/show.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 13.5ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------------------
+CartStickerTest: test_can_initialize_with_sticker_and_quantity
+--------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+CartStickerTest: test_can_return_subtotal
+-----------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+CartTest: test_returns_sum_of_all_added_stickers
+------------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------
+CartTest: test_can_subtract_sticker
+-----------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------
+CartTest: test_can_add_sticker
+------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+CartTest: test_return_sum_of_specific_added_stickers
+----------------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------
+CartTest: test_stores_stickers
+------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------------------------
+UserCannotViewOtherUsersOrdersTest: test_user_can_only_see_his_or_her_past_orders
+---------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'Sekhar' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["username", "Sekhar"], ["password_digest", "$2a$04$ntybXVGt3clEqhzE4g1IduZj7CJMQHzGai9c3IRbe55935RXWddr."], ["created_at", "2015-12-02 02:25:20.529083"], ["updated_at", "2015-12-02 02:25:20.529083"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'Emily' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["username", "Emily"], ["password_digest", "$2a$04$KGGeEfS2lpb.6z7vqX8ynO4n7RNgxicpLaawEVo4Hr4aAC3KD/Dre"], ["created_at", "2015-12-02 02:25:20.534025"], ["updated_at", "2015-12-02 02:25:20.534025"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["status", "ordered"], ["user_id", 6], ["created_at", "2015-12-02 02:25:20.536532"], ["updated_at", "2015-12-02 02:25:20.536532"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["status", "completed"], ["user_id", 7], ["created_at", "2015-12-02 02:25:20.539600"], ["updated_at", "2015-12-02 02:25:20.539600"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"Sekhar", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "Sekhar"]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (1.3ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (2.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered layouts/_navbar.html.erb (1.3ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 1.7ms)
+Started GET "/orders" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by OrdersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1[0m  [["user_id", 6]]
+  Rendered orders/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+Started GET "/orders/6" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mOrderSticker Load (0.2ms)[0m  [1mSELECT "order_stickers".* FROM "order_stickers" WHERE "order_stickers"."order_id" = $1[0m  [["order_id", 6]]
+  Rendered orders/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.7ms)
+Started GET "/orders/7" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by OrdersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mOrder Load (0.3ms)[0m  [1mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 7]]
+Redirected to http://www.example.com/orders
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/orders" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mOrder Load (0.2ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1  [["user_id", 6]]
+  Rendered orders/index.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+UserAuthenticationTest: test_user_can_login
+-------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'Jon' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Jon"], ["password_digest", "$2a$04$ZiW26Mw6i7ABhqaMPQJRIeJ0YGLP1VAiS3cMiu1detn8QekqenDVm"], ["created_at", "2015-12-02 02:25:20.606522"], ["updated_at", "2015-12-02 02:25:20.606522"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms)
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"Jon", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "Jon"]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  Rendered layouts/_navbar.html.erb (0.8ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------
+UserAuthenticationTest: test_visitor_can_create_account_and_sign_in
+-------------------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+Started GET "/users/new" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"", "last_name"=>"", "username"=>"Jon", "password"=>"[FILTERED]"}, "commit"=>"Create Account"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'Jon' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", ""], ["last_name", ""], ["username", "Jon"], ["password_digest", "$2a$04$iya/Q3T9NuaSLXrBVJmaVugA5bUjt7Jqwmui8ZwQXPlR32nxT.s9C"], ["created_at", "2015-12-02 02:25:20.659258"], ["updated_at", "2015-12-02 02:25:20.659258"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/dashboard
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+Started GET "/dashboard" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by UsersController#show as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  Rendered users/show.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------------
+UserAuthenticationTest: test_logged_in_user_sees_cart_contents
+--------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'Jon' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Jon"], ["password_digest", "$2a$04$qkwRoaoiqCQBa0/L.lvdfOy5K0G6UFe52yJJldE5ZMgvwnwACkJCS"], ["created_at", "2015-12-02 02:25:20.674213"], ["updated_at", "2015-12-02 02:25:20.674213"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------
+UserAuthenticationTest: test_visitor_can_see_login_link
+-------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------
+ItemShowPageTest: test_visitor_can_view_sticker_details
+-------------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCategory Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'geeky' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "categories" ("title", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "geeky"], ["slug", "geeky"], ["created_at", "2015-12-02 02:25:20.815722"], ["updated_at", "2015-12-02 02:25:20.815722"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------------------------
+RemoveItemsFromCartTest: test_cart_displays_sticker_information_for_removing
+----------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------------------------------------------------------------------------
+RemoveItemsFromCartTest: test_displays_removed_sticker_from_cart_message_and_cart_sticker_quantity_on_cart_page
+---------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------
+CategoryTest: test_is_valid_with_title
+--------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mCategory Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'Cool Category' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "categories" ("title", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["title", "Cool Category"], ["slug", "cool-category"], ["created_at", "2015-12-02 02:25:20.828434"], ["updated_at", "2015-12-02 02:25:20.828434"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.3ms)[0m  SELECT  1 AS one FROM "categories" WHERE ("categories"."title" = 'Cool Category' AND "categories"."id" != 2) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+CategoryTest: test_is_not_valid_without_title
+---------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.3ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.2ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+CategoryTest: test_its_title_must_be_unique
+-------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.2ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'Cool Category' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("title", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Cool Category"], ["slug", "cool-category"], ["created_at", "2015-12-02 02:25:20.837614"], ["updated_at", "2015-12-02 02:25:20.837614"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.2ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'Cool Category' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.3ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'Cool Category' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------
+CategoryTest: test_returns_parameterized_slug_of_title
+------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.2ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'Cool Category' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("title", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Cool Category"], ["slug", "cool-category"], ["created_at", "2015-12-02 02:25:20.845997"], ["updated_at", "2015-12-02 02:25:20.845997"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------
+CategoryTest: test_: Category should have many stickers. 
+---------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------
+AddItemsToCartTest: test_cart_displays_sticker_information
+----------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------------------
+AddItemsToCartTest: test_show_page_price_is_valid_with_price_under_a_dollar
+---------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------------------------------------------------
+AddItemsToCartTest: test_displays_added_item_to_cart_message_and_cart_item_quantity
+-----------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+AddItemsToCartTest: test_show_page_price_is_correct
+---------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+AddItemsToCartTest: test_show_page_price_is_valid_with_cents
+------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------
+AdminViewsStickersTest: test_admin_can_view_stickers
+----------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$lK8hFYY911gRdDDLVh/q.eZkZMlwQRvykxIoCwS2oRN2hNxOlb4gy"], ["role", 1], ["created_at", "2015-12-02 02:25:20.860440"], ["updated_at", "2015-12-02 02:25:20.860440"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (7.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 1.2ms)
+Started GET "/admin/stickers/new" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by Admin::StickersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 11]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+AdminViewsStickersTest: test_visit_index_page_from_dashboard
+------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$jPqW3WOGEBKoju/7XEw9EOETnAtvHEAS60zC5S1dYnVtd.vmWjAW6"], ["role", 1], ["created_at", "2015-12-02 02:25:20.921218"], ["updated_at", "2015-12-02 02:25:20.921218"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 12]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.9ms)
+Started GET "/admin/stickers/new" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by Admin::StickersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 12]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+UserTest: test_: User should have many orders. 
+-----------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+UserTest: test_it_is_invalid_without_password
+---------------------------------------------
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'Dr. Dre' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+UserTest: test_it_is_invalid_without_username
+---------------------------------------------
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------
+UserTest: test_has_a_default_role_as_user
+-----------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------
+UserTest: test_it_is_valid_with_correct_params
+----------------------------------------------
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'beyonce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------
+UserTest: test_username_must_be_unique
+--------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'beyonce' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "beyonce"], ["password_digest", "$2a$04$dpUrmIGsqoIQnPoOkQOrNuRqzw1nHZirqSZcFGSfEWcao.m0eKe56"], ["role", 1], ["created_at", "2015-12-02 02:25:20.967027"], ["updated_at", "2015-12-02 02:25:20.967027"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'beyonce' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------
+StickerTest: test_: Sticker should belong to category. 
+-------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------
+StickerTest: test_is_valid_with_correct_params
+----------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------
+StickerTest: test_: Sticker should have many order_stickers. 
+-------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+StickerTest: test_is_invalid_without_title
+------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+StickerTest: test_is_invalid_without_price
+------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------------------
+UserCanCheckoutAndPlaceOrderTest: test_user_can_checkout_and_place_order
+------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------------------------------------
+UserCanCheckoutAndPlaceOrderTest: test_visitor_will_be_asked_to_login_when_trying_to_checkout
+---------------------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------
+UserCanViewPastOrderTest: test_past_order_view
+----------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'Sekhar' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "Sekhar"], ["password_digest", "$2a$04$pJ.1i3z9c6mEU7dDszhnc.77RyIYz5rjCYlLw.b3ZUCFSV1qP0tMu"], ["created_at", "2015-12-02 02:25:20.986355"], ["updated_at", "2015-12-02 02:25:20.986355"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------------------------------------
+AdminStickerCreationTest: test_admin_can_create_sticker_if_price_includes_a_decimal
+-----------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$PXpepIIPsJ8L3qzl7ppHhORvLaWNQDNmUpnxBqUvvjDRvNSJXAJWC"], ["role", 1], ["created_at", "2015-12-02 02:25:20.992130"], ["updated_at", "2015-12-02 02:25:20.992130"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:20 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 15]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.8ms)
+Started GET "/admin/stickers/new" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::StickersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 15]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------------------------
+AdminStickerCreationTest: test_admin_cannot_create_sticker_with_price_of_0
+--------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$nvCuAF.q6Ov/wcatYiJJle8W211.Xh4MzEs19SW2xD5AB.XxlJ2B2"], ["role", 1], ["created_at", "2015-12-02 02:25:21.026195"], ["updated_at", "2015-12-02 02:25:21.026195"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 16]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.8ms)
+Started GET "/admin/stickers/new" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::StickersController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 16]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------
+AdminStickerCreationTest: test_admin_can_create_item
+----------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$XhvoI5dywXvqd5UgRXm4o.6hFetSW0QdfRNfb46W22Zz.awLG/7ZG"], ["role", 1], ["created_at", "2015-12-02 02:25:21.059780"], ["updated_at", "2015-12-02 02:25:21.059780"]]
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.3ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 9ms (Views: 6.4ms | ActiveRecord: 1.3ms)
+Started GET "/admin/stickers/new" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::StickersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 17]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------------------
+AdminLogsInTest: test_admin_logs_in_and_redirects_to_admin_dashboard
+--------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'Jason' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Jason"], ["password_digest", "$2a$04$4rQIYqoP94BAjumolsBLL.K9vfUCwWv44pIpZVW0YDEi/IYoQPw9."], ["role", 1], ["created_at", "2015-12-02 02:25:21.097625"], ["updated_at", "2015-12-02 02:25:21.097625"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_navbar.html.erb (0.8ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"Jason", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "Jason"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------
+AdminOrdersTest: test_admin_can_view_listing_of_all_orders
+----------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "emily"], ["password_digest", "$2a$04$2VucR17/Yr0nfK13lDoXr.zuRhVkT1hVCm.kPVR9yuCdNqhpSlNPi"], ["role", 1], ["created_at", "2015-12-02 02:25:21.135819"], ["updated_at", "2015-12-02 02:25:21.135819"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'sekhar' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["username", "sekhar"], ["password_digest", "$2a$04$jLgvsTlFLMSMcdlkJHBQxeaMIxu8HlI0msWso27e3Nr36qbw5U1nu"], ["created_at", "2015-12-02 02:25:21.140599"], ["updated_at", "2015-12-02 02:25:21.140599"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["status", "ordered"], ["user_id", 20], ["created_at", "2015-12-02 02:25:21.145311"], ["updated_at", "2015-12-02 02:25:21.145311"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["status", "completed"], ["user_id", 20], ["created_at", "2015-12-02 02:25:21.148068"], ["updated_at", "2015-12-02 02:25:21.148068"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["status", "completed"], ["user_id", 19], ["created_at", "2015-12-02 02:25:21.151002"], ["updated_at", "2015-12-02 02:25:21.151002"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["status", "cancelled"], ["user_id", 19], ["created_at", "2015-12-02 02:25:21.153662"], ["updated_at", "2015-12-02 02:25:21.153662"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "ordered"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "paid"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "completed"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "cancelled"]]
+  [1m[35mOrder Load (0.3ms)[0m  SELECT "orders".* FROM "orders"
+  Rendered admin/dashboard/index.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------
+AdminEditStickerTest: test_admin_can_edit_sticker_status
+--------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$yRCuQZmax.MGu7kzwOAQM.xDoLGtDL4ppBTzzBU3YuGJ9FpuFn./K"], ["role", 1], ["created_at", "2015-12-02 02:25:21.203443"], ["updated_at", "2015-12-02 02:25:21.203443"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.5ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 21]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 1.2ms)
+Started GET "/admin/stickers/new" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::StickersController#new as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 21]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+AdminEditStickerTest: test_admin_can_view_edit_path
+---------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$PQArtszQsHd9/atlOevhfOuvlU0b68W4aOpQkfXL4p6e7xrjiOWWi"], ["role", 1], ["created_at", "2015-12-02 02:25:21.245756"], ["updated_at", "2015-12-02 02:25:21.245756"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "emily"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 22]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.9ms)
+Started GET "/admin/stickers/new" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::StickersController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------------------
+StickerRetirementTest: test_retired_stickers_cannot_be_added_to_cart
+--------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+StickerRetirementTest: test_user_cart_shows_retired_stickers
+------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+StickerRetirementTest: test_retired_stickers_have_show_pages
+------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------------
+StickerRetirementTest: test_user_order_page_shows_retired_stickers
+------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------------
+VisitorViewsItemsByCategoryTest: test_visitor_sees_stickers_in_correct_category
+-------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.3ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'Companies' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("title", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Companies"], ["slug", "companies"], ["created_at", "2015-12-02 02:25:21.286123"], ["updated_at", "2015-12-02 02:25:21.286123"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mCategory Exists (0.5ms)[0m  SELECT  1 AS one FROM "categories" WHERE "categories"."title" = 'Products' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "categories" ("title", "slug", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Products"], ["slug", "products"], ["created_at", "2015-12-02 02:25:21.290611"], ["updated_at", "2015-12-02 02:25:21.290611"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------------------------
+AuthenticatedUserPrivacyTest: test_visitor_is_redirected_to_login_before_checkout
+---------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------
+AuthenticatedUserPrivacyTest: test_visitor_cannot_see_user_data
+---------------------------------------------------------------
+Started GET "/users" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ApplicationController#not_found as HTML
+  Parameters: {"unmatched_route"=>"users"}
+  Rendered application/not_found.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+Started GET "/user/1" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ApplicationController#not_found as HTML
+  Parameters: {"unmatched_route"=>"user/1"}
+  Rendered application/not_found.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  Rendered public/404.html within layouts/application (0.4ms)
+  Rendered layouts/_navbar.html.erb (1.1ms)
+Filter chain halted as :require_admin rendered or redirected
+Completed 200 OK in 38ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------------
+AuthenticatedUserPrivacyTest: test_visitor_cannot_see_admin_data
+----------------------------------------------------------------
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  Rendered public/404.html within layouts/application (0.1ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Filter chain halted as :require_admin rendered or redirected
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------------------------------
+AuthenticatedUserPrivacyTest: test_authenticated_user_cannot_see_another_user's_data
+------------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'emily' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "emily"], ["password_digest", "$2a$04$W6x4xg2vL0KEsPB1wv9.d.Sf6iRpqp1fGid8AZKqz3kJR2Pk9VON."], ["created_at", "2015-12-02 02:25:21.365594"], ["updated_at", "2015-12-02 02:25:21.365594"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms)
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"emily", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "emily"]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 23]]
+  Rendered layouts/_navbar.html.erb (1.7ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.7ms)
+Started GET "/users" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ApplicationController#not_found as HTML
+  Parameters: {"unmatched_route"=>"users"}
+  Rendered application/not_found.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 23]]
+  Rendered layouts/_navbar.html.erb (1.6ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+Started GET "/users/1" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ApplicationController#not_found as HTML
+  Parameters: {"unmatched_route"=>"users/1"}
+  Rendered application/not_found.html.erb within layouts/application (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 23]]
+  Rendered layouts/_navbar.html.erb (1.2ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 23]]
+  Rendered public/404.html within layouts/application (0.1ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Filter chain halted as :require_admin rendered or redirected
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------------
+ViewingPastOrdersTest: test_authenticated_user_can_see_past_orders
+------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'Sekhar' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["username", "Sekhar"], ["password_digest", "$2a$04$u/9GhU0n3apmrSpAOqFBAeZiqUf.Zuc7lUiT12zd05VMH0QjDSTf6"], ["created_at", "2015-12-02 02:25:21.427295"], ["updated_at", "2015-12-02 02:25:21.427295"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"Sekhar", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "Sekhar"]]
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 24]]
+  Rendered layouts/_navbar.html.erb (0.9ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "orders" ("status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["status", "ordered"], ["user_id", 24], ["created_at", "2015-12-02 02:25:21.458121"], ["updated_at", "2015-12-02 02:25:21.458121"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/orders" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by OrdersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 24]]
+  [1m[35mOrder Load (0.2ms)[0m  SELECT "orders".* FROM "orders" WHERE "orders"."user_id" = $1  [["user_id", 24]]
+  Rendered orders/index.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------------
+OrderStickerTest: test_: OrderSticker should belong to order. 
+--------------------------------------------------------------
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------------
+OrderStickerTest: test_: OrderSticker should belong to sticker. 
+----------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------------
+VisitorCartQuantityChangesTest: test_visitor_can_decrease_item_quantity_in_cart
+-------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------------
+VisitorCartQuantityChangesTest: test_visitor_can_increase_item_quantity_in_cart
+-------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------------------------
+AdminViewsDashboardTest: test_un-regestered_user_sees_a_404_at_admin_dashboard
+------------------------------------------------------------------------------
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  Rendered public/404.html within layouts/application (0.1ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Filter chain halted as :require_admin rendered or redirected
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------
+AdminViewsDashboardTest: test_registered_user_sees_404_at_admin_dashboard
+-------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'James' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "James"], ["password_digest", "$2a$04$q/eOxGmOhknvCDsYOi1tPeRyV3dTR0enul83IlFvfF8q.IUkN5cku"], ["created_at", "2015-12-02 02:25:21.492622"], ["updated_at", "2015-12-02 02:25:21.492622"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  Rendered public/404.html within layouts/application (0.1ms)
+  Rendered layouts/_navbar.html.erb (0.7ms)
+Filter chain halted as :require_admin rendered or redirected
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------------------------
+AdminViewsDashboardTest: test_admin_can_view_the_admin_dashboard
+----------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'Jason' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Jason"], ["password_digest", "$2a$04$7v/Xi/6hcLWMlJWCEbTN7ute33iaF3aTfyQvWGvBiBllPPn.Zh9qy"], ["role", 1], ["created_at", "2015-12-02 02:25:21.508009"], ["updated_at", "2015-12-02 02:25:21.508009"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------------
+AdminCannotModifyOtherUsersDataTest: test_admin_can_modify_their_account_data
+-----------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'Jason' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "Jason"], ["password_digest", "$2a$04$3SOhrv0mCatj/CIKSp3RHu56yF1avkPUNzAiqhQwl86bGoPQSd/We"], ["role", 1], ["created_at", "2015-12-02 02:25:21.526106"], ["updated_at", "2015-12-02 02:25:21.526106"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"Jason", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1  [["username", "Jason"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "ordered"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "paid"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "completed"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "cancelled"]]
+  [1m[35mOrder Load (0.2ms)[0m  SELECT "orders".* FROM "orders"
+  Rendered admin/dashboard/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.8ms)
+Started GET "/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navbar.html.erb (0.4ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+Started GET "/dashboard/edit" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by UsersController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 27]]
+  Rendered users/edit.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_navbar.html.erb (0.6ms)
+Completed 200 OK in 11ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+Started PATCH "/users/27" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"first_name"=>"updatedfirstname", "last_name"=>"updatedlastname", "username"=>"Updatedjason", "password"=>"[FILTERED]"}, "commit"=>"Update Profile", "id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 27]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."username" = 'Updatedjason' AND "users"."id" != 27) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "first_name" = $1, "last_name" = $2, "username" = $3, "password_digest" = $4, "updated_at" = $5 WHERE "users"."id" = $6  [["first_name", "updatedfirstname"], ["last_name", "updatedlastname"], ["username", "Updatedjason"], ["password_digest", "$2a$04$.FYMRjSSU1w1y3dvdDx2ZuEU0Mq1q.iXTMNG9685l51O4xmRai9Vq"], ["updated_at", "2015-12-02 02:25:21.586012"], ["id", 27]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/dashboard
+Completed 302 Found in 8ms (ActiveRecord: 1.2ms)
+Started GET "/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by UsersController#show as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 27]]
+  Rendered users/show.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------------------------------------------
+AdminCannotModifyOtherUsersDataTest: test_admin_cannot_modify_other_users_account_data
+--------------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'Jason' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("username", "password_digest", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Jason"], ["password_digest", "$2a$04$jZydG7Jt1Cfv05elAuXFz.wj0VGTtsUNueVQFUbMoiedmRWuVEfzO"], ["role", 1], ["created_at", "2015-12-02 02:25:21.603189"], ["updated_at", "2015-12-02 02:25:21.603189"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#new as HTML
+  Rendered session/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by SessionController#create as HTML
+  Parameters: {"utf8"=>"✓", "session"=>{"username"=>"Jason", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT 1[0m  [["username", "Jason"]]
+Redirected to http://www.example.com/admin/dashboard
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+Started GET "/admin/dashboard" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by Admin::DashboardController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "ordered"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "paid"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1[0m  [["status", "completed"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "orders" WHERE "orders"."status" = $1  [["status", "cancelled"]]
+  [1m[36mOrder Load (0.2ms)[0m  [1mSELECT "orders".* FROM "orders"[0m
+  Rendered admin/dashboard/index.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_navbar.html.erb (0.3ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.9ms)
+Started GET "/users" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ApplicationController#not_found as HTML
+  Parameters: {"unmatched_route"=>"users"}
+  Rendered application/not_found.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 28]]
+  Rendered layouts/_navbar.html.erb (1.0ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+Started GET "/users/1" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ApplicationController#not_found as HTML
+  Parameters: {"unmatched_route"=>"users/1"}
+  Rendered application/not_found.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  Rendered layouts/_navbar.html.erb (1.2ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------
+GuestCanViewProjectsIndexTest: test_guest_can_view_projects_index
+-----------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProject Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "projects" WHERE "projects"."title" = 'Buy me a goat' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "projects" ("borrower_id", "goal_amount", "title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["borrower_id", 1], ["goal_amount", "1000.0"], ["title", "Buy me a goat"], ["description", "Mostly goat purchases"], ["created_at", "2015-12-02 02:25:21.657351"], ["updated_at", "2015-12-02 02:25:21.657351"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms)
+Started GET "/projects" for 127.0.0.1 at 2015-12-01 19:25:21 -0700
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  Rendered projects/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_navbar.html.erb (0.2ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+VisitorView: test_site_visitor_can_view_stickers_index
+------------------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK

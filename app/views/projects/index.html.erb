@@ -18,15 +18,17 @@
           <p><%= project.description %></p>
         </div>
         <div class="card-action col s7 offset-s1">
-          <div class="container">
-            75% Funded
+          <div class="center">
+              <h5>75% Funded</h5>
           </div>
-          <div id='<%= project.title %>-button' class="waves-effect waves-light btn custom-blue">
+          <div class="center">
+          <span id='<%= project.title %>-button' class="col s5 left waves-effect waves-light btn custom-blue">
             <%= button_to "Learn More", cart_projects_path(project_id: project.id) %>
-          </div>
-          <div id='<%= project.title %>-button' class="waves-effect waves-light btn custom-blue">
-            <%= button_to "Lend" %>
-          </div>
+          </span>
+          <span id='<%= project.title%>-lend-button' class="col s5 right waves-effect waves-light btn custom-blue">
+            <%= button_to "Lend", "#" %>
+          </span>
+        </div>
         </div>
       </div>
     </div>

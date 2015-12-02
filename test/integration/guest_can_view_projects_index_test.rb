@@ -7,7 +7,6 @@ class GuestCanViewProjectsIndexTest < ActionDispatch::IntegrationTest
     click_link("Lend")
 
     assert_equal "/projects", current_path
-    save_and_open_page
     assert page.has_content?("Buy me a goat")
   end
 

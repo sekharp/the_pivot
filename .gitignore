@@ -1,6 +1,7 @@
 /.bundle
-/log/*
+log/*
 !/log/.keep
 /tmp
 public/system/
 log/development.log
+coverage/*

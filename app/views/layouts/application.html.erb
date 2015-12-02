@@ -15,7 +15,7 @@
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
   <%= render partial: "layouts/navbar" %>
-
+  <main>
     <% if flash[:success] %>
       <div id="nav-bar" class="green lighten-2 alert white-text">
       <p><%= raw(flash[:success]) %></p>
@@ -31,5 +31,7 @@
   <div class="container">
     <%= yield %>
   </div>
+</main>
+  <%= render partial: "layouts/footer" %>
 </body>
 </html>

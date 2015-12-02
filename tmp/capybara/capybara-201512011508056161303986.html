@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="stylesheets/custom.css">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GaneshaLoans</title>
+  <link rel="stylesheet" media="all" href="/assets/application.css" data-turbolinks-track="true" />
+  <script src="/assets/application.js" data-turbolinks-track="true"></script>
+  
+</head>
+<body>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+  <nav id="primary-navigation">
+    <div class="nav-wrapper blue darken-2">
+      <a href="/" class="brand-logo side-margin-15">StickerShop</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down offset-s1">
+        <li><a href="/projects">Lend</a></li>
+        <li><a href="/categories">Categories</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/users/new">Create Account</a></li>
+        <li class=""><a href="/cart">Cart <span class="new badge blue lighten-2">0</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+      <div id="nav-bar" class="blue lighten-2 alert white-text">
+      </div>
+
+  <div class="container">
+    <h1>
+    All Projects
+</h1>
+
+<div class="row">
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <a href="/projects/14"><img class="max-width" src="/images/original/missing.png"></a>
+        </div>
+        <div class="card-content">
+          <p>Buy me a goat</p>
+          <p>Mostly goat purchases</p>
+        </div>
+        <div class="card-action">
+          <div id='Buy me a goat-button' class="waves-effect waves-light btn blue">
+            <form class="button_to" method="post" action="/cart_projects?project_id=14"><input type="submit" value="Add to Cart" /></form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+  </div>
+</body>
+</html>

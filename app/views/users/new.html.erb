@@ -1,13 +1,13 @@
 <h1>Create Account</h1>
 
 <%= form_for(@user) do |f| %>
-  <%= f.label :first_name %>
   <%= f.text_field :first_name %>
-  <%= f.label :last_name %>
+  <%= f.label :first_name %>
   <%= f.text_field :last_name %>
-  <%= f.label :username %>
+  <%= f.label :last_name %>
   <%= f.text_field :username %>
-  <%= f.label :password %>
+  <%= f.label :username %>
   <%= f.password_field :password %>
+  <%= f.label :password %><br><br>
   <%= f.submit "Create Account" %>
 <% end %>

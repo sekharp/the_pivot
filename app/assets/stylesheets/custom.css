@@ -16,3 +16,26 @@
 .thumbnail {
   max-width: 80px;
 }
+.site-logo {
+  max-width: 60px;
+  margin-top: auto;
+  margin-left: 10px;
+  margin-bottom: auto;
+}
+.custom-orange {
+  background-color: #FF9933 !important;
+}
+.custom-green {
+  background-color: #138808 !important;
+}
+.custom-blue {
+  background-color: #000080 !important;
+}
+body {
+  display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+  }

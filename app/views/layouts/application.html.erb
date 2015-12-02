@@ -5,7 +5,7 @@
   <link type="text/css" rel="stylesheet" href="stylesheets/custom.css">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StickerShop</title>
+  <title>GaneshaLoans</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -14,35 +14,14 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
-  <nav id="primary-navigation">
-    <div class="nav-wrapper blue darken-2">
-      <a href="/" class="brand-logo side-margin-15">StickerShop</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down offset-s1">
-        <li><%= link_to "Stickers", stickers_path %></li>
-        <li><%= link_to "Categories", categories_path %></li>
-        <% if current_admin? %>
-          <li><%= link_to "Admin Dashboard", admin_dashboard_index_path %></li>
-          <li><%= link_to "Orders", orders_path %></li>
-          <li><%= link_to "Logout", logout_path , method: :delete %></li>
-        <% elsif current_user %>
-          <li><%= link_to "Profile", dashboard_path %></li>
-          <li><%= link_to "Orders", orders_path %></li>
-          <li><%= link_to "Logout", logout_path , method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Login", login_path %></li>
-          <li><%= link_to "Create Account", new_user_path %></li>
-        <% end %>
-        <li class=""><a href="<%= cart_index_path %>">Cart <span class="new badge blue lighten-2"><%= @cart.total_quantity %></span></a></li>
-      </ul>
-    </div>
-  </nav>
-
+  <%= render partial: "layouts/navbar" %>
+  <main>
     <% if flash[:success] %>
       <div id="nav-bar" class="green lighten-2 alert white-text">
       <p><%= raw(flash[:success]) %></p>
       </div>
     <% else %>
-      <div id="nav-bar" class="blue lighten-2 alert white-text">
+      <div id="nav-bar" class="custom-green lighten-2 alert white-text">
       <% flash.each do |type, message| %>
         <p><%= content_tag(:div, message) %></p>
       <% end %>
@@ -52,5 +31,7 @@
   <div class="container">
     <%= yield %>
   </div>
+</main>
+  <%= render partial: "layouts/footer" %>
 </body>
 </html>

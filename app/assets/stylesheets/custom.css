@@ -16,3 +16,15 @@
 .thumbnail {
   max-width: 80px;
 }
+
+.custom-orange {
+  background-color: #FF9933 !important;
+}
+
+.custom-green {
+  background-color: #138808 !important;
+}
+
+.custom-blue {
+  background-color: #000080 !important;
+}

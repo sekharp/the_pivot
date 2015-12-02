@@ -5,7 +5,7 @@
   <link type="text/css" rel="stylesheet" href="stylesheets/custom.css">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>StickerShop</title>
+  <title>GaneshaLoans</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -15,10 +15,10 @@
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
   <nav id="primary-navigation">
-    <div class="nav-wrapper blue darken-2">
-      <a href="/" class="brand-logo side-margin-15">StickerShop</a>
+    <div class="nav-wrapper custom-orange">
+      <a href="/" class="brand-logo side-margin-15">GaneshaLoans</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down offset-s1">
-        <li><%= link_to "Stickers", stickers_path %></li>
+        <li><%= link_to "Lend", projects_path %></li>
         <li><%= link_to "Categories", categories_path %></li>
         <% if current_admin? %>
           <li><%= link_to "Admin Dashboard", admin_dashboard_index_path %></li>
@@ -32,7 +32,7 @@
           <li><%= link_to "Login", login_path %></li>
           <li><%= link_to "Create Account", new_user_path %></li>
         <% end %>
-        <li class=""><a href="<%= cart_index_path %>">Cart <span class="new badge blue lighten-2"><%= @cart.total_quantity %></span></a></li>
+        <li class=""><a href="<%= cart_index_path %>">Cart <span class="new badge custom-blue"><%= @cart.total_quantity %></span></a></li>
       </ul>
     </div>
   </nav>
@@ -42,7 +42,7 @@
       <p><%= raw(flash[:success]) %></p>
       </div>
     <% else %>
-      <div id="nav-bar" class="blue lighten-2 alert white-text">
+      <div id="nav-bar" class="custom-green lighten-2 alert white-text">
       <% flash.each do |type, message| %>
         <p><%= content_tag(:div, message) %></p>
       <% end %>

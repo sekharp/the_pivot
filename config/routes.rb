@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root to: "stickers#index"
-  resources :stickers, only: [:index, :show, :update]
+  root to: "projects#index"
+  resources :projects, only: [:index, :show, :update]
   resources :categories, only: [:index, :show], param: :slug
-  resources :cart_stickers, only: [:create, :update, :index, :destroy]
+  resources :cart_projects, only: [:create, :update, :index, :destroy]
   resources :cart, only: [:index]
   resources :users, only: [:new, :create, :update]
   resources :orders, only: [:create, :index, :show]

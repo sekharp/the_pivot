@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>Code coverage for Ganesha</title>
+    <title>Code coverage for The pivot</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.10.0/application.js' type='text/javascript'></script>    
     <link href='./assets/0.10.0/application.css' media='screen, projection, print' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_green.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.10.0/favicon_red.png" />
     <link rel="icon" type="image/png" href="./assets/0.10.0/favicon.png" />
   </head>
   
@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-11-30T13:31:46-07:00">2015-11-30T13:31:46-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-12-01T15:08:05-07:00">2015-12-01T15:08:05-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">91.59%</span></span>
+    (<span class="covered_percent"><span class="red">62.3%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="green">
-         10.12
+       <span class="red">
+         0.78
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>19</b> files in total.
-    <b>226</b> relevant lines. 
-    <span class="green"><b>207</b> lines covered</span> and
-    <span class="red"><b>19</b> lines missed </span>
+    <b>5</b> files in total.
+    <b>61</b> relevant lines. 
+    <span class="green"><b>38</b> lines covered</span> and
+    <span class="red"><b>23</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -51,117 +51,27 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#37c05db8d1dc67a3264ddb8b94cd9e069f7360d8" class="src_link" title="app/controllers/admin/base_controller.rb">app/controllers/admin/base_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>7</td>
-        <td>4</td>
-        <td>4</td>
-        <td>0</td>
-        <td>10.8</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#2a4260da465a7d8749d427198443823726d47c42" class="src_link" title="app/controllers/admin/dashboard_controller.rb">app/controllers/admin/dashboard_controller.rb</a></td>
-        <td class="red strong">57.14 %</td>
-        <td>12</td>
-        <td>7</td>
-        <td>4</td>
-        <td>3</td>
-        <td>2.3</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#0efd57f22485b87108efb02164cf8f8ae72465fb" class="src_link" title="app/controllers/admin/stickers_controller.rb">app/controllers/admin/stickers_controller.rb</a></td>
-        <td class="yellow strong">83.33 %</td>
-        <td>41</td>
-        <td>24</td>
-        <td>20</td>
-        <td>4</td>
-        <td>3.5</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#9c0d9b1be102f53aa86ac7853a73989c42ceebeb" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
+        <td class="strong"><a href="#5f8a00ab20999c22f6e737010fd348f38ca6f956" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>20</td>
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>79.3</td>
+        <td>1.5</td>
       </tr>
       
       <tr>
-        <td class="strong"><a href="#deaeb4e0a4c08e7d5d332a213c425383fb34b362" class="src_link" title="app/controllers/cart_controller.rb">app/controllers/cart_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>4</td>
-        <td>2</td>
-        <td>2</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#c65319888c7d768d1e410398a5ca4eb3d3972367" class="src_link" title="app/controllers/cart_stickers_controller.rb">app/controllers/cart_stickers_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>31</td>
-        <td>23</td>
-        <td>23</td>
-        <td>0</td>
-        <td>5.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#363af26960ddc6e3b8b8ebce985a471121e43853" class="src_link" title="app/controllers/categories_controller.rb">app/controllers/categories_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>9</td>
-        <td>5</td>
-        <td>5</td>
-        <td>0</td>
-        <td>1.8</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#dc4a9dbd77e796bbd07cca71c19d63bfca6b1f16" class="src_link" title="app/controllers/orders_controller.rb">app/controllers/orders_controller.rb</a></td>
-        <td class="green strong">90.91 %</td>
-        <td>37</td>
-        <td>22</td>
-        <td>20</td>
-        <td>2</td>
-        <td>2.6</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#82a6bb387a552fcaaca7b0447e251a171a4fbf69" class="src_link" title="app/controllers/session_controller.rb">app/controllers/session_controller.rb</a></td>
-        <td class="red strong">78.95 %</td>
-        <td>29</td>
-        <td>19</td>
-        <td>15</td>
-        <td>4</td>
-        <td>6.1</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#e372b5449bf705287ae917e5548187835c378e19" class="src_link" title="app/controllers/stickers_controller.rb">app/controllers/stickers_controller.rb</a></td>
-        <td class="red strong">78.95 %</td>
+        <td class="strong"><a href="#9d283813969889873f78994942d155fa50cca353" class="src_link" title="app/controllers/projects_controller.rb">app/controllers/projects_controller.rb</a></td>
+        <td class="red strong">42.11 %</td>
         <td>36</td>
         <td>19</td>
-        <td>15</td>
-        <td>4</td>
-        <td>6.9</td>
+        <td>8</td>
+        <td>11</td>
+        <td>0.5</td>
       </tr>
       
       <tr>
-        <td class="strong"><a href="#1437b0be085dc9291b1f371dde0360b90d6d9cf2" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
-        <td class="green strong">91.3 %</td>
-        <td>43</td>
-        <td>23</td>
-        <td>21</td>
-        <td>2</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#4508ba16f378d82bacf6430044803cdbf7f2d855" class="src_link" title="app/helpers/application_helper.rb">app/helpers/application_helper.rb</a></td>
+        <td class="strong"><a href="#69f17fa7589fcb4dc0ec09224be95aec8999dbad" class="src_link" title="app/helpers/application_helper.rb">app/helpers/application_helper.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>2</td>
         <td>1</td>
@@ -171,69 +81,19 @@
       </tr>
       
       <tr>
-        <td class="strong"><a href="#4efc3bd3e51165e023764d9088ce42e54e32b54d" class="src_link" title="app/models/cart.rb">app/models/cart.rb</a></td>
-        <td class="green strong">100.0 %</td>
+        <td class="strong"><a href="#453cabade905db2aaf13f3c2702685f1f17fbe32" class="src_link" title="app/models/cart.rb">app/models/cart.rb</a></td>
+        <td class="red strong">50.0 %</td>
         <td>43</td>
         <td>24</td>
-        <td>24</td>
-        <td>0</td>
-        <td>24.5</td>
+        <td>12</td>
+        <td>12</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
-        <td class="strong"><a href="#aa0129b6e8c5728ceb1db6c00137ee385d0a3768" class="src_link" title="app/models/cart_sticker.rb">app/models/cart_sticker.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>14</td>
-        <td>8</td>
-        <td>8</td>
-        <td>0</td>
-        <td>15.4</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#2f2f8f9e9a04f30fc94276533beac72188e07379" class="src_link" title="app/models/category.rb">app/models/category.rb</a></td>
+        <td class="strong"><a href="#e1625a44bab02b3b13f87f68af047769b119f403" class="src_link" title="app/models/project.rb">app/models/project.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>16</td>
-        <td>8</td>
-        <td>8</td>
-        <td>0</td>
-        <td>2.4</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#60bfe2cfaaa7441412da48e34033c62594c72c72" class="src_link" title="app/models/order.rb">app/models/order.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>15</td>
-        <td>10</td>
-        <td>10</td>
-        <td>0</td>
-        <td>7.2</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#7efc434a0c95cb026edb1811128daae05af611db" class="src_link" title="app/models/order_sticker.rb">app/models/order_sticker.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#cf4c761e044c372605728b1ae0d03774e5da04b3" class="src_link" title="app/models/sticker.rb">app/models/sticker.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>16</td>
-        <td>7</td>
-        <td>7</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#39cab0a2e17b27c71e2aa1123ef65a71df2d615c" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>10</td>
         <td>6</td>
         <td>6</td>
         <td>0</td>
@@ -249,20 +109,20 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="yellow">88.05%</span></span>
+    (<span class="covered_percent"><span class="red">63.33%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="green">
-         9.24
+       <span class="red">
+         0.87
        </span>
     </span> hits/line)
   </h2>
   <a name="Controllers"></a>
   <div>
-    <b>11</b> files in total.
-    <b>159</b> relevant lines. 
-    <span class="green"><b>140</b> lines covered</span> and
-    <span class="red"><b>19</b> lines missed </span>
+    <b>2</b> files in total.
+    <b>30</b> relevant lines. 
+    <span class="green"><b>19</b> lines covered</span> and
+    <span class="red"><b>11</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -279,113 +139,23 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#37c05db8d1dc67a3264ddb8b94cd9e069f7360d8" class="src_link" title="app/controllers/admin/base_controller.rb">app/controllers/admin/base_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>7</td>
-        <td>4</td>
-        <td>4</td>
-        <td>0</td>
-        <td>10.8</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#2a4260da465a7d8749d427198443823726d47c42" class="src_link" title="app/controllers/admin/dashboard_controller.rb">app/controllers/admin/dashboard_controller.rb</a></td>
-        <td class="red strong">57.14 %</td>
-        <td>12</td>
-        <td>7</td>
-        <td>4</td>
-        <td>3</td>
-        <td>2.3</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#0efd57f22485b87108efb02164cf8f8ae72465fb" class="src_link" title="app/controllers/admin/stickers_controller.rb">app/controllers/admin/stickers_controller.rb</a></td>
-        <td class="yellow strong">83.33 %</td>
-        <td>41</td>
-        <td>24</td>
-        <td>20</td>
-        <td>4</td>
-        <td>3.5</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#9c0d9b1be102f53aa86ac7853a73989c42ceebeb" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
+        <td class="strong"><a href="#5f8a00ab20999c22f6e737010fd348f38ca6f956" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>20</td>
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>79.3</td>
+        <td>1.5</td>
       </tr>
       
       <tr>
-        <td class="strong"><a href="#deaeb4e0a4c08e7d5d332a213c425383fb34b362" class="src_link" title="app/controllers/cart_controller.rb">app/controllers/cart_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>4</td>
-        <td>2</td>
-        <td>2</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#c65319888c7d768d1e410398a5ca4eb3d3972367" class="src_link" title="app/controllers/cart_stickers_controller.rb">app/controllers/cart_stickers_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>31</td>
-        <td>23</td>
-        <td>23</td>
-        <td>0</td>
-        <td>5.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#363af26960ddc6e3b8b8ebce985a471121e43853" class="src_link" title="app/controllers/categories_controller.rb">app/controllers/categories_controller.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>9</td>
-        <td>5</td>
-        <td>5</td>
-        <td>0</td>
-        <td>1.8</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#dc4a9dbd77e796bbd07cca71c19d63bfca6b1f16" class="src_link" title="app/controllers/orders_controller.rb">app/controllers/orders_controller.rb</a></td>
-        <td class="green strong">90.91 %</td>
-        <td>37</td>
-        <td>22</td>
-        <td>20</td>
-        <td>2</td>
-        <td>2.6</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#82a6bb387a552fcaaca7b0447e251a171a4fbf69" class="src_link" title="app/controllers/session_controller.rb">app/controllers/session_controller.rb</a></td>
-        <td class="red strong">78.95 %</td>
-        <td>29</td>
-        <td>19</td>
-        <td>15</td>
-        <td>4</td>
-        <td>6.1</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#e372b5449bf705287ae917e5548187835c378e19" class="src_link" title="app/controllers/stickers_controller.rb">app/controllers/stickers_controller.rb</a></td>
-        <td class="red strong">78.95 %</td>
+        <td class="strong"><a href="#9d283813969889873f78994942d155fa50cca353" class="src_link" title="app/controllers/projects_controller.rb">app/controllers/projects_controller.rb</a></td>
+        <td class="red strong">42.11 %</td>
         <td>36</td>
         <td>19</td>
-        <td>15</td>
-        <td>4</td>
-        <td>6.9</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#1437b0be085dc9291b1f371dde0360b90d6d9cf2" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
-        <td class="green strong">91.3 %</td>
-        <td>43</td>
-        <td>23</td>
-        <td>21</td>
-        <td>2</td>
-        <td>1.0</td>
+        <td>8</td>
+        <td>11</td>
+        <td>0.5</td>
       </tr>
       
     </tbody>
@@ -396,20 +166,20 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="green">100.0%</span></span>
+    (<span class="covered_percent"><span class="red">60.0%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="green">
-         12.4
+       <span class="red">
+         0.68
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
-    <b>7</b> files in total.
-    <b>66</b> relevant lines. 
-    <span class="green"><b>66</b> lines covered</span> and
-    <span class="red"><b>0</b> lines missed </span>
+    <b>2</b> files in total.
+    <b>30</b> relevant lines. 
+    <span class="green"><b>18</b> lines covered</span> and
+    <span class="red"><b>12</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -426,69 +196,19 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#4efc3bd3e51165e023764d9088ce42e54e32b54d" class="src_link" title="app/models/cart.rb">app/models/cart.rb</a></td>
-        <td class="green strong">100.0 %</td>
+        <td class="strong"><a href="#453cabade905db2aaf13f3c2702685f1f17fbe32" class="src_link" title="app/models/cart.rb">app/models/cart.rb</a></td>
+        <td class="red strong">50.0 %</td>
         <td>43</td>
         <td>24</td>
-        <td>24</td>
-        <td>0</td>
-        <td>24.5</td>
+        <td>12</td>
+        <td>12</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
-        <td class="strong"><a href="#aa0129b6e8c5728ceb1db6c00137ee385d0a3768" class="src_link" title="app/models/cart_sticker.rb">app/models/cart_sticker.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>14</td>
-        <td>8</td>
-        <td>8</td>
-        <td>0</td>
-        <td>15.4</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#2f2f8f9e9a04f30fc94276533beac72188e07379" class="src_link" title="app/models/category.rb">app/models/category.rb</a></td>
+        <td class="strong"><a href="#e1625a44bab02b3b13f87f68af047769b119f403" class="src_link" title="app/models/project.rb">app/models/project.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>16</td>
-        <td>8</td>
-        <td>8</td>
-        <td>0</td>
-        <td>2.4</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#60bfe2cfaaa7441412da48e34033c62594c72c72" class="src_link" title="app/models/order.rb">app/models/order.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>15</td>
-        <td>10</td>
-        <td>10</td>
-        <td>0</td>
-        <td>7.2</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#7efc434a0c95cb026edb1811128daae05af611db" class="src_link" title="app/models/order_sticker.rb">app/models/order_sticker.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>4</td>
-        <td>3</td>
-        <td>3</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#cf4c761e044c372605728b1ae0d03774e5da04b3" class="src_link" title="app/models/sticker.rb">app/models/sticker.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>16</td>
-        <td>7</td>
-        <td>7</td>
-        <td>0</td>
-        <td>1.0</td>
-      </tr>
-      
-      <tr>
-        <td class="strong"><a href="#39cab0a2e17b27c71e2aa1123ef65a71df2d615c" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>10</td>
         <td>6</td>
         <td>6</td>
         <td>0</td>
@@ -570,7 +290,7 @@
     <tbody>
       
       <tr>
-        <td class="strong"><a href="#4508ba16f378d82bacf6430044803cdbf7f2d855" class="src_link" title="app/helpers/application_helper.rb">app/helpers/application_helper.rb</a></td>
+        <td class="strong"><a href="#69f17fa7589fcb4dc0ec09224be95aec8999dbad" class="src_link" title="app/helpers/application_helper.rb">app/helpers/application_helper.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>2</td>
         <td>1</td>
@@ -626,426 +346,12 @@
       <div id="footer">
         Generated by <a href="http://github.com/colszowka/simplecov">simplecov</a> v0.10.0 
         and simplecov-html v0.10.0<br/>
-        using RSpec
+        using Integration Tests
       </div>
     
       <div class="source_files">
       
-        <div class="source_table" id="37c05db8d1dc67a3264ddb8b94cd9e069f7360d8">
-  <div class="header">
-    <h3>app/controllers/admin/base_controller.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>4</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class Admin::BaseController &lt; ApplicationController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  before_action :require_admin</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def require_admin</code>
-        </li>
-      
-        <li class="covered" data-hits="40" data-linenumber="5">
-          <span class="hits">40</span>
-          
-          <code class="ruby">    render file: &quot;/public/404&quot; unless current_admin?</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="2a4260da465a7d8749d427198443823726d47c42">
-  <div class="header">
-    <h3>app/controllers/admin/dashboard_controller.rb</h3>
-    <h4><span class="red">57.14 %</span> covered</h4>
-    <div>
-      <b>7</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class Admin::DashboardController &lt; Admin::BaseController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def index</code>
-        </li>
-      
-        <li class="covered" data-hits="13" data-linenumber="3">
-          <span class="hits">13</span>
-          
-          <code class="ruby">    @orders = Order.all</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def show</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="7">
-          
-          
-          <code class="ruby">    @orders = Order.where(status: params[:status].downcase)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="8">
-          
-          
-          <code class="ruby">    if @orders.empty?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="9">
-          
-          
-          <code class="ruby">      redirect_to admin_dashboard_index_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="10">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="11">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="12">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="0efd57f22485b87108efb02164cf8f8ae72465fb">
-  <div class="header">
-    <h3>app/controllers/admin/stickers_controller.rb</h3>
-    <h4><span class="yellow">83.33 %</span> covered</h4>
-    <div>
-      <b>24</b> relevant lines. 
-      <span class="green"><b>20</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class Admin::StickersController &lt; Admin::BaseController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def index</code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="3">
-          <span class="hits">5</span>
-          
-          <code class="ruby">    @stickers = Sticker.all</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def new</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="7">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    @sticker = Sticker.new</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def create</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="11">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    category = Category.where(slug: params[:sticker][:category].parameterize).first_or_create</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="12">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    @sticker = category.stickers.new(sticker_params)</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="13">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    if Sticker.exists?(title: sticker_params[:title])</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
-          
-          <code class="ruby">      flash[:error] = &quot;A sticker with the title of &#39;#{@sticker.title}&#39; already exists. Please enter a new title.&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="15">
-          
-          
-          <code class="ruby">      render :new</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="16">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    elsif @sticker.price &lt; 0.01</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      flash[:error] = &quot;The price $#{@sticker.price} is too low. Please enter a new price.&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      render :new</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="19">
-          <span class="hits">6</span>
-          
-          <code class="ruby">    elsif @sticker.save</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="20">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      flash[:success] = &quot;Successfully added #{view_context.link_to &quot;#{@sticker.title}&quot;, sticker_path(@sticker.id)} sticker to the store.&quot;.html_safe</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="21">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      redirect_to stickers_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
-          
-          <code class="ruby">      flash.now[:error] = &quot;Something went wrong. Please try again.&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="24">
-          
-          
-          <code class="ruby">      render :new</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="27">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="28">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def edit</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="29">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    @sticker = Sticker.find(params[:id])</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  private</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="34">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def sticker_params</code>
-        </li>
-      
-        <li class="covered" data-hits="14" data-linenumber="35">
-          <span class="hits">14</span>
-          
-          <code class="ruby">    params.require(:sticker).permit(:title,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby">                                    :description,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="37">
-          
-          
-          <code class="ruby">                                    :price,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="38">
-          
-          
-          <code class="ruby">                                    :image,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
-          
-          
-          <code class="ruby">                                    :retired)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="41">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="9c0d9b1be102f53aa86ac7853a73989c42ceebeb">
+        <div class="source_table" id="5f8a00ab20999c22f6e737010fd348f38ca6f956">
   <div class="header">
     <h3>app/controllers/application_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
@@ -1095,8 +401,8 @@
           <code class="ruby">  def set_cart</code>
         </li>
       
-        <li class="covered" data-hits="216" data-linenumber="7">
-          <span class="hits">216</span>
+        <li class="covered" data-hits="2" data-linenumber="7">
+          <span class="hits">2</span>
           
           <code class="ruby">    @cart = Cart.new(session[:cart])</code>
         </li>
@@ -1119,8 +425,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="450" data-linenumber="11">
-          <span class="hits">450</span>
+        <li class="covered" data-hits="4" data-linenumber="11">
+          <span class="hits">4</span>
           
           <code class="ruby">    @user ||= User.find(session[:user_id]) if session[:user_id]</code>
         </li>
@@ -1143,8 +449,8 @@
           <code class="ruby">  def current_admin?</code>
         </li>
       
-        <li class="covered" data-hits="198" data-linenumber="15">
-          <span class="hits">198</span>
+        <li class="covered" data-hits="2" data-linenumber="15">
+          <span class="hits">2</span>
           
           <code class="ruby">    current_user &amp;&amp; current_user.admin?</code>
         </li>
@@ -1183,572 +489,14 @@
   </pre>
 </div>
       
-        <div class="source_table" id="deaeb4e0a4c08e7d5d332a213c425383fb34b362">
+        <div class="source_table" id="9d283813969889873f78994942d155fa50cca353">
   <div class="header">
-    <h3>app/controllers/cart_controller.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>2</b> relevant lines. 
-      <span class="green"><b>2</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class CartController &lt; ApplicationController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def index</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="c65319888c7d768d1e410398a5ca4eb3d3972367">
-  <div class="header">
-    <h3>app/controllers/cart_stickers_controller.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>23</b> relevant lines. 
-      <span class="green"><b>23</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class CartStickersController &lt; ApplicationController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def create</code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="3">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    sticker = Sticker.find(params[:sticker_id])</code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="4">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    @cart.add_sticker(sticker.id)</code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="5">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    session[:cart] = @cart.contents</code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="6">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    flash[:success] = &quot;Successfully added #{view_context.link_to &quot;#{sticker.title}&quot;, sticker_path(sticker.id)} sticker to your cart.&quot;.html_safe</code>
-        </li>
-      
-        <li class="covered" data-hits="19" data-linenumber="7">
-          <span class="hits">19</span>
-          
-          <code class="ruby">    redirect_to root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def update</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="11">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    sticker = Sticker.find(params[:id])</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    if params[:adjustment] == &quot;increase&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      @cart.add_sticker(sticker.id)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="14">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      session[:cart] = @cart.contents</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="15">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      flash[:success] = &quot;Successfully added #{view_context.link_to &quot;#{sticker.title}&quot;, sticker_path(sticker.id)} sticker to your cart.&quot;.html_safe</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="16">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      @cart.subtract_sticker(sticker.id)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      session[:cart] = @cart.contents</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      flash[:success] = &quot;Successfully removed one #{view_context.link_to &quot;#{sticker.title}&quot;, sticker_path(sticker.id)} sticker from your cart.&quot;.html_safe</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="21">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    redirect_to cart_index_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="23">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def destroy</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="25">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    sticker = Sticker.find(params[:id])</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @cart.remove_sticker(sticker.id)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="27">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    session[:cart] = @cart.contents</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="28">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    flash[:success] = &quot;Successfully removed #{view_context.link_to &quot;#{sticker.title}&quot;, sticker_path(sticker.id)} sticker from your cart.&quot;.html_safe</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="29">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    redirect_to cart_index_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="363af26960ddc6e3b8b8ebce985a471121e43853">
-  <div class="header">
-    <h3>app/controllers/categories_controller.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>5</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class CategoriesController &lt; ApplicationController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def index</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="3">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    @categories = Category.all</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def show</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="7">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    @category = Category.find_by(slug: params[:slug])</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="dc4a9dbd77e796bbd07cca71c19d63bfca6b1f16">
-  <div class="header">
-    <h3>app/controllers/orders_controller.rb</h3>
-    <h4><span class="green">90.91 %</span> covered</h4>
-    <div>
-      <b>22</b> relevant lines. 
-      <span class="green"><b>20</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class OrdersController &lt; ApplicationController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  before_action :require_login</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def index</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="5">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    @orders = current_user.orders</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="7">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def create</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="9">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    if session[:cart].nil? || session[:cart].empty?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="10">
-          
-          
-          <code class="ruby">      redirect_to &#39;/cart&#39;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="11">
-          
-          
-          <code class="ruby">      flash[:notice] = &quot;No stickers in cart. Don&#39;t you want stickers?&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="12">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="13">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      order = Order.create(status: &quot;ordered&quot;, user_id: current_user.id)</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="14">
-          <span class="hits">4</span>
-          
-          <code class="ruby">      session[:cart].map { |id, q| OrderSticker.create(quantity: q, sticker_id: id, order_id: order.id) }</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="15">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      session[:cart] = {}</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="16">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      flash[:success] = &quot;Order was successfully placed.&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="17">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      redirect_to orders_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="19">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def show</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="22">
-          <span class="hits">4</span>
-          
-          <code class="ruby">    order = Order.find(params[:id].to_i)</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="23">
-          <span class="hits">4</span>
-          
-          <code class="ruby">    if current_user.id == order.user.id</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="24">
-          <span class="hits">3</span>
-          
-          <code class="ruby">      @order = order</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      redirect_to orders_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="27">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="28">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="30">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  private</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def require_login</code>
-        </li>
-      
-        <li class="covered" data-hits="15" data-linenumber="33">
-          <span class="hits">15</span>
-          
-          <code class="ruby">    unless current_user</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="34">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      redirect_to login_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="35">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="37">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="82a6bb387a552fcaaca7b0447e251a171a4fbf69">
-  <div class="header">
-    <h3>app/controllers/session_controller.rb</h3>
-    <h4><span class="red">78.95 %</span> covered</h4>
+    <h3>app/controllers/projects_controller.rb</h3>
+    <h4><span class="red">42.11 %</span> covered</h4>
     <div>
       <b>19</b> relevant lines. 
-      <span class="green"><b>15</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
+      <span class="green"><b>8</b> lines covered</span> and
+      <span class="red"><b>11</b> lines missed.</span>
     </div>
   </div>
   
@@ -1758,199 +506,7 @@
         <li class="covered" data-hits="1" data-linenumber="1">
           <span class="hits">1</span>
           
-          <code class="ruby">class SessionController &lt; ApplicationController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def new</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def create</code>
-        </li>
-      
-        <li class="covered" data-hits="20" data-linenumber="6">
-          <span class="hits">20</span>
-          
-          <code class="ruby">    @user = User.find_by(username: params[:session][:username])</code>
-        </li>
-      
-        <li class="covered" data-hits="20" data-linenumber="7">
-          <span class="hits">20</span>
-          
-          <code class="ruby">    if @user</code>
-        </li>
-      
-        <li class="covered" data-hits="20" data-linenumber="8">
-          <span class="hits">20</span>
-          
-          <code class="ruby">      if @user.admin? &amp;&amp; @user.authenticate(params[:session][:password])</code>
-        </li>
-      
-        <li class="covered" data-hits="11" data-linenumber="9">
-          <span class="hits">11</span>
-          
-          <code class="ruby">        session[:user_id] = @user.id</code>
-        </li>
-      
-        <li class="covered" data-hits="11" data-linenumber="10">
-          <span class="hits">11</span>
-          
-          <code class="ruby">        redirect_to admin_dashboard_index_path</code>
-        </li>
-      
-        <li class="covered" data-hits="9" data-linenumber="11">
-          <span class="hits">9</span>
-          
-          <code class="ruby">      elsif @user &amp;&amp; @user.authenticate(params[:session][:password])</code>
-        </li>
-      
-        <li class="covered" data-hits="9" data-linenumber="12">
-          <span class="hits">9</span>
-          
-          <code class="ruby">        session[:user_id] = @user.id</code>
-        </li>
-      
-        <li class="covered" data-hits="9" data-linenumber="13">
-          <span class="hits">9</span>
-          
-          <code class="ruby">        redirect_to root_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby">      else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="15">
-          
-          
-          <code class="ruby">        flash.now[:error] = &quot;Invalid username or password. Try again.&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="16">
-          
-          
-          <code class="ruby">        render :new</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="19">
-          
-          
-          <code class="ruby">      flash[:errors] = &quot;Please create account first&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="20">
-          
-          
-          <code class="ruby">      redirect_to login_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="21">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="23">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def destroy</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="25">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    session.clear</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    flash[:logout] = &quot;Goodbye!&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="27">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    redirect_to login_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="28">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="e372b5449bf705287ae917e5548187835c378e19">
-  <div class="header">
-    <h3>app/controllers/stickers_controller.rb</h3>
-    <h4><span class="red">78.95 %</span> covered</h4>
-    <div>
-      <b>19</b> relevant lines. 
-      <span class="green"><b>15</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class StickersController &lt; ApplicationController</code>
+          <code class="ruby">class ProjectsController &lt; ApplicationController</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="2">
@@ -1959,8 +515,8 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="54" data-linenumber="3">
-          <span class="hits">54</span>
+        <li class="covered" data-hits="2" data-linenumber="3">
+          <span class="hits">2</span>
           
           <code class="ruby">    if params.include?(&quot;category_id&quot;)</code>
         </li>
@@ -1974,7 +530,7 @@
         <li class="missed" data-hits="0" data-linenumber="5">
           
           
-          <code class="ruby">      @stickers = @category.stickers.all</code>
+          <code class="ruby">      @projects = @category.projects.all</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="6">
@@ -1983,10 +539,10 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="54" data-linenumber="7">
-          <span class="hits">54</span>
+        <li class="covered" data-hits="2" data-linenumber="7">
+          <span class="hits">2</span>
           
-          <code class="ruby">      @stickers = Sticker.all</code>
+          <code class="ruby">      @projects = Project.all</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -2013,10 +569,10 @@
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="12">
-          <span class="hits">6</span>
+        <li class="missed" data-hits="0" data-linenumber="12">
           
-          <code class="ruby">    @sticker = Sticker.find(params[:id].to_i)</code>
+          
+          <code class="ruby">    @projects = Project.find(params[:id].to_i)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
@@ -2037,34 +593,34 @@
           <code class="ruby">  def update</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="16">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="16">
           
-          <code class="ruby">    @sticker = Sticker.find(params[:id])</code>
+          
+          <code class="ruby">    @project = Project.find(params[:id])</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="17">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="17">
           
-          <code class="ruby">    @sticker.update(sticker_params)</code>
+          
+          <code class="ruby">    @project.update(project_params)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="18">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="18">
           
-          <code class="ruby">    if @sticker.save</code>
+          
+          <code class="ruby">    if @project.save</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="19">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="19">
           
-          <code class="ruby">      flash[:success] = &quot;#{@sticker.title} saved&quot;</code>
+          
+          <code class="ruby">      flash[:success] = &quot;#{@project.title} saved&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="20">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="20">
           
-          <code class="ruby">      redirect_to admin_stickers_path</code>
+          
+          <code class="ruby">      redirect_to admin_projects_path</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
@@ -2118,11 +674,11 @@
         <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
-          <code class="ruby">  def sticker_params</code>
+          <code class="ruby">  def project_params</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="30">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="30">
+          
           
           <code class="ruby">    params.require(:sticker).permit(:title,</code>
         </li>
@@ -2136,7 +692,7 @@
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">                                    :price,</code>
+          <code class="ruby">                                    :goal_amount,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
@@ -2167,283 +723,7 @@
   </pre>
 </div>
       
-        <div class="source_table" id="1437b0be085dc9291b1f371dde0360b90d6d9cf2">
-  <div class="header">
-    <h3>app/controllers/users_controller.rb</h3>
-    <h4><span class="green">91.3 %</span> covered</h4>
-    <div>
-      <b>23</b> relevant lines. 
-      <span class="green"><b>21</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class UsersController &lt; ApplicationController</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def new</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @user = User.new</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def create</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @user = User.new(user_params)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="8">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    if @user.save</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      session[:user_id] = @user.id</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="10">
-          
-          
-          <code class="ruby">      # User.find_by(username: params[:username])</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="11">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      flash[:notice] = &quot;Logged in as #{@user.username}&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      redirect_to dashboard_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="13">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
-          
-          <code class="ruby">      flash.now[:error] = &quot;Something went wrong. Please try again.&quot;</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="15">
-          
-          
-          <code class="ruby">      render :new</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="16">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="17">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def show</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="20">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    @user = current_user</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="21">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="23">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def edit</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @user = current_user</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="27">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def update</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="28">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @user = current_user</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="29">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    @user.update(user_params)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="30">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="31">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    flash.notice = &quot;Profile Updated!&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="32">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    redirect_to dashboard_path</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="34">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="35">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  private</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def user_params</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="38">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    params.require(:user).permit(:first_name,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="39">
-          
-          
-          <code class="ruby">                                 :last_name,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="40">
-          
-          
-          <code class="ruby">                                 :username,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="41">
-          
-          
-          <code class="ruby">                                 :password)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="42">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="43">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="4508ba16f378d82bacf6430044803cdbf7f2d855">
+        <div class="source_table" id="69f17fa7589fcb4dc0ec09224be95aec8999dbad">
   <div class="header">
     <h3>app/helpers/application_helper.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
@@ -2473,14 +753,14 @@
   </pre>
 </div>
       
-        <div class="source_table" id="4efc3bd3e51165e023764d9088ce42e54e32b54d">
+        <div class="source_table" id="453cabade905db2aaf13f3c2702685f1f17fbe32">
   <div class="header">
     <h3>app/models/cart.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="red">50.0 %</span> covered</h4>
     <div>
       <b>24</b> relevant lines. 
-      <span class="green"><b>24</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <span class="green"><b>12</b> lines covered</span> and
+      <span class="red"><b>12</b> lines missed.</span>
     </div>
   </div>
   
@@ -2511,8 +791,8 @@
           <code class="ruby">  def initialize(contents)</code>
         </li>
       
-        <li class="covered" data-hits="221" data-linenumber="5">
-          <span class="hits">221</span>
+        <li class="covered" data-hits="2" data-linenumber="5">
+          <span class="hits">2</span>
           
           <code class="ruby">    @contents = contents || {}</code>
         </li>
@@ -2535,14 +815,14 @@
           <code class="ruby">  def add_sticker(sticker_id)</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="9">
-          <span class="hits">21</span>
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
           
           <code class="ruby">    contents[sticker_id.to_s] ||= 0</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="10">
-          <span class="hits">21</span>
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
           
           <code class="ruby">    contents[sticker_id.to_s] += 1</code>
         </li>
@@ -2565,14 +845,14 @@
           <code class="ruby">  def subtract_sticker(sticker_id)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="14">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
           
           <code class="ruby">    contents[sticker_id.to_s] -= 1 unless contents[sticker_id.to_s] &lt; 1</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="15">
-          <span class="hits">2</span>
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
           
           <code class="ruby">    remove_sticker(sticker_id) if contents[sticker_id.to_s] &lt; 1</code>
         </li>
@@ -2595,8 +875,8 @@
           <code class="ruby">  def remove_sticker(sticker_id)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="19">
+          
           
           <code class="ruby">    contents.delete(sticker_id.to_s)</code>
         </li>
@@ -2619,8 +899,8 @@
           <code class="ruby">  def total_quantity</code>
         </li>
       
-        <li class="covered" data-hits="173" data-linenumber="23">
-          <span class="hits">173</span>
+        <li class="covered" data-hits="2" data-linenumber="23">
+          <span class="hits">2</span>
           
           <code class="ruby">    contents.values.sum</code>
         </li>
@@ -2643,14 +923,14 @@
           <code class="ruby">  def total_price</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="27">
-          <span class="hits">14</span>
+        <li class="missed" data-hits="0" data-linenumber="27">
+          
           
           <code class="ruby">    subtotals = stickers.map do |cart_sticker|</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="28">
-          <span class="hits">16</span>
+        <li class="missed" data-hits="0" data-linenumber="28">
+          
           
           <code class="ruby">      cart_sticker.quantity * cart_sticker.price</code>
         </li>
@@ -2661,8 +941,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="30">
-          <span class="hits">14</span>
+        <li class="missed" data-hits="0" data-linenumber="30">
+          
           
           <code class="ruby">    subtotals.sum</code>
         </li>
@@ -2685,8 +965,8 @@
           <code class="ruby">  def count_of(sticker_id)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="34">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="34">
+          
           
           <code class="ruby">    contents[sticker_id.to_s]</code>
         </li>
@@ -2709,20 +989,20 @@
           <code class="ruby">  def stickers</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="38">
-          <span class="hits">28</span>
+        <li class="missed" data-hits="0" data-linenumber="38">
+          
           
           <code class="ruby">    contents.map do |sticker_id, quantity|</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="39">
-          <span class="hits">32</span>
+        <li class="missed" data-hits="0" data-linenumber="39">
+          
           
           <code class="ruby">      sticker = Sticker.find(sticker_id)</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="40">
-          <span class="hits">32</span>
+        <li class="missed" data-hits="0" data-linenumber="40">
+          
           
           <code class="ruby">      CartSticker.new(sticker, quantity)</code>
         </li>
@@ -2749,13 +1029,13 @@
   </pre>
 </div>
       
-        <div class="source_table" id="aa0129b6e8c5728ceb1db6c00137ee385d0a3768">
+        <div class="source_table" id="e1625a44bab02b3b13f87f68af047769b119f403">
   <div class="header">
-    <h3>app/models/cart_sticker.rb</h3>
+    <h3>app/models/project.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>8</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
+      <b>6</b> relevant lines. 
+      <span class="green"><b>6</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2766,373 +1046,7 @@
         <li class="covered" data-hits="1" data-linenumber="1">
           <span class="hits">1</span>
           
-          <code class="ruby">class CartSticker &lt; SimpleDelegator</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  attr_reader :sticker,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby">              :quantity</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def initialize(sticker, quantity)</code>
-        </li>
-      
-        <li class="covered" data-hits="34" data-linenumber="6">
-          <span class="hits">34</span>
-          
-          <code class="ruby">    @sticker = sticker</code>
-        </li>
-      
-        <li class="covered" data-hits="34" data-linenumber="7">
-          <span class="hits">34</span>
-          
-          <code class="ruby">    @quantity = quantity</code>
-        </li>
-      
-        <li class="covered" data-hits="34" data-linenumber="8">
-          <span class="hits">34</span>
-          
-          <code class="ruby">    super(@sticker)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="10">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="11">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def subtotal</code>
-        </li>
-      
-        <li class="covered" data-hits="17" data-linenumber="12">
-          <span class="hits">17</span>
-          
-          <code class="ruby">    sticker.price * quantity</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="13">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="2f2f8f9e9a04f30fc94276533beac72188e07379">
-  <div class="header">
-    <h3>app/models/category.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>8</b> relevant lines. 
-      <span class="green"><b>8</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class Category &lt; ActiveRecord::Base</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  validates :title, presence: true,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
-          
-          
-          <code class="ruby">                    uniqueness: true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  has_many :stickers</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  before_save :to_slug</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def to_param</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="10">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    slug</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="11">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="12">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def to_slug</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="14">
-          <span class="hits">6</span>
-          
-          <code class="ruby">    self.slug = title.parameterize</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="15">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="16">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="60bfe2cfaaa7441412da48e34033c62594c72c72">
-  <div class="header">
-    <h3>app/models/order.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>10</b> relevant lines. 
-      <span class="green"><b>10</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class Order &lt; ActiveRecord::Base</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :user</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  has_many :order_stickers</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="14" data-linenumber="5">
-          <span class="hits">14</span>
-          
-          <code class="ruby">  scope :completed, -&gt; { where(status: &quot;completed&quot;) }</code>
-        </li>
-      
-        <li class="covered" data-hits="14" data-linenumber="6">
-          <span class="hits">14</span>
-          
-          <code class="ruby">  scope :paid, -&gt; { where(status: &quot;paid&quot;) }</code>
-        </li>
-      
-        <li class="covered" data-hits="14" data-linenumber="7">
-          <span class="hits">14</span>
-          
-          <code class="ruby">  scope :cancelled, -&gt; { where(status: &quot;cancelled&quot;) }</code>
-        </li>
-      
-        <li class="covered" data-hits="14" data-linenumber="8">
-          <span class="hits">14</span>
-          
-          <code class="ruby">  scope :ordered, -&gt; { where(status: &quot;ordered&quot;) }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="9">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def finished?</code>
-        </li>
-      
-        <li class="covered" data-hits="10" data-linenumber="11">
-          <span class="hits">10</span>
-          
-          <code class="ruby">    if status.include?(&quot;completed&quot;) || status.include?(&quot;cancelled&quot;)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="12">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="13">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="15">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="7efc434a0c95cb026edb1811128daae05af611db">
-  <div class="header">
-    <h3>app/models/order_sticker.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class OrderSticker &lt; ActiveRecord::Base</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :sticker</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  belongs_to :order</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="4">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="cf4c761e044c372605728b1ae0d03774e5da04b3">
-  <div class="header">
-    <h3>app/models/sticker.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>7</b> relevant lines. 
-      <span class="green"><b>7</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class Sticker &lt; ActiveRecord::Base</code>
+          <code class="ruby">class Project &lt; ActiveRecord::Base</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="2">
@@ -3150,7 +1064,7 @@
         <li class="covered" data-hits="1" data-linenumber="4">
           <span class="hits">1</span>
           
-          <code class="ruby">  validates :price, presence: true</code>
+          <code class="ruby">  validates :goal_amount, presence: true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
@@ -3162,13 +1076,13 @@
         <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
-          <code class="ruby">  belongs_to :category</code>
+          <code class="ruby">  belongs_to :borrower</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="7">
           
-          <code class="ruby">  has_many :order_stickers</code>
+          
+          <code class="ruby">  # has_many :order_stickers</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -3220,84 +1134,6 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-    </ol>
-  </pre>
-</div>
-      
-        <div class="source_table" id="39cab0a2e17b27c71e2aa1123ef65a71df2d615c">
-  <div class="header">
-    <h3>app/models/user.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
-    <div>
-      <b>6</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
-    </div>
-  </div>
-  
-  <pre>
-    <ol>
-      
-        <li class="covered" data-hits="1" data-linenumber="1">
-          <span class="hits">1</span>
-          
-          <code class="ruby">class User &lt; ActiveRecord::Base</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  has_secure_password</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  has_many :orders</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="4">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  validates :username, presence: true,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="5">
-          
-          
-          <code class="ruby">                       uniqueness: true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="7">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  validates :password, presence: true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="8">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  enum role: %w(default admin)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="10">
           
           
           <code class="ruby">end</code>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119162543) do
+ActiveRecord::Schema.define(version: 20151201214401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20151119162543) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
-  create_table "stickers", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.string   "image_url"
-    t.decimal  "price",              precision: 8, scale: 2
+    t.decimal  "goal_amount",        precision: 8, scale: 2
     t.datetime "created_at",                                                 null: false
     t.datetime "updated_at",                                                 null: false
     t.integer  "category_id"
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(version: 20151119162543) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "borrower_id"
   end
 
-  add_index "stickers", ["category_id"], name: "index_stickers_on_category_id", using: :btree
+  add_index "projects", ["borrower_id"], name: "index_projects_on_borrower_id", using: :btree
+  add_index "projects", ["category_id"], name: "index_projects_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -75,7 +77,7 @@ ActiveRecord::Schema.define(version: 20151119162543) do
   end
 
   add_foreign_key "order_stickers", "orders"
-  add_foreign_key "order_stickers", "stickers"
+  add_foreign_key "order_stickers", "projects", column: "sticker_id"
   add_foreign_key "orders", "users"
-  add_foreign_key "stickers", "categories"
+  add_foreign_key "projects", "categories"
 end

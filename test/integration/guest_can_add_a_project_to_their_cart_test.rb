@@ -24,7 +24,7 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
     within "#primary-navigation" do
       assert page.has_content? "1"
     end
-    assert_equal "/projects", current_path
+    assert_equal "/cart", current_path
   end
 
   test "guest can add multiple borrowers' projects to their cart" do
@@ -48,6 +48,9 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
       assert page.has_content? '2'
     end
 
-    assert_equal '/projects', current_path
+    within '#nav-bar' do
+      assert page.has_content? 'Added to Cart. Return to Projects'
+    end
+    assert_equal '/cart', current_path
   end
 end

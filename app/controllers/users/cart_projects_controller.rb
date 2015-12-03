@@ -9,6 +9,6 @@ class Users::CartProjectsController < ApplicationController
     @cart.add_project(project_id, amount)
     session[:cart] = @cart.contents
 
-    redirect_to projects_path
+    redirect_to cart_index_path
   end
 end

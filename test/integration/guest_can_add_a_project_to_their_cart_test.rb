@@ -15,7 +15,7 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
 
     assert_equal "/john-doe/cart_projects/new", current_path
 
-    fill_in "Amount", with: "100"
+    fill_in "Amount", with: "200"
 
     within(".lend-form") do
       click_button "Lend!"

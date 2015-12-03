@@ -6,7 +6,7 @@ class Seed
   def generate
     # create_categories
     create_projects
-    # create_users
+    create_users
     # create_orders
     # create_order_projects
   end
@@ -25,15 +25,22 @@ class Seed
       project = Project.create!(
         title: Faker::Commerce.product_name,
         description: Faker::Lorem.paragraph,
-        image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg",
+        # image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg",
         goal_amount: 500,
-        borrower_id: 1
+        user_id: 1
         )
       puts "Project #{i}: #{project.title} created!"
     end
   end
 
   def create_users
+    user = User.create!(
+      first_name: "John",
+      last_name: "Doe",
+      username: "jdoe",
+      password: "password"
+    )
+    puts "User 1: #{user.full_name} created!"
   end
 
   def create_orders

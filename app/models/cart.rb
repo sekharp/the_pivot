@@ -19,8 +19,8 @@ class Cart
     contents.delete(sticker_id.to_s)
   end
 
-  def total_quantity
-    contents.values.sum
+  def total_count
+    contents.count
   end
 
   def total_price

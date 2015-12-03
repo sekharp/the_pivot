@@ -1,6 +1,6 @@
-<div class="container">
+<div class="project-info container">
   <h2 class="center-align"><%= @project.title %></h2>
-  <h5 class="center-align"><em><%= @project.user.full_name %></em></h5>
+  <h5 class="borrower-info center-align"><em><%= @project.user.full_name %></em></h5>
   <p><%= @project.description %></p>
   <strong>Funding Goal: <%= number_to_currency(@project.goal_amount) %></strong>
   <div class="lend-btn">
@@ -9,4 +9,5 @@
                                    project: @project),
                                    class: "col s5 right waves-effect waves-light btn custom-blue"%>
   </div>
+  <%= link_to_projects_page %>
 </div>

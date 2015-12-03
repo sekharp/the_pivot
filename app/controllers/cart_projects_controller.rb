@@ -1,14 +1,14 @@
-class CartStickersController < ApplicationController
+class CartProjectsController < ApplicationController
   def create
-    sticker = Sticker.find(params[:sticker_id])
-    @cart.add_sticker(sticker.id)
+    project = Project.find(params[:project_id])
+    @cart.add_project(project.id)
     session[:cart] = @cart.contents
-    flash[:success] = "Successfully added #{view_context.link_to "#{sticker.title}", sticker_path(sticker.id)} sticker to your cart.".html_safe
+    flash[:success] = "Successfully added #{view_context.link_to "#{project.title}", project_path(project.id)} project to your cart.".html_safe
     redirect_to root_path
   end
 
   def update
-    sticker = Sticker.find(params[:id])
+    project = Sticker.find(params[:id])
     if params[:adjustment] == "increase"
       @cart.add_sticker(sticker.id)
       session[:cart] = @cart.contents

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202213531) do
+ActiveRecord::Schema.define(version: 20151203185318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,41 +23,33 @@ ActiveRecord::Schema.define(version: 20151202213531) do
     t.string   "slug"
   end
 
-  create_table "order_stickers", force: :cascade do |t|
-    t.integer  "quantity"
-    t.integer  "order_id"
-    t.integer  "sticker_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "order_stickers", ["order_id"], name: "index_order_stickers_on_order_id", using: :btree
-  add_index "order_stickers", ["sticker_id"], name: "index_order_stickers_on_sticker_id", using: :btree
-
-  create_table "orders", force: :cascade do |t|
+  create_table "loans", force: :cascade do |t|
     t.string   "status"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.money    "amount",     scale: 2
+    t.integer  "project_id"
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+  add_index "loans", ["project_id"], name: "index_loans_on_project_id", using: :btree
+  add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.string   "image_url"
-    t.decimal  "goal_amount",        precision: 8, scale: 2
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.integer  "category_id"
     t.text     "description"
-    t.boolean  "retired",                                    default: false
+    t.boolean  "retired",                      default: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.string   "slug"
+    t.money    "goal_amount",        scale: 2
   end
 
   add_index "projects", ["category_id"], name: "index_projects_on_category_id", using: :btree
@@ -78,8 +70,7 @@ ActiveRecord::Schema.define(version: 20151202213531) do
     t.string   "slug"
   end
 
-  add_foreign_key "order_stickers", "orders"
-  add_foreign_key "order_stickers", "projects", column: "sticker_id"
-  add_foreign_key "orders", "users"
+  add_foreign_key "loans", "projects"
+  add_foreign_key "loans", "users"
   add_foreign_key "projects", "categories"
 end

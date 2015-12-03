@@ -1,3 +1,12 @@
-<div class="lend-btn">
-  <%= link_to "Lend", new_user_cart_project_path(user: @project.user.slug, project: @project) %>
+<div class="container">
+  <h2><%= @project.title %></h2>
+  <h5><em><%= @project.user.full_name %></em></h5>
+  <p><%= @project.description %></p>
+  <strong>Funding Goal: <%= number_to_currency(@project.goal_amount) %></strong>
+  <div class="lend-btn">
+    <%= link_to "Lend",
+        new_user_cart_project_path(user: @project.user.slug,
+                                   project: @project),
+                                   class: "col s5 right waves-effect waves-light btn custom-blue"%>
+  </div>
 </div>

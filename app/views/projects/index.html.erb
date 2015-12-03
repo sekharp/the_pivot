@@ -11,7 +11,7 @@
     <div class="card col s12">
       <div>
         <div class="col s4">
-          <a href="<%= project_path(project.id) %>"><img class="max-width" src="<%= project.image.url(:original) %>"></a>
+          <a href="<%= user_project_path(user: project.user.slug, id: project.slug) %>"><img class="max-width" src="<%= project.image.url(:original) %>"></a>
         </div>
         <div class="col s7 offset-s1">
           <h5><%= project.title %></h5>
@@ -22,7 +22,7 @@
               <h5>75% Funded</h5>
           </div>
           <div class="center">
-          <span id='<%= project.title %>-button' class="col s5 left waves-effect waves-light btn custom-blue">  
+          <span id='<%= project.title %>-button' class="col s5 left waves-effect waves-light btn custom-blue">
             <%= button_to "Learn More", user_project_path(user: project.user.slug, id: project.slug), method: :get %>
           </span>
           <span id='<%= project.title%>-lend-button' class="col s5 right waves-effect waves-light btn custom-blue">

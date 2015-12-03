@@ -25,7 +25,7 @@ class Seed
       project = Project.create!(
         title: Faker::Commerce.product_name,
         description: Faker::Lorem.paragraph,
-        # image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg",
+        image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg",
         goal_amount: 500,
         user_id: 1
         )

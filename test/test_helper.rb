@@ -27,9 +27,15 @@ class ActionDispatch::IntegrationTest
                  password:   'password')
   end
 
-  def create_project
-    Project.create!(goal_amount: 1000,
-                    title:       "Buy me a goat",
-                    description: "Mostly goat purchases")
+  def create_projects(num)
+    i = 0
+    projects = []
+    num.times do
+      i += 1
+      projects << Project.create!(goal_amount: 1000,
+                                  title:       "Project # #{i}",
+                                  description: "Description #{i}")
+    end
+    projects
   end
 end

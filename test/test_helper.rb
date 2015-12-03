@@ -32,4 +32,12 @@ class ActionDispatch::IntegrationTest
                     title:       "Buy me a goat",
                     description: "Mostly goat purchases")
   end
+
+  def add_project_to_cart(project)
+    visit new_user_cart_project_path(user: project.user.slug, project: project)
+    within '.lend-form' do
+      fill_in 'Amount', with: '200'
+      click_button 'Lend!'
+    end
+  end
 end

@@ -2,8 +2,10 @@ require 'test_helper'
 
 class GuestViewsThreeTopProjectsOnHomepageTest < ActionDispatch::IntegrationTest
   test "guest sees three top projects on homepage" do
+    borrower = create_borrower
+    borrower.projects << create_project
     visit "/"
-    save_and_open_page
+
     assert page.has_content?("Featured Projects")
     assert page.has_content?("micro-lending platform")
   end

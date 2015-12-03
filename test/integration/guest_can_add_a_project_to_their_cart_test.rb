@@ -27,16 +27,27 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
     assert_equal "/projects", current_path
   end
 
-  def create_borrower
-    User.create!(first_name: "John",
-                 last_name: "Doe",
-                 username: "jdoe",
-                 password: "password")
-  end
+  test "guest can add multiple borrowers' projects to their cart" do
+    borrower = User.create!(first_name: 'Chaim',
+                            last_name:  'Mejia',
+                            username:   'cmejia',
+                            password:   'password')
+    project = Project.create!(goal_amount: 5000,
+                              title:       "Buy me a boat",
+                              description: "I'm on a boat")
+    borrower.projects << project
+    add_project_to_cart(project)
 
-  def create_project
-    Project.create!(goal_amount: 1000,
-                    title: "Buy me a goat",
-                    description: "Mostly goat purchases")
+    borrower_b = create_borrower
+    project_b = create_project
+    borrower_b.projects << project_b
+
+    add_project_to_cart(project_b)
+
+    within '#primary-navigation' do
+      assert page.has_content? '2'
+    end
+
+    assert_equal '/projects', current_path
   end
 end

@@ -1,6 +1,6 @@
-class Order < ActiveRecord::Base
+class Loan < ActiveRecord::Base
   belongs_to :user
-  has_many :order_stickers
+  belongs_to :project
 
   scope :completed, -> { where(status: "completed") }
   scope :paid, -> { where(status: "paid") }

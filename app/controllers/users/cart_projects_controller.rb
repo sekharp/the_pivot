@@ -10,7 +10,7 @@ class Users::CartProjectsController < ApplicationController
     @cart.add_project(project.id, amount)
     session[:cart] = @cart.contents
 
-    flash[:success] = "Added #{view_context.link_to "#{project.title}", project_path(project.id)} loan to your cart.".html_safe
+    flash[:success] = "Added #{view_context.link_to "#{project.title}", user_project_path(user: project.user.slug, id: project.slug)} loan to your cart.".html_safe
     redirect_to cart_index_path
   end
 end

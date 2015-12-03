@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :orders
+  has_many :loans
   has_many :projects
 
   validates :username, presence: true,

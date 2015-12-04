@@ -7,8 +7,7 @@ class Seed
     # create_categories
     create_projects
     create_users
-    # create_orders
-    # create_order_projects
+    create_loans
   end
 
   # def create_categories
@@ -29,66 +28,30 @@ class Seed
         goal_amount: 500,
         user_id: 1
         )
-      puts "Project #{i}: #{project.title} created!"
+      puts "Project #{i+1}: #{project.title} created!"
     end
   end
 
-  def create_users
-    user = User.create!(
-      first_name: "John",
-      last_name: "Doe",
-      username: "jdoe",
-      password: "password"
-    )
-    puts "User 1: #{user.full_name} created!"
+  def create_borrowers
+    10.times do |i|
+      user = User.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        username: Faker::Internet.user_name,
+        password: Faker::Internet.password
+      )
+      puts "User #{i+1}: #{user.username} created!"
+    end
   end
 
-  def create_orders
-  # 100.times do |i|
-  #   user  = User.find(Random.new.rand(1..50))
-  #   order = Order.create!(user_id: user.id)
-  #   add_items(order)
-  #   puts "Order #{i}: Order for #{user.name} created!"
-  # end
-    @order_1 = Order.create(status: "ordered",
-                            user_id: @sekhar.id)
-    @order_2 = Order.create(status: "paid",
-                            user_id: @sekhar.id)
-    @order_3 = Order.create(status: "cancelled",
-                            user_id: @emily.id)
-    @order_4 = Order.create(status: "completed",
-                            user_id: @jason.id)
-    @order_5 = Order.create(status: "completed",
-                            user_id: @britney.id)
-    puts "Orders with id #{Order.all.map(&:id).join(", ")} created."
+  def create_loans
+    20.times do |i|
+      user  = User.find(Random.new.rand(1..10))
+      Loan.create!(user_id: user.id, amount: Random.new.rand(100..1000), project_id: user.projects.shuffle.first.id)
+      puts "Loan #{i}: Loan for #{user.name} created!"
+    end
   end
 
-  def create_order_projects
-    OrderSticker.create(quantity: 3,
-                        order_id: @order_1.id,
-                        sticker_id: @nodejs_sticker.id)
-    OrderSticker.create(quantity: 2,
-                        order_id: @order_1.id,
-                        sticker_id: @reactjs_sticker.id)
-    OrderSticker.create(quantity: 5,
-                        order_id: @order_1.id,
-                        sticker_id: @ruby_sticker.id)
-    OrderSticker.create(quantity: 4,
-                        order_id: @order_2.id,
-                        sticker_id: @vim_sticker.id)
-    OrderSticker.create(quantity: 2,
-                        order_id: @order_2.id,
-                        sticker_id: @chrome_sticker.id)
-    OrderSticker.create(quantity: 3,
-                        order_id: @order_3.id,
-                        sticker_id: @nodejs_sticker.id)
-    OrderSticker.create(quantity: 6,
-                        order_id: @order_4.id,
-                        sticker_id: @reactjs_sticker.id)
-    OrderSticker.create(quantity: 2,
-                        order_id: @order_5.id,
-                        sticker_id: @angularjs_sticker.id)
-  end
 end
 
 Seed.start

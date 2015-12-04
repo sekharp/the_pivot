@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "projects#index"
+  root to: "home#home"
   resources :projects, only: [:index, :show, :update]
   resources :categories, only: [:index, :show], param: :slug
   resources :cart_projects, only: [:create, :update, :index, :destroy]

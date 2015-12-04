@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class LoansController < ApplicationController
   before_action :require_login
 
   def index

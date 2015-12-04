@@ -12,17 +12,21 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
 
     click_link "Create Account"
 
-    fill_in "Username", with: "Jon"
-    fill_in "Password", with: "password"
-    click_button "Create Account"
+    within(".new_user") do
+      fill_in "Username", with: "Matt"
+      fill_in "First name", with: "Matt"
+      fill_in "Last name", with: "Matt"
+      fill_in "Password", with: "password"
+      click_button "Create Account"
+    end
 
     assert_equal '/dashboard', current_path
     within("#nav-bar") do
-      assert page.has_content?("Logged in as Jon")
+      assert page.has_content?("Logged in as Matt")
     end
     within("#profile") do
       assert page.has_content?("Profile")
-      assert page.has_content?("Jon")
+      assert page.has_content?("Matt")
     end
     within("#primary-navigation") do
       refute page.has_content?("Login")
@@ -31,13 +35,15 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
   end
 
   test "user can login" do
-    User.create(username: "Jon",
+    User.create(username: "Matt",
+                first_name: "Matt",
+                last_name: "Matt",
                 password: "password")
 
     visit root_path
 
     click_link "Login"
-    fill_in "Username", with: "Jon"
+    fill_in "Username", with: "Matt"
     fill_in "Password", with: "password"
     click_button "Login"
 
@@ -49,19 +55,21 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
   end
 
   test "logged in user sees cart contents" do
-    User.create(username: "Jon",
-                password: "password")
-
-    Sticker.create(title: "Node_js",
-                   image: "http://devstickers.com/assets/img/cat/nodejs.png",
-                   price: 6,
-                   description: "Node.js logo")
-
+    skip
+    borrower = create_borrower
+    borrower.projects << create_project
     visit root_path
-    click_button "Add to Cart"
+
+    click_button "Learn More"
+    within(".lend-btn") do
+    click_link "Lend"
+    end
+    fill_in "Amount", with: "50"
+    click_button "Lend!"
+
 
     click_link "Login"
-    fill_in "Username", with: "Jon"
+    fill_in "Username", with: "Matt"
     fill_in "Password", with: "password"
     click_button "Login"
 

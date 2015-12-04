@@ -20,6 +20,13 @@ class ActionDispatch::IntegrationTest
     reset_session!
   end
 
+  def create_lender
+    User.create!(first_name: 'Matt',
+                 last_name:  'Doe',
+                 username:   'matt',
+                 password:   'password')
+  end
+
   def create_borrower
     User.create!(first_name: 'John',
                  last_name:  'Doe',

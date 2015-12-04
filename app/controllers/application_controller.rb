@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
+  def valid_amount?(amount, project)
+    amount > 0 && amount < project.goal_amount
+  end
+
   def not_found
   end
 end

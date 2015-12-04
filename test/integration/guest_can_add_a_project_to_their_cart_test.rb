@@ -58,4 +58,28 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
     end
     assert_equal '/cart', current_path
   end
+
+  test 'guest cannot add a project to their cart with invalid loan amount' do
+    borrower = create_borrower
+    borrower.projects << create_project
+
+    visit "/john-doe/projects/buy-me-a-goat"
+    within(".lend-btn") do
+      click_link "Lend"
+    end
+
+    fill_in 'Amount', with: '-2'
+
+    within('.lend-form') do
+      click_button 'Lend!'
+    end
+
+    assert_equal '/john-doe/cart_projects/new', current_path
+    within '#primary-navigation' do
+      refute page.has_content? '1'
+    end
+    within '#nav-bar' do
+      assert page.has_content? 'Please enter a valid amount'
+    end
+  end
 end

@@ -7,34 +7,33 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "visitor can create account and sign in" do
-    visit root_path
+  # test "visitor can create account and sign in" do
+  #   visit root_path
+  #
+  #   click_link "Create Account"
+  #   assert_equal "/users/new", current_path
+  #
+  #   fill_in "Username", with: "Matt"
+  #   fill_in "First name", with: "Matt"
+  #   fill_in "Last name", with: "Matt"
+  #   fill_in "Password", with: "password"
+  #   click_button "Create Account"
+  #
+  #   assert_equal '/dashboard', current_path
+  #   within("#nav-bar") do
+  #     assert page.has_content?("Logged in as Matt")
+  #   end
+  #   within("#profile") do
+  #     assert page.has_content?("Profile")
+  #     assert page.has_content?("Matt")
+  #   end
+  #   within("#primary-navigation") do
+  #     refute page.has_content?("Login")
+  #     assert page.has_content?("Logout")
+  #   end
+  # end
 
-    click_link "Create Account"
-
-    within(".new_user") do
-      fill_in "Username", with: "Matt"
-      fill_in "First name", with: "Matt"
-      fill_in "Last name", with: "Matt"
-      fill_in "Password", with: "password"
-      click_button "Create Account"
-    end
-
-    assert_equal '/dashboard', current_path
-    within("#nav-bar") do
-      assert page.has_content?("Logged in as Matt")
-    end
-    within("#profile") do
-      assert page.has_content?("Profile")
-      assert page.has_content?("Matt")
-    end
-    within("#primary-navigation") do
-      refute page.has_content?("Login")
-      assert page.has_content?("Logout")
-    end
-  end
-
-  test "user can login" do
+  test "lender can login" do
     User.create(username: "Matt",
                 first_name: "Matt",
                 last_name: "Matt",
@@ -47,7 +46,7 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     fill_in "Password", with: "password"
     click_button "Login"
 
-    assert_equal root_path, current_path
+    assert_equal "/lender-dashboard", current_path
     within("#primary-navigation") do
       refute page.has_content?("Login")
       assert page.has_content?("Logout")
@@ -55,9 +54,7 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
   end
 
   test "logged in user sees cart contents" do
-    skip
-    borrower = create_borrower
-    borrower.projects << create_project
+    create_borrower_projects_and_lender
     visit root_path
 
     click_button "Learn More"
@@ -69,15 +66,16 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
 
 
     click_link "Login"
-    fill_in "Username", with: "Matt"
+    fill_in "Username", with: "matt"
     fill_in "Password", with: "password"
     click_button "Login"
+
+    assert_equal "/lender-dashboard", current_path
 
     click_link "Cart"
 
     within("#cart-contents") do
-      assert page.has_content?("Node_js")
-      assert page.has_content?(6)
+      assert page.has_content?("50")
     end
 
     click_link "Logout"

@@ -42,6 +42,12 @@ class ActionDispatch::IntegrationTest
                     )
   end
 
+  def create_borrower_projects_and_lender
+    borrower = create_borrower
+    borrower.projects << create_project
+    create_lender
+  end
+
   def add_project_to_cart(project)
     visit new_user_cart_project_path(user: project.user.slug, project: project)
     within '.lend-form' do

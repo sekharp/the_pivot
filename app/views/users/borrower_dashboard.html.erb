@@ -1,0 +1,27 @@
+<div id="profile">
+  <h2>Borrower Profile</h2>
+  <p>
+    <strong>First name: </strong><%= @user.first_name %>
+  </p>
+  <p>
+    <strong>Last name: </strong><%= @user.last_name %>
+  </p>
+  <p>
+    <strong>Username: </strong><%= @user.username %>
+  </p>
+
+  <h3>Projects Created</h3>
+  <ul>
+  <% @user.projects.each do |project| %>
+    <li>Project Title: <%= project.title %></li>
+    <li>Goal Amount: <%= project.goal_amount %></li>
+    <li>Total Loans Made: $<%= project.total_loans_amount %></li>
+    <li>Percent Funded: <%= project.percent_funded %>%</li>
+  <% end %>
+  </ul>
+
+  <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn blue">
+    <%= button_to "Edit Profile", @user, method: :put %>
+  </div>
+
+</div>

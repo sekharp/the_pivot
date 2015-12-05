@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GuestCanCreateBorrowerAccountTest < ActionDispatch::IntegrationTest
+class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
   test 'guest can view choose account type page' do
     visit '/'
     within '#primary-navigation' do

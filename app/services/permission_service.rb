@@ -49,6 +49,8 @@ class PermissionService
   def guest_permissions
     return true if controller == "session" && action.in?(%w(new create destroy))
     return true if controller == "users/projects" && action.in?(%w(index show))
+    return true if controller == "users/cart_projects" && action.in?(%w(new create))
+    return true if controller == "cart" && action == "index"
     return true if controller == "projects" && action == "index"
     return true if controller == "home" && action == "home"
   end

@@ -27,6 +27,10 @@ class ApplicationController < ActionController::Base
     current_permission.allow?(params[:controller], params[:action])
   end
 
+  def valid_amount?(amount, project)
+    amount > 0 && amount < project.goal_amount
+  end
+
   def not_found
   end
 end

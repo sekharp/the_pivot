@@ -22,10 +22,10 @@ class Project < ActiveRecord::Base
   end
 
   def total_loans_amount
-    self.loans.map(&:amount).reduce(:+)
+    self.loans.map(&:amount).reduce(:+) || 0
   end
 
   def percent_funded
-    (total_loans_amount/goal_amount * 100).round
+    (total_loans_amount / goal_amount * 100).round
   end
 end

@@ -24,7 +24,12 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
     within "#primary-navigation" do
       assert page.has_content? "1"
     end
-    assert_equal "/projects", current_path
+
+    within "#nav-bar" do
+      assert page.has_content? 'Added Buy me a goat loan to your cart.'
+    end
+
+    assert_equal "/cart", current_path
   end
 
   test "guest can add multiple borrowers' projects to their cart" do
@@ -48,6 +53,33 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
       assert page.has_content? '2'
     end
 
-    assert_equal '/projects', current_path
+    within '#nav-bar' do
+      assert page.has_content? 'Added Buy me a goat loan to your cart.'
+    end
+    assert_equal '/cart', current_path
+  end
+
+  test 'guest cannot add a project to their cart with invalid loan amount' do
+    borrower = create_borrower
+    borrower.projects << create_project
+
+    visit "/john-doe/projects/buy-me-a-goat"
+    within(".lend-btn") do
+      click_link "Lend"
+    end
+
+    fill_in 'Amount', with: '-2'
+
+    within('.lend-form') do
+      click_button 'Lend!'
+    end
+
+    assert_equal '/john-doe/cart_projects/new', current_path
+    within '#primary-navigation' do
+      refute page.has_content? '1'
+    end
+    within '#nav-bar' do
+      assert page.has_content? 'Please enter a valid amount'
+    end
   end
 end

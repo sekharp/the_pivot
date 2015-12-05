@@ -12,6 +12,7 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
+  belongs_to :category
 
   has_many :loans
 
@@ -22,7 +23,7 @@ class Project < ActiveRecord::Base
   end
 
   def total_loans_amount
-    self.loans.map(&:amount).reduce(:+)
+    self.loans.map(&:amount).reduce(:+) || 0
   end
 
   def percent_funded

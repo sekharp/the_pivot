@@ -1,10 +1,10 @@
 <h1 id="top">
-  <% if @category.present? %>
-    <%= @category.title.capitalize %> Projects
-  <% else %>
-    <%= "All Projects" %>
-  <% end %>
+  <%= "All Projects" %>
 </h1>
+
+<span id='categories-path-button' class="col s5 waves-effect waves-light btn custom-blue">
+  <%= link_to "List of Project Categories", categories_path, method: :get %>
+</span>
 
 <div class="row">
   <% @projects.each do |project| %>

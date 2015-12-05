@@ -27,10 +27,6 @@ class ApplicationController < ActionController::Base
     current_permission.allow?(params[:controller], params[:action])
   end
 
-  # def current_admin?
-  #   current_user && current_user.admin?
-  # end
-
   def not_found
   end
 end

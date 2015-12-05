@@ -12,11 +12,20 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
+
   has_many :loans
 
   before_validation :set_slug
 
   def set_slug
     self.slug = title.parameterize
+  end
+
+  def total_loans_amount
+    self.loans.map(&:amount).reduce(:+)
+  end
+
+  def percent_funded
+    (total_loans_amount/goal_amount * 100).round
   end
 end

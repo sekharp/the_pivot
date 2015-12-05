@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @projects = Project.find(params[:id].to_i)
+    @project = Project.find_by_slug(params[:id])
   end
 
   def update

@@ -30,7 +30,9 @@ class ActionDispatch::IntegrationTest
   def create_project
     Project.create!(goal_amount: 1000,
                     title:       "Buy me a goat",
-                    description: "Mostly goat purchases")
+                    description: "Mostly goat purchases",
+                    image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
+                    )
   end
 
   def add_project_to_cart(project)

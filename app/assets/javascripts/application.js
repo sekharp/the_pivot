@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+<script>
+$(".dropdown-button").dropdown();
+$(".button-collapse").sideNav();
+$(document).ready(function(){
+    $('.modal-trigger').leanModal();
+});
+</script>
+
+(function($){
+  $(function(){
+
+    $('.button-collapse').sideNav();
+
+  }); // end of document ready
+})(jQuery); // end of jQuery name space

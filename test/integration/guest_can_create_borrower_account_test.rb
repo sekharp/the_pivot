@@ -36,6 +36,26 @@ class GuestCanCreateBorrowerAccountTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'guest can view create borrower account form' do
+    create_role('borrower')
+    visit '/users/new'
+    click_button 'Create Borrower Account'
+
+    assert_equal '/borrowers/new', current_path
+
+    within '.new-borrower-form' do
+      assert page.has_content? 'Username'
+      assert page.has_content? 'First name'
+      assert page.has_content? 'Last name'
+      assert page.has_content? 'Password'
+      assert page.has_content? 'Street address'
+      assert page.has_content? 'City'
+      assert page.has_content? 'State'
+      assert page.has_content? 'Zip'
+      assert page.has_button? 'Create Account'
+    end
+  end
+
   def create_role(name)
     Role.create!(name: name)
   end

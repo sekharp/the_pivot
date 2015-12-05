@@ -1,27 +1,15 @@
-<div id="sticker-details" class="row">
-
-  <div class="divider"></div>
-
-  <div class="col s5">
-    <img class="max-width" src="<%= @sticker.image.url %>" alt='<%= @sticker.title %>'/>
+<div class="project-info container">
+  <h2 class="center-align"><%= @project.title %></h2>
+  <h5 class="borrower-info center-align"><em><%= @project.user.full_name %></em></h5>
+  <p><%= @project.description %></p>
+  <h6><strong>Funding Goal: <%= number_to_currency(@project.goal_amount) %>, <%= @project.percent_funded %>% complete</strong></h6>
+  <div class="lend-btn">
+    <%= link_to "Lend",
+        new_user_cart_project_path(user: @project.user.slug,
+                                   project: @project),
+                                   class: "col s5 left waves-effect waves-light btn custom-blue"%>
   </div>
-
-  <div class="col s6 top-margin-40">
-    <div class="card gray lighten-5">
-      <div class="card-content">
-        <span class="card-title"><%= @sticker.title %></span>
-        <span class="card-title right"><%= number_to_currency(@sticker.price) %></span>
-        <% if @sticker.retired? %>
-          <p class="card-title">(No longer available)</p>
-        <% end %>
-        <p><%= @sticker.description %></p>
-      </div>
-      <div class="card-action">
-        <% unless @sticker.retired? %>
-          <div class="waves-effect waves-light btn blue"><%= button_to "Add to Cart", cart_stickers_path(sticker_id: @sticker.id) %></div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
+</div>
+<div class="center-align">
+  <%= link_to_projects_page %>
 </div>

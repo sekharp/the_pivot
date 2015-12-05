@@ -23,11 +23,8 @@ class Cart
     contents.count
   end
 
-  def total_price
-    subtotals = stickers.map do |cart_sticker|
-      cart_sticker.quantity * cart_sticker.price
-    end
-    subtotals.sum
+  def total_amount
+    projects.map(&:amount).reduce(:+)
   end
 
   def count_of(sticker_id)

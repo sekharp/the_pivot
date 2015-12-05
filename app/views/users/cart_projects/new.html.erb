@@ -7,9 +7,8 @@
       <%= f.text_field :amount %>
 
       <%= f.hidden_field :project_id, value: @project.id %>
-      <div class="center">
-      <%= f.submit "Lend!", class: "waves-effect waves-light btn custom-blue" %>
-      </div>
+
+      <%= f.submit "Lend!", class: "col s5 right waves-effect waves-light btn custom-blue" %>
     <% end %>
   </div>
 </div>

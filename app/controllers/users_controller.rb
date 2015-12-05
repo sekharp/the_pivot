@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.roles << Role.find_by(name: params[:user][:role])
     if @user.save
       session[:user_id] = @user.id
       # User.find_by(username: params[:username])
@@ -38,6 +39,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name,
                                  :last_name,
                                  :username,
-                                 :password)
+                                 :password,
+                                 :street_address,
+                                 :city,
+                                 :state,
+                                 :zip)
   end
 end

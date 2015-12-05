@@ -5,7 +5,7 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down offset-s1">
       <li><%= link_to "Lend", projects_path %></li>
       <li><%= link_to "Borrow", categories_path %></li>
-      <% if current_admin? %>
+      <% if false #current_admin? %>
         <li><%= link_to "Admin Dashboard", admin_dashboard_index_path %></li>
         <li><%= link_to "Orders", orders_path %></li>
         <li><%= link_to "Logout", logout_path , method: :delete %></li>

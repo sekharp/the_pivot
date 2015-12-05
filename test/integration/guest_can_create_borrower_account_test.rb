@@ -76,6 +76,26 @@ class GuestCanCreateBorrowerAccountTest < ActionDispatch::IntegrationTest
     assert new_user.roles.map(&:name).include?('lender')
   end
 
+  test 'guest can create borrower account' do
+    create_role('borrower')
+    visit 'borrowers/new'
+
+    fill_in 'Username', with: 'cmejia'
+    fill_in 'First name', with: 'Chaim'
+    fill_in 'Last name', with: 'Mejia'
+    fill_in 'Password', with: 'password'
+    fill_in 'Street address', with: '123 example st.'
+    fill_in 'City', with: 'Examplesburg'
+    fill_in 'State', with: 'EX'
+    fill_in 'Zip', with: '12345'
+
+    click_button 'Create Account'
+
+    new_user = User.find_by(username: 'cmejia')
+
+    assert new_user.roles.map(&:name).include?('borrower')
+  end
+
   def create_role(name)
     Role.create!(name: name)
   end

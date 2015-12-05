@@ -26,6 +26,8 @@
       <%= f.label :zip %>
       <%= f.text_field :zip %>
 
+      <%= f.hidden_field :role, value: 'borrower' %>
+
       <%= f.submit 'Create Account', class: 'col s5 right waves-effect waves-light btn custom-blue' %>
     <% end %>
   </div>

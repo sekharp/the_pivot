@@ -1,4 +1,5 @@
 <div class="container">
+  <h1 class="center-align">Create a Lender Account</h1>
   <div class="new-lender-form">
     <%= form_for(@user) do |f| %>
       <%= f.label :username %>
@@ -25,7 +26,7 @@
       <%= f.label :zip %>
       <%= f.text_field :zip %>
 
-      <%= f.submit 'Create Account' %>
+      <%= f.submit 'Create Account', class: 'col s5 right waves-effect waves-light btn custom-blue' %>
     <% end %>
   </div>
 </div>

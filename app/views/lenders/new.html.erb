@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="new-lender-form">
+    <%= form_for(@user) do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :street_address %>
+      <%= f.text_field :street_address %>
+
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+
+      <%= f.label :state %>
+      <%= f.text_field :state %>
+
+      <%= f.label :zip %>
+      <%= f.text_field :zip %>
+
+      <%= f.submit 'Create Account' %>
+    <% end %>
+  </div>
+</div>
+

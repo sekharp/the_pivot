@@ -51,8 +51,11 @@ class PermissionService
     return true if controller == "users/projects" && action.in?(%w(index show))
     return true if controller == "users" && action == "new"
     return true if controller == "lenders" && action == "new"
+    return true if controller == "users/cart_projects" && action.in?(%w(new create))
+    return true if controller == "cart" && action == "index"
     return true if controller == "projects" && action == "index"
     return true if controller == "home" && action == "home"
+    return true if controller == "categories" && action.in?(%w(index show))
   end
 
 end

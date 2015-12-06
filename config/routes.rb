@@ -4,16 +4,11 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show], param: :slug
   resources :cart_projects, only: [:create, :update, :index, :destroy]
   resources :cart, only: [:index]
-  resources :users, only: [:new, :create, :update]
-
+  resources :users, only: [:new, :create, :update, :edit]
   get "/lender_dashboard", to: "users#lender_dashboard"
   get "/borrower_dashboard", to: "users#borrower_dashboard"
-
   resources :lenders, only: [:new, :index, :show], param: :slug
-  # get '/lenders-dashboard', to: "lenders#dashboard"
   resources :borrowers, only: [:new, :index, :show], param: :slug
-  # get '/borrowers-dashboard', to: "borrowers#dashboard"
-
   get '/login', to: "session#new"
   post '/login', to: "session#create"
   delete '/logout', to: "session#destroy"
@@ -21,9 +16,9 @@ Rails.application.routes.draw do
   post '/checkout', to: "loans#create"
 
   namespace :admin do
-    resources :dashboard, only: [:index, :show], param: :status
-    resources :orders, only: [:update]
-    resources :stickers, only: [:new, :create, :index, :edit, :update]
+    resources :dashboard, only: [:index, :show, :update]
+    resources :loans, only: [:update]
+    resources :projects, only: [:new, :create, :index, :edit, :update]
   end
 
   namespace :users, path: ":user", as: :user do

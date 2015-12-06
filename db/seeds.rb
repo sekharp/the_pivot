@@ -6,7 +6,7 @@ class Seed
   def generate
     create_categories
     create_roles
-    create_platform_admins
+    create_admins
     create_borrowers
     create_projects
     create_lenders
@@ -23,22 +23,22 @@ class Seed
   def create_roles
     @lender = Role.create!(name: "lender")
     @borrower = Role.create!(name: "borrower")
-    @platform_admin = Role.create!(name: "platform_admin")
-    puts "#{@lender.name}, #{@borrower.name}, #{@platform_admin.name} roles created."
+    @admin = Role.create!(name: "admin")
+    puts "#{@lender.name}, #{@borrower.name}, #{@admin.name} roles created."
   end
 
-  def create_platform_admins
+  def create_admins
     5.times do |i|
-      platform_admin = User.create!(
+      admin = User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         username: Faker::Internet.user_name,
         password: Faker::Internet.password
       )
 
-      platform_admin.roles << @platform_admin
+      admin.roles << @admin
 
-      puts "Platform Admin #{i+1}: #{platform_admin.username} created!"
+      puts "Admin #{i+1}: #{admin.username} created!"
     end
   end
 

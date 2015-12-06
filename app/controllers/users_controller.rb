@@ -29,7 +29,13 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     flash.notice = "Profile Updated!"
-    redirect_to dashboard_path
+    if current_user.admin?
+      redirect_to admin_dashboard_path(id: current_user.id)
+    elsif current_user.lender?
+      redirect_to lender_dashboard_path(id: current_user.id)
+    else
+      redirect_to borrower_dashboard_path(id: current_user.id)
+    end
   end
 
   def lender_dashboard

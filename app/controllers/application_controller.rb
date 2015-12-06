@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     @user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def current_admin?
+    current_user && current_user.admin?
+  end
+
   def current_permission
     @current_permission ||= PermissionService.new(current_user)
   end

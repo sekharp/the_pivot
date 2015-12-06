@@ -8,8 +8,8 @@ class PermissionService
   def allow?(controller, action)
     @controller = controller
     @action = action
-    if user.platform_admin?
-      platform_admin_permissions
+    if user.admin?
+      admin_permissions
     elsif user.borrower?
       borrower_permissions
     elsif user.lender?
@@ -21,13 +21,14 @@ class PermissionService
 
   private
 
-  def platform_admin_permissions
+  def admin_permissions
     return true if controller == "session" && action.in?(%w(new create destroy))
     return true if controller == "users/projects" && action.in?(%w(index show))
     return true if controller == "projects" && action == "index"
-    return true if controller == "users" && action.in?(%w(index show))
+    return true if controller == "users" && action.in?(%w(index show update edit))
     return true if controller == "loans" && action.in?(%w(index show))
     return true if controller == "home" && action == "home"
+    return true if controller == "admin/dashboard" && action.in?(%w(index show))
   end
 
   def borrower_permissions

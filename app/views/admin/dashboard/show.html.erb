@@ -1,21 +1,20 @@
-<h3><%= @orders.first.status.capitalize %> Orders</h3>
+<div id="profile">
+  <h2>Profile</h2>
+  <p>
+    <strong>First name: </strong><%= current_user.first_name %>
+  </p>
+  <p>
+    <strong>Last name: </strong><%= current_user.last_name %>
+  </p>
+  <p>
+    <strong>Username: </strong><%= current_user.username %>
+  </p>
 
-<table id='past-orders' class="highlight">
-  <thead>
-    <tr>
-      <th data-field="id">Order Number</th>
-      <th data-field="name">Date Ordered</th>
-      <th data-field="price">Status</th>
-    </tr>
-  </thead>
+  <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn blue">
+    <%= button_to "Edit Profile", edit_user_path(current_user), method: :get %>
+  </div>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to order.id, order %></td>
-        <td><%= order.created_at.strftime("%B %d, %Y") %></td>
-        <td><%= order.status %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="projects">
+    <h3>Pending Projects</h3>
+  </div>
+</div>

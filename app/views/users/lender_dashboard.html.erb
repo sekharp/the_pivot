@@ -19,7 +19,7 @@
   </ul>
 
   <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn blue">
-    <%= button_to "Edit Profile", @user, method: :put %>
+    <%= button_to "Edit Profile", user_path(current_user), method: :put %>
   </div>
 
 </div>

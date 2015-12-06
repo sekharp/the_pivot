@@ -25,7 +25,7 @@ class ActionDispatch::IntegrationTest
                           last_name:  'Doe',
                           username:   'matt',
                           password:   'password')
-    lender.roles << Role.find(1)
+    lender.roles << Role.find_by(name: "lender")
     lender
   end
 
@@ -34,22 +34,32 @@ class ActionDispatch::IntegrationTest
                             last_name:  'Doe',
                             username:   'jdoe',
                             password:   'password')
-    borrower.roles << Role.find(2)
+    borrower.roles << Role.find_by(name: "borrower")
     borrower
+  end
+
+  def create_admin
+    create_roles
+    admin = User.create!(first_name: 'admin',
+                         last_name:  'admin',
+                         username:   'admin',
+                         password:   'password')
+    admin.roles << Role.find_by(name: "admin")
+    admin
   end
 
   def create_project
     Project.create!(goal_amount: 1000,
                     title:       "Buy me a goat",
                     description: "Mostly goat purchases",
-                    image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
+                    image:       "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
                     )
   end
 
   def create_roles
-    Role.create!(id: 1, name: "lender")
-    Role.create!(id: 2, name: "borrower")
-    Role.create!(id: 3, name: "platform_admin")
+    Role.create!(name: "lender")
+    Role.create!(name: "borrower")
+    Role.create!(name: "admin")
   end
 
   def create_roles_borrower_project_and_lender

@@ -2,13 +2,10 @@ require "test_helper"
 
 class AdminEditStickerTest < ActionDispatch::IntegrationTest
   def setup
-    @admin = User.create(username: "emily",
-                          password: "password",
-                          role: 1)
-
+    create_admin
     visit login_path
 
-    fill_in "Username", with: "emily"
+    fill_in "Username", with: "admin"
     fill_in "Password", with: "password"
     click_button "Login"
 

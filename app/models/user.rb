@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def platform_admin?
-    roles.exists?(name: "platform_admin")
+  def admin?
+    roles.exists?(name: "admin")
   end
 
   def borrower?

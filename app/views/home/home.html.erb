@@ -5,7 +5,7 @@
     <div class="card col s12">
       <div>
         <div class="col s4">
-          <a href="<%= user_project_path(user: project.user.slug, id: project.slug) %>"><img id="project-image" class="max-width" src="<%= project.image.url(:original) %>"></a>
+          <a class="image-link" href="<%= user_project_path(user: project.user.slug, id: project.slug) %>"><img id="project-image" class="max-width" src="<%= project.image.url(:original) %>"></a>
         </div>
         <div class="col s7 offset-s1">
           <h5><%= project.title %></h5>

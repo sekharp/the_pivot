@@ -2,6 +2,7 @@ require 'test_helper'
 
 class GuestCanViewASpecificProjectTest < ActionDispatch::IntegrationTest
   test "guest can view a specific project" do
+    create_roles
     borrower = create_borrower
     borrower.projects << create_project
 

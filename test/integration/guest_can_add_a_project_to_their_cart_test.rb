@@ -2,6 +2,7 @@ require 'test_helper'
 
 class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
   test "guest can add a project to their cart" do
+    create_roles
     borrower = create_borrower
     borrower.projects << create_project
 
@@ -33,6 +34,7 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
   end
 
   test "guest can add multiple borrowers' projects to their cart" do
+    create_roles
     borrower = User.create!(first_name: 'Chaim',
                             last_name:  'Mejia',
                             username:   'cmejia',
@@ -60,6 +62,7 @@ class GuestCanAddAProjectToTheirCartTest < ActionDispatch::IntegrationTest
   end
 
   test 'guest cannot add a project to their cart with invalid loan amount' do
+    create_roles
     borrower = create_borrower
     borrower.projects << create_project
 

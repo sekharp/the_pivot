@@ -25,7 +25,7 @@ class ActionDispatch::IntegrationTest
                           last_name:  'Doe',
                           username:   'matt',
                           password:   'password')
-    lender.roles << Role.find(1)
+    lender.roles << Role.find_by(name: 'lender')
     lender
   end
 
@@ -34,7 +34,7 @@ class ActionDispatch::IntegrationTest
                             last_name:  'Doe',
                             username:   'jdoe',
                             password:   'password')
-    borrower.roles << Role.find(2)
+    borrower.roles << Role.find_by(name: 'borrower')
     borrower
   end
 
@@ -47,9 +47,9 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_roles
-    Role.create!(id: 1, name: "lender")
-    Role.create!(id: 2, name: "borrower")
-    Role.create!(id: 3, name: "platform_admin")
+    Role.create!(name: "lender")
+    Role.create!(name: "borrower")
+    Role.create!(name: "platform_admin")
   end
 
   def create_roles_borrower_project_and_lender

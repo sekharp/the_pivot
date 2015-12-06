@@ -2,20 +2,16 @@ require 'test_helper'
 
 class GuestCanViewProjectsIndexTest < ActionDispatch::IntegrationTest
   test "guest can view projects index" do
-    create_project
+    create_roles
+    borrower = create_borrower
+    borrower.projects << create_project
+
     visit "/"
-    click_link("Lend")
+    within "#primary-navigation" do
+      click_link("Lend")
+    end
 
     assert_equal "/projects", current_path
     assert page.has_content?("Buy me a goat")
-  end
-
-  def create_project
-    Project.create!(
-                    borrower_id: 1,
-                    goal_amount: 1000,
-                    title: "Buy me a goat",
-                    description: "Mostly goat purchases"
-    )
   end
 end

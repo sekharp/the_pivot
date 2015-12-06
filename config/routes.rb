@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   resources :cart_projects, only: [:create, :update, :index, :destroy]
   resources :cart, only: [:index]
   resources :users, only: [:new, :create, :update]
+
   get "/lender_dashboard", to: "users#lender_dashboard"
   get "/borrower_dashboard", to: "users#borrower_dashboard"
-  resources :lenders, only: [:index, :show], param: :slug
+
+  resources :lenders, only: [:new, :index, :show], param: :slug
   # get '/lenders-dashboard', to: "lenders#dashboard"
-  resources :borrowers, only: [:index, :show], param: :slug
+  resources :borrowers, only: [:new, :index, :show], param: :slug
   # get '/borrowers-dashboard', to: "borrowers#dashboard"
+
   get '/login', to: "session#new"
   post '/login', to: "session#create"
   delete '/logout', to: "session#destroy"

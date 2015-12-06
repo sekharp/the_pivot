@@ -11,6 +11,7 @@ class Seed
     create_projects
     create_lenders
     create_loans
+    create_sample_accounts
   end
 
   def create_categories
@@ -93,6 +94,33 @@ class Seed
       Loan.create!(user_id: lender.id, amount: Random.new.rand(100..1000), project_id: project.id)
       puts "Loan #{i+1}: Loan for #{lender.username} created!"
     end
+  end
+
+  def create_sample_accounts
+    lender = User.create!(
+      first_name: "lender",
+      last_name: "lender",
+      username: "lender",
+      password: "password"
+    )
+    lender.roles << @lender
+
+    borrower = User.create!(
+      first_name: "borrower",
+      last_name: "borrower",
+      username: "borrower",
+      password: "password"
+    )
+    borrower.roles << @borrower
+
+    admin = User.create!(
+      first_name: "admin",
+      last_name: "admin",
+      username: "admin",
+      password: "password"
+    )
+    admin.roles << @admin
+    puts "Sample accounts created for lender, borrower and admin. Password is password for each."""
   end
 
 end

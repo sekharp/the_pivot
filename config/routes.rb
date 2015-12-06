@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post '/login', to: "session#create"
   delete '/logout', to: "session#destroy"
   put '/dashboard', to: "users#update"
-  post '/checkout', to: "orders#create"
+  post '/checkout', to: "loans#create"
 
   namespace :admin do
     resources :dashboard, only: [:index, :show], param: :status

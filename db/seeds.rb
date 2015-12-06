@@ -59,6 +59,7 @@ class Seed
   end
 
   def create_projects
+    project_status = ["Pending", "Cancelled", "Active", "Completed"]
     20.times do |i|
       project = Project.create!(
         title: Faker::Commerce.product_name,
@@ -66,7 +67,8 @@ class Seed
         image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg",
         goal_amount: Random.new.rand(10000..20000),
         user_id: Role.find_by(name: "borrower").users.shuffle.first.id,
-        category_id: Category.all.shuffle.first.id
+        category_id: Category.all.shuffle.first.id,
+        status: project_status.shuffle.pop
         )
       puts "Project #{i+1}: #{project.title} created!"
     end
@@ -120,7 +122,7 @@ class Seed
       password: "password"
     )
     admin.roles << @admin
-    puts "Sample accounts created for lender, borrower and admin. Password is password for each."""
+    puts "Sample accounts created for lender, borrower and admin. The password is password for each."
   end
 
 end

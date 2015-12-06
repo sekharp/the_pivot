@@ -31,6 +31,12 @@ class ApplicationController < ActionController::Base
     amount > 0 && amount < project.goal_amount
   end
 
+  def add_role(user, role)
+    user.roles << Role.find_by(name: params[:user][:role])
+    @cart.contents = {} if role == 'borrower'
+    user
+  end
+
   def not_found
   end
 end

@@ -104,13 +104,13 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
    add_project_to_cart(project)
 
    visit '/users/new'
-   click_button 'Create a Borrower Account'
+   click_button 'Create Borrower Account'
 
    within '#nav-bar' do
-     assert page.has_content? 'Your cart will be lost if you register as a Borrower. Go Back to Choose Account Type'
+     assert page.has_content? 'Your cart will be lost if you register as a Borrower. Go Back'
    end
 
-   click_link 'Go Back to Choose Account Type'
+   click_link 'Go Back'
 
    assert_equal '/users/new', current_path
  end

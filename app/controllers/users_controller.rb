@@ -5,10 +5,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.roles << Role.find_by(name: params[:user][:role])
+    @user = add_role(@user, params[:user][:role])
     if @user.save
       session[:user_id] = @user.id
-      # User.find_by(username: params[:username])
       flash[:notice] = "Logged in as #{@user.username}"
       redirect_to dashboard_path
     else

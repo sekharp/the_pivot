@@ -32,7 +32,7 @@ class PermissionService
 
   def borrower_permissions
     return true if controller == "session" && action.in?(%w(new create destroy))
-    return true if controller == "users" && action.in?(%w(borrower_dashboard))
+    return true if controller == "users" && action.in?(%w(update borrower_dashboard))
     return true if controller == "users/projects" && action.in?(%w(index show))
     return true if controller == "projects" && action == "index"
     return true if controller == "loans" && action.in?(%w(index show))

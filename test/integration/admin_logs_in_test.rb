@@ -4,7 +4,7 @@ class AdminLogsInTest < ActionDispatch::IntegrationTest
   test "admin logs in and redirects to admin dashboard" do
     User.create(username: "Jason",
                 password: "password",
-                role: 1)
+                role: 3)
     visit login_path
 
     fill_in "Username", with: "Jason"

@@ -97,24 +97,48 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
     assert_equal '/borrower_dashboard', current_path
   end
 
- test 'guest with cart registers as borrower' do
-   create_role 'borrower'
-   borrower = create_borrower
-   project = create_project
-   borrower.projects << project
-   add_project_to_cart(project)
+  test 'guest with cart registers as borrower' do
+    create_role 'borrower'
+    borrower = create_borrower
+    project = create_project
+    borrower.projects << project
+    add_project_to_cart(project)
 
-   visit '/users/new'
-   click_button 'Create Borrower Account'
+    visit '/users/new'
+    click_button 'Create Borrower Account'
 
-   within '#nav-bar' do
-     assert page.has_content? 'Your cart will be lost if you register as a Borrower. Go Back'
-   end
+    within '#nav-bar' do
+      assert page.has_content? 'Your cart will be lost if you register as a Borrower. Go Back'
+    end
 
-   click_link 'Go Back'
+    click_link 'Go Back'
 
-   assert_equal '/users/new', current_path
- end
+    assert_equal '/users/new', current_path
+  end
+
+  test 'guest with cart registers as lender' do
+    create_roles
+    borrower = create_borrower
+    project = create_project
+    borrower.projects << project
+    add_project_to_cart(project)
+
+    visit 'lenders/new'
+
+    fill_in 'Username', with: 'cmejia'
+    fill_in 'First name', with: 'Chaim'
+    fill_in 'Last name', with: 'Mejia'
+    fill_in 'Password', with: 'password'
+    fill_in 'Street address', with: '123 example st.'
+    fill_in 'City', with: 'Examplesburg'
+    fill_in 'State', with: 'EX'
+    fill_in 'Zip', with: '12345'
+
+    click_button 'Create Account'
+
+    assert_equal '/cart', current_path
+  end
+
 
   def create_role(name)
     Role.create!(name: name)

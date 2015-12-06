@@ -42,7 +42,11 @@ class ApplicationController < ActionController::Base
     when 'borrower'
       borrower_dashboard_path
     when 'lender'
-      lender_dashboard_path
+      if @cart.contents.empty?
+        lender_dashboard_path
+      else
+        cart_index_path
+      end
     end
   end
 

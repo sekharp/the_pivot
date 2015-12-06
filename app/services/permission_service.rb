@@ -46,6 +46,7 @@ class PermissionService
     return true if controller == "projects" && action == "index"
     return true if controller == "loans" && action == "index"
     return true if controller == "home" && action == "home"
+    return true if controller == "cart" && action == "index"
   end
 
   def guest_permissions

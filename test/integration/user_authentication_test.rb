@@ -34,19 +34,15 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
   # end
 
   test "lender can login" do
-    User.create(username: "Matt",
-                first_name: "Matt",
-                last_name: "Matt",
-                password: "password")
-
+    create_roles_borrower_project_and_lender
     visit root_path
 
     click_link "Login"
-    fill_in "Username", with: "Matt"
+    fill_in "Username", with: "matt"
     fill_in "Password", with: "password"
     click_button "Login"
 
-    assert_equal "/lender-dashboard", current_path
+    assert_equal "/lender_dashboard", current_path
     within("#primary-navigation") do
       refute page.has_content?("Login")
       assert page.has_content?("Logout")
@@ -54,7 +50,7 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
   end
 
   test "logged in user sees cart contents" do
-    create_borrower_projects_and_lender
+    create_roles_borrower_project_and_lender
     visit root_path
 
     click_button "Learn More"
@@ -70,10 +66,9 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     fill_in "Password", with: "password"
     click_button "Login"
 
-    assert_equal "/lender-dashboard", current_path
+    assert_equal "/lender_dashboard", current_path
 
-    click_link "Cart"
-
+    visit cart_index_path
     within("#cart-contents") do
       assert page.has_content?("50")
     end

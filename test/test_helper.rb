@@ -20,11 +20,22 @@ class ActionDispatch::IntegrationTest
     reset_session!
   end
 
+  def create_lender
+    lender = User.create!(first_name: 'Matt',
+                          last_name:  'Doe',
+                          username:   'matt',
+                          password:   'password')
+    lender.roles << Role.find(1)
+    lender
+  end
+
   def create_borrower
-    User.create!(first_name: 'John',
-                 last_name:  'Doe',
-                 username:   'jdoe',
-                 password:   'password')
+    borrower = User.create!(first_name: 'John',
+                            last_name:  'Doe',
+                            username:   'jdoe',
+                            password:   'password')
+    borrower.roles << Role.find(2)
+    borrower
   end
 
   def create_project
@@ -33,6 +44,19 @@ class ActionDispatch::IntegrationTest
                     description: "Mostly goat purchases",
                     image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
                     )
+  end
+
+  def create_roles
+    Role.create!(id: 1, name: "lender")
+    Role.create!(id: 2, name: "borrower")
+    Role.create!(id: 3, name: "platform_admin")
+  end
+
+  def create_roles_borrower_project_and_lender
+    create_roles
+    borrower = create_borrower
+    borrower.projects << create_project
+    create_lender
   end
 
   def add_project_to_cart(project)

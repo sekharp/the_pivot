@@ -17,7 +17,7 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
   end
 
   test 'guest can view create lender account form' do
-    create_role('lender')
+    create_role 'lender'
     visit '/users/new'
     click_button 'Create Lender Account'
 
@@ -37,7 +37,7 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
   end
 
   test 'guest can view create borrower account form' do
-    create_role('borrower')
+    create_role 'borrower'
     visit '/users/new'
     click_button 'Create Borrower Account'
 
@@ -57,7 +57,7 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
   end
 
   test 'guest can create lender account' do
-    create_role('lender')
+    create_role 'lender'
     visit 'lenders/new'
 
     fill_in 'Username', with: 'cmejia'
@@ -77,7 +77,7 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
   end
 
   test 'guest can create borrower account' do
-    create_role('borrower')
+    create_role 'borrower'
     visit 'borrowers/new'
 
     fill_in 'Username', with: 'cmejia'
@@ -95,6 +95,25 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
 
     assert new_user.roles.map(&:name).include?('borrower')
   end
+
+ test 'guest with cart registers as borrower' do
+   create_role 'borrower'
+   borrower = create_borrower
+   project = create_project
+   borrower.projects << project
+   add_project_to_cart(project)
+
+   visit '/users/new'
+   click_button 'Create a Borrower Account'
+
+   within '#nav-bar' do
+     assert page.has_content? 'Your cart will be lost if you register as a Borrower. Go Back to Choose Account Type'
+   end
+
+   click_link 'Go Back to Choose Account Type'
+
+   assert_equal '/users/new', current_path
+ end
 
   def create_role(name)
     Role.create!(name: name)

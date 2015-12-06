@@ -37,6 +37,15 @@ class ApplicationController < ActionController::Base
     user
   end
 
+  def user_dashboard_path(role)
+    case role
+    when 'borrower'
+      borrower_dashboard_path
+    when 'lender'
+      lender_dashboard_path
+    end
+  end
+
   def not_found
   end
 end

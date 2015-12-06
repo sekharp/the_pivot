@@ -74,6 +74,7 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
     new_user = User.find_by(username: 'cmejia')
 
     assert new_user.roles.map(&:name).include?('lender')
+    assert_equal '/lender_dashboard', current_path
   end
 
   test 'guest can create borrower account' do
@@ -90,10 +91,10 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
     fill_in 'Zip', with: '12345'
 
     click_button 'Create Account'
-
     new_user = User.find_by(username: 'cmejia')
 
     assert new_user.roles.map(&:name).include?('borrower')
+    assert_equal '/borrower_dashboard', current_path
   end
 
  test 'guest with cart registers as borrower' do

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@user.username}"
-      redirect_to dashboard_path
+      redirect_to user_dashboard_path(params[:user][:role])
     else
       flash.now[:error] = "Something went wrong. Please try again."
       render :new

@@ -2,7 +2,7 @@ class Category < ActiveRecord::Base
   validates :title, presence: true,
                     uniqueness: true
 
-  has_many :stickers
+  has_many :projects
 
   before_save :to_slug
 

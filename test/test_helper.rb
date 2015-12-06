@@ -34,7 +34,7 @@ class ActionDispatch::IntegrationTest
                             last_name:  'Doe',
                             username:   'jdoe',
                             password:   'password')
-    borrower.roles << Role.find_by(name: "borrower")
+    borrower.roles << Role.find_by(name: 'borrower')
     borrower
   end
 

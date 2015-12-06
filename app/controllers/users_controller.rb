@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user = add_role(@user, params[:user][:role])
     if @user.save
       session[:user_id] = @user.id
-      # User.find_by(username: params[:username])
       flash[:notice] = "Logged in as #{@user.username}"
-      redirect_to dashboard_path
+      redirect_to user_dashboard_path(params[:user][:role])
     else
       flash.now[:error] = "Something went wrong. Please try again."
       render :new
@@ -48,6 +48,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name,
                                  :last_name,
                                  :username,
-                                 :password)
+                                 :password,
+                                 :street_address,
+                                 :city,
+                                 :state,
+                                 :zip)
   end
 end

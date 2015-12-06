@@ -2,25 +2,23 @@ require 'test_helper'
 
 class AdminViewsDashboardTest < ActionDispatch::IntegrationTest
   test "admin can view the admin dashboard" do
-    admin = User.create(username: "Jason",
-                        password: "password",
-                        role: 1)
+    create_admin
     ApplicationController.any_instance.stubs(:current_user).returns(admin)
-    visit admin_dashboard_index_path
+    visit admin_dashboard_path(id: current_user.id)
     assert page.has_content?("Admin Dashboard")
   end
 
   test "registered user sees 404 at admin dashboard" do
-    user = User.create(username: "James",
-                       password: "password",
-                       role: 0)
+    create_lender
+    login_lender
+
     ApplicationController.any_instance.stubs(:current_user).returns(user)
     visit admin_dashboard_index_path
     refute page.has_content?("Admin Dashboard")
     assert page.has_content?("404")
   end
 
-  test "un-regestered user sees a 404 at admin dashboard" do
+  test "guest sees a 404 at admin dashboard" do
     visit admin_dashboard_index_path
     refute page.has_content?("Admin Dashboard")
     assert page.has_content?("404")

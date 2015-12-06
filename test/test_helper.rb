@@ -48,6 +48,22 @@ class ActionDispatch::IntegrationTest
     admin
   end
 
+  def login_admin
+    visit login_path
+
+    fill_in "Username", with: "admin"
+    fill_in "Password", with: "password"
+    click_button "Login"
+  end
+
+  def login_lender
+    visit login_path
+
+    fill_in "Username", with: "matt"
+    fill_in "Password", with: "password"
+    click_button "Login"
+  end
+
   def create_project
     Project.create!(goal_amount: 1000,
                     title:       "Buy me a goat",

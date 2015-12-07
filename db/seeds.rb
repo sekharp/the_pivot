@@ -128,7 +128,6 @@ class Seed
       username: "combined",
       password: "password"
     )
-    binding.pry
     combined.roles << @lender
     combined.roles << @borrower
 

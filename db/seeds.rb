@@ -15,9 +15,19 @@ class Seed
   end
 
   def create_categories
-    10.times do |i|
-      category = Category.create(title: Faker::Lorem.word)
-    end
+    Category.create(title: "Andhra Pradesh")
+    Category.create(title: "Telangana")
+    Category.create(title: "Karnataka")
+    Category.create(title: "Tamil Nadu")
+    Category.create(title: "Kerala")
+    Category.create(title: "Madhya Pradesh")
+    Category.create(title: "Uttar Pradesh")
+    Category.create(title: "Maharashtra")
+    Category.create(title: "Rajasthan")
+    Category.create(title: "Punjab")
+    Category.create(title: "Gujarat")
+    Category.create(title: "West Bengal")
+
     puts "#{Category.all.map(&:title).join(", ")} categories created, #{Category.count} in total."
   end
 
@@ -33,36 +43,34 @@ class Seed
       admin = User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        username: Faker::Internet.user_name,
+        username: Faker::Internet.user_name + "#{i}",
         password: Faker::Internet.password
       )
 
       admin.roles << @admin
-
-      puts "Admin #{i+1}: #{admin.username} created!"
     end
+    puts "#{Role.find_by(name: "admin").users.count} admins created!"
   end
 
   def create_borrowers
-    10.times do |i|
+    20.times do |i|
       borrower = User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        username: Faker::Internet.user_name,
+        username: Faker::Internet.user_name + "#{i}",
         password: Faker::Internet.password
       )
 
       borrower.roles << @borrower
-
-      puts "Borrower #{i+1}: #{borrower.username} created!"
     end
+    puts "#{Role.find_by(name: "borrower").users.count} borrowers created!"
   end
 
   def create_projects
     project_status = ["Pending", "Cancelled", "Active", "Completed"]
-    20.times do |i|
+    40.times do |i|
       project = Project.create!(
-        title: Faker::Commerce.product_name,
+        title: Faker::Commerce.product_name + "#{i}",
         description: Faker::Lorem.paragraph,
         image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg",
         goal_amount: Random.new.rand(10000..20000),
@@ -70,32 +78,31 @@ class Seed
         category_id: Category.all.shuffle.first.id,
         status: project_status.shuffle.pop
         )
-      puts "Project #{i+1}: #{project.title} created!"
     end
+    puts "#{Project.all.count} projects created!"
   end
 
   def create_lenders
-    20.times do |i|
+    30.times do |i|
       lender = User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        username: Faker::Internet.user_name,
+        username: Faker::Internet.user_name + "#{i}",
         password: Faker::Internet.password
       )
 
       lender.roles << @lender
-
-      puts "Lender #{i+1}: #{lender.username} created!"
     end
+    puts "#{Role.find_by(name: "lender").users.count} lenders created!"
   end
 
   def create_loans
-    40.times do |i|
+    100.times do |i|
       lender = Role.find_by(name: "lender").users.shuffle.first
       project = Project.all.shuffle.first
       Loan.create!(user_id: lender.id, amount: Random.new.rand(100..1000), project_id: project.id)
-      puts "Loan #{i+1}: Loan for #{lender.username} created!"
     end
+    puts "#{Loan.all.count} loans created!"
   end
 
   def create_sample_accounts
@@ -115,6 +122,16 @@ class Seed
     )
     borrower.roles << @borrower
 
+    combined = User.create!(
+      first_name: "combined",
+      last_name: "combined",
+      username: "combined",
+      password: "password"
+    )
+    binding.pry
+    combined.roles << @lender
+    combined.roles << @borrower
+
     admin = User.create!(
       first_name: "admin",
       last_name: "admin",
@@ -122,7 +139,7 @@ class Seed
       password: "password"
     )
     admin.roles << @admin
-    puts "Sample accounts created for lender, borrower and admin. The password is password for each."
+    puts "Sample accounts created for lender, borrower, combined and admin. The password is password for each."
   end
 
 end

@@ -19,7 +19,16 @@
         <td><%= project.created_at.strftime("%B %d, %Y") %></td>
         <td><%= project.status unless project.status.nil? %></td>
 
-        <td>Placeholder for Change Status
+        <td>
+          <% if project.status == "Pending" %>
+            <%= link_to "Mark As Approved", admin_project_path(:id => project.id, :status => "Active"), method: :put  %><br>
+            <%= link_to "Cancel", admin_project_path(:id => project.id, :status => "Cancelled"), method: :put  %>
+          <% elsif project.status == "Active" %>
+            <%= link_to "Mark as Completed", admin_project_path(:id => project.id, :status => "Completed"), method: :put  %><br>
+            <%= link_to "Cancel", admin_project_path(:id => project.id, :status => "Cancelled"), method: :put  %>
+          <% else %>
+            Project Inactive
+          <% end %>
         </td>
       </tr>
     <% end %>

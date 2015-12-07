@@ -10,12 +10,14 @@ class LoansController < ApplicationController
       redirect_to '/cart'
       flash[:notice] = "No loans in cart. Don't you want to loan money?"
     else
-      # create loan
-      order = Order.create(status: "ordered", user_id: current_user.id)
-      session[:cart].map { |id, q| OrderSticker.create(quantity: q, sticker_id: id, order_id: order.id) }
+      session[:cart].each do |project_id, amount|
+        Loan.create(project_id: project_id,
+                    amount: amount,
+                    user_id: current_user.id)
+      end
       session[:cart] = {}
-      flash[:success] = "Order was successfully placed."
-      redirect_to orders_path
+      flash[:success] = "Loan submitted"
+      redirect_to lender_dashboard_path
     end
   end
 

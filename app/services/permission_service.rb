@@ -37,7 +37,7 @@ class PermissionService
 
   def combined_user_permissions
     return true if controller == "session" && action.in?(%w(new create destroy))
-    return true if controller == "users" && action.in?(%w(update borrower_dashboard lender_dashboard))
+    return true if controller == "users" && action.in?(%w(update combined_dashboard borrower_dashboard lender_dashboard))
     return true if controller == "users/projects" && action.in?(%w(index show))
     return true if controller == "projects" && action == "index"
     return true if controller == "loans" && action.in?(%w(index show))

@@ -1,0 +1,11 @@
+<h3>Create A New Project</h3>
+
+<%= form_for(@project, url: {action: "create"}) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :goal_amount %>
+  <%= f.text_field :goal_amount %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.submit "Create Project", class: "btn custom-green" %>
+  <% end %>

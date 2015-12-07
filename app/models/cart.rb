@@ -25,7 +25,6 @@ class Cart
 
   def total_amount
     contents.values.reduce(:+)
-    # projects.map(&:amount).reduce(:+)
   end
 
   def amount_of(project_id)

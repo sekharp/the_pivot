@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :update, :edit]
   get "/lender_dashboard", to: "users#lender_dashboard"
   get "/borrower_dashboard", to: "users#borrower_dashboard"
+  get "/combined_dashboard", to: "users#combined_dashboard"
   resources :lenders, only: [:new, :index, :show], param: :slug
   resources :borrowers, only: [:new, :index, :show], param: :slug
   get '/login', to: "session#new"

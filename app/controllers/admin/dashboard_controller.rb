@@ -1,6 +1,6 @@
 class Admin::DashboardController < Admin::BaseController
   def index
-    @pending_projects = Project.where(status: "pending")
+    @projects = Project.all
   end
 
   def show

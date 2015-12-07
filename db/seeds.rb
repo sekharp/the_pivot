@@ -122,6 +122,16 @@ class Seed
     )
     borrower.roles << @borrower
 
+    combined = User.create!(
+      first_name: "combined",
+      last_name: "combined",
+      username: "combined",
+      password: "password"
+    )
+    binding.pry
+    combined.roles << @lender
+    combined.roles << @borrower
+
     admin = User.create!(
       first_name: "admin",
       last_name: "admin",
@@ -129,7 +139,7 @@ class Seed
       password: "password"
     )
     admin.roles << @admin
-    puts "Sample accounts created for lender, borrower and admin. The password is password for each."
+    puts "Sample accounts created for lender, borrower, combined and admin. The password is password for each."
   end
 
 end

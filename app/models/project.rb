@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
                     uniqueness: true
   validates :goal_amount, presence: true
   validates :slug, presence: true
-  # has_many :order_stickers
+
   has_attached_file :image, styles: {
     thumb: '100x100>',
     square: '200x200#',

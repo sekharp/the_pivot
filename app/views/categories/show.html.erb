@@ -11,7 +11,11 @@
           <p><%= project.description %></p>
         </div>
         <div class="card-action">
-          <div class="waves-effect waves-light btn blue"><%= button_to "Add to Cart", cart_projects_path(project_id: project.id) %></div>
+          <div class="waves-effect waves-light btn custom-blue">
+            <%= button_to "Lend", new_user_cart_project_path(user: project.user.slug,
+                                                             project: project.id),
+                                                             method: :get %>
+          </div>
         </div>
       </div>
     </div>

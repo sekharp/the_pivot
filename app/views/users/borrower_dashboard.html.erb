@@ -1,30 +1,31 @@
 <div id="profile">
   <h2>Borrower Profile</h2>
   <p>
-    <strong>First name: </strong><%= @user.first_name %>
+    <strong>First name: </strong><%= current_user.first_name %>
   </p>
   <p>
-    <strong>Last name: </strong><%= @user.last_name %>
+    <strong>Last name: </strong><%= current_user.last_name %>
   </p>
   <p>
-    <strong>Username: </strong><%= @user.username %>
+    <strong>Username: </strong><%= current_user.username %>
   </p>
+
+  <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn blue">
+    <%= button_to "Edit Profile", @user, method: :put %>
+  </div>
 
   <h3>Your Current Projects</h3>
   <ul>
-  <% @user.projects.each do |project| %>
+  <% current_user.projects.each do |project| %>
     <li>Project Title: <%= project.title %></li>
+    <li>Project Status: <%= project.status %></li>
     <li>Goal Amount: $<%= project.goal_amount %></li>
-    <li>Total Loans Made: $<%= project.total_loans_amount %></li>
+    <li>Description: <%= project.description %></li>
     <li>Percent Funded: <%= project.percent_funded %>%</li>
   <% end %>
   </ul>
 
-  <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn blue">
-    <%= button_to "Edit Profile", @user, method: :put %>
-  </div>
-
   <div class="create-project waves-effect waves-light btn custom-green">
-    <%= button_to "Create A New Project", new_borrower_project_path, method: :get %>
+    <%= button_to "Create A New Project", new_borrower_project_path(current_user.username), method: :get %>
   </div>
 </div>

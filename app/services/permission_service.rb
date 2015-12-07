@@ -38,6 +38,7 @@ class PermissionService
     return true if controller == "projects" && action == "index"
     return true if controller == "loans" && action.in?(%w(index show))
     return true if controller == "home" && action == "home"
+    return true if controller == "borrowers/projects" && action.in?(%w(new create))
   end
 
   def lender_permissions

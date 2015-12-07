@@ -1,20 +1,11 @@
 <h1>Login</h1>
 
 <div class="login-form">
-  <form class="col s12">
   <%= form_for(:session, url: login_path) do |f| %>
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-  </div>
-  <%= f.submit "Login", class: "btn custom-blue" %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "Login", class: "btn custom-blue" %>
   <% end %>
 </div>

@@ -26,5 +26,9 @@ Rails.application.routes.draw do
     resources :cart_projects, only: [:create, :new]
   end
 
+  namespace :borrowers, path: ":user", as: :borrower do
+    resources :projects, only: [:new]
+  end
+
   get '*unmatched_route', to: 'application#not_found'
 end

@@ -25,13 +25,14 @@ class ActionDispatch::IntegrationTest
     lender = User.create!(first_name: 'Matt',
                           last_name:  'Doe',
                           username:   'mdoe',
-                          password:   'password')
+                          password:   'password',
+                          bio: 'my bio')
     lender.roles << Role.find_by(name: "lender")
     lender
   end
 
   def create_borrower
-    Role.create!(name: "borrower") unless Role.all.where(name: "lender").exists?
+    Role.create!(name: "borrower") unless Role.all.where(name: "borrower").exists?
     borrower = User.create!(first_name: 'John',
                             last_name:  'Doe',
                             username:   'jdoe',
@@ -41,7 +42,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_admin
-    Role.create!(name: "admin") unless Role.all.where(name: "lender").exists?
+    Role.create!(name: "admin") unless Role.all.where(name: "admin").exists?
     admin = User.create!(first_name: 'admin',
                          last_name:  'admin',
                          username:   'admin',

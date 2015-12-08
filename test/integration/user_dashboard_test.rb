@@ -6,7 +6,7 @@ class UserDashboardTest < ActionDispatch::IntegrationTest
     visit login_path
 
     within(".login-form") do
-      fill_in "Username", with: "matt"
+      fill_in "Username", with: "mdoe"
       fill_in "Password", with: "password"
       click_button "Login"
     end
@@ -18,7 +18,7 @@ class UserDashboardTest < ActionDispatch::IntegrationTest
     create_roles_borrower_project_and_lender
     visit root_path
     click_link "Login"
-    fill_in "Username", with: "matt"
+    fill_in "Username", with: "mdoe"
     fill_in "Password", with: "password"
     click_button "Login"
 

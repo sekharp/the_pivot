@@ -1,5 +1,7 @@
-class AuthenticatedUserPrivacyTest < ActionDispatch::IntegrationTest
-  test "authenticated user cannot see another user's data" do
+require 'test_helper'
+
+class UserCannotViewOtherUsersLoansTest < ActionDispatch::IntegrationTest
+  test "user can only see his or her past loans" do
     lender = create_lender
     lender_two = User.create!(first_name: 'Jane',
                               last_name:  'Doe',
@@ -7,6 +9,12 @@ class AuthenticatedUserPrivacyTest < ActionDispatch::IntegrationTest
                               password:   'password',
                               bio: 'my bio')
     lender_two.roles << Role.find_by(name: "lender")
+    borrower = create_borrower
+    project = create_project
+    borrower.projects << project
+
+    loan = project.loans.create!(amount: 500, user_id: lender.id)
+    loan = project.loans.create!(amount: 1800, user_id: lender_two.id)
 
     visit root_path
     click_link "Login"
@@ -18,9 +26,11 @@ class AuthenticatedUserPrivacyTest < ActionDispatch::IntegrationTest
     visit lender_dashboard_path
 
     assert page.has_content?("Lender Profile")
-    assert page.has_content?("First name: Jane")
     assert page.has_content?("Username: janedoe")
-    refute page.has_content?("First name: John")
-    refute page.has_content?("Username: mdoe")
+    assert page.has_content?("Loans Made")
+
+    assert page.has_content?("Buy me a goat")
+    assert page.has_content?("1800")
+    refute page.has_content?("500")
   end
 end

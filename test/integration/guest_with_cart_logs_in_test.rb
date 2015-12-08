@@ -14,7 +14,7 @@ class GuestWithCartLogsInTest < ActionDispatch::IntegrationTest
 
     assert_equal '/login', current_path
 
-    fill_in 'Username', with: 'matt'
+    fill_in 'Username', with: 'mdoe'
     fill_in 'Password', with: 'password'
     click_button 'Login'
 

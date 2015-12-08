@@ -7,9 +7,11 @@
   <%= f.text_field :last_name %>
   <%= f.label :username %>
   <%= f.text_field :username %>
-  <%= f.label :image %>
-  <%= f.text_field :image %>
   <%= f.label :password %>
   <%= f.password_field :password %>
+  <%= f.label :bio %>
+  <%= f.text_field :bio %>
+  <%= f.label :image %>
+  <%= f.file_field :image, class: 'form-control' %><br><br>
   <%= f.submit "Update Profile" %>
 <% end %>

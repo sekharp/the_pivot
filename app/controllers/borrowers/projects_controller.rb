@@ -6,6 +6,7 @@ class Borrowers::ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
+      flash[:notice] = "Project successfully updated."
       current_user.projects << @project
       redirect_to borrower_dashboard_path
     else
@@ -20,6 +21,7 @@ class Borrowers::ProjectsController < ApplicationController
     params.require(:project).permit(:title,
                                     :goal_amount,
                                     :description,
+                                    :image
                                     )
   end
 end

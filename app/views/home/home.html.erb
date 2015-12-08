@@ -19,9 +19,10 @@
           <span id='<%= project.title %>-button' class="col s5 left waves-effect waves-light btn custom-blue">
             <%= button_to "Learn More", user_project_path(user: project.user.slug, id: project.slug), method: :get %>
           </span>
-          <span id='<%= project.title%>-lend-button' class="col s5 right waves-effect waves-light btn custom-blue">
-            <%= button_to "Lend", new_user_cart_project_path(user: project.user.slug,
-                                       project: project.id), method: :get %>
+          <span id='<%= project.title%>-lend-button' >
+            <%= link_to "Lend",
+                new_user_cart_project_path(user: project.user.slug,
+                                           project: project), class: "col s5 right waves-effect waves-light btn custom-blue white-text" %>
           </span>
         </div>
         </div>

@@ -2,7 +2,7 @@ class LoansController < ApplicationController
   before_action :require_login
 
   def index
-    @loans = current_user.loans 
+    @loans = current_user.loans
   end
 
   def create
@@ -26,7 +26,7 @@ class LoansController < ApplicationController
     if current_user.id == loan.user.id
       @loan = loan
     else
-      redirect_to orders_path
+      redirect_to loans_path
     end
   end
 

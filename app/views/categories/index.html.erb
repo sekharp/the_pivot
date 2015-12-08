@@ -1,9 +1,9 @@
-<h1>Project Categories</h1>
+<h1>Active Projects by State in India</h1>
 
 <div class="collection">
   <% @categories.each do |cat| %>
     <div class="collection-item">
-      <%= link_to cat.title.capitalize, category_path(cat) %>
+      <%= link_to cat.title, category_path(cat) %>
     </div>
   <% end %>
 </div>

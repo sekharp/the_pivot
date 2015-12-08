@@ -16,5 +16,38 @@
 
   <div class="projects">
     <h3>Pending Projects</h3>
+
+    <table id='projects' class="highlight">
+      <thead>
+        <tr>
+          <th data-field="id">Project</th>
+          <th data-field="name">Date Created</th>
+          <th data-field="current_status">Current Status</th>
+          <th data-field="adjust_status">Adjust Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.id, project %></td>
+            <td><%= project.created_at.strftime("%B %d, %Y") %></td>
+            <td><%= project.status unless project.status.nil? %></td>
+
+            <td>
+              <% if project.status == "Pending" %>
+                <%= link_to "Mark As Approved", admin_project_path(:id => project.id, :status => "Active", :source => "Profile"), method: :put  %><br>
+                <%= link_to "Cancel", admin_project_path(:id => project.id, :status => "Cancelled", :source => "Profile"), method: :put  %>
+              <% elsif project.status == "Active" %>
+                <%= link_to "Mark as Completed", admin_project_path(:id => project.id, :status => "Completed", :source => "Profile"), method: :put  %><br>
+                <%= link_to "Cancel", admin_project_path(:id => project.id, :status => "Cancelled", :source => "Profile"), method: :put  %>
+              <% else %>
+                Project Inactive
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

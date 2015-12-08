@@ -5,5 +5,6 @@ class Admin::DashboardController < Admin::BaseController
 
   def show
     @admin = current_user
+    @projects = Project.where(status: "Pending")
   end
 end

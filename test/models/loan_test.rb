@@ -65,15 +65,15 @@ class LoanTest < ActiveSupport::TestCase
     assert_equal [loan], Loan.completed
   end
 
-  test "paid returns paid loans" do
+  test "pending returns pending loans" do
     lender = create_lender
     project = create_project
     loan = Loan.create!(user_id: lender.id,
                         project_id: project.id,
                         amount: 100,
-                        status: "paid")
+                        status: "pending")
 
-    assert_equal [loan], Loan.paid
+    assert_equal [loan], Loan.pending
   end
 
   test "cancelled returns cancelled loans" do
@@ -86,6 +86,18 @@ class LoanTest < ActiveSupport::TestCase
 
     assert_equal [loan], Loan.cancelled
   end
+
+  test "active returns active loans" do
+    lender = create_lender
+    project = create_project
+    loan = Loan.create!(user_id: lender.id,
+                        project_id: project.id,
+                        amount: 100,
+                        status: "active")
+
+    assert_equal [loan], Loan.active
+  end
+
 
 
 

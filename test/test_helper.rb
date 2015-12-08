@@ -21,15 +21,17 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_lender
+    Role.create!(name: "lender") unless Role.all.where(name: "lender").exists?
     lender = User.create!(first_name: 'Matt',
                           last_name:  'Doe',
-                          username:   'matt',
+                          username:   'mdoe',
                           password:   'password')
     lender.roles << Role.find_by(name: "lender")
     lender
   end
 
   def create_borrower
+    Role.create!(name: "borrower") unless Role.all.where(name: "lender").exists?
     borrower = User.create!(first_name: 'John',
                             last_name:  'Doe',
                             username:   'jdoe',
@@ -39,7 +41,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_admin
-    create_roles
+    Role.create!(name: "admin") unless Role.all.where(name: "lender").exists?
     admin = User.create!(first_name: 'admin',
                          last_name:  'admin',
                          username:   'admin',
@@ -59,7 +61,15 @@ class ActionDispatch::IntegrationTest
   def login_lender
     visit login_path
 
-    fill_in "Username", with: "matt"
+    fill_in "Username", with: "mdoe"
+    fill_in "Password", with: "password"
+    click_button "Login"
+  end
+
+  def login_borrower
+    visit login_path
+
+    fill_in "Username", with: "jdoe"
     fill_in "Password", with: "password"
     click_button "Login"
   end
@@ -68,7 +78,6 @@ class ActionDispatch::IntegrationTest
     Project.create!(goal_amount: 1000,
                     title:       "Buy me a goat",
                     description: "Mostly goat purchases",
-                    image:       "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
                     )
   end
 

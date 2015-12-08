@@ -4,16 +4,16 @@
     <a class="image-link"><img class="max-width" src="<%= current_user.image.url(:original) %>"></a>
   </div>
   <p>
-    <strong>First name: </strong><%= @user.first_name %>
+    <b>First name: </b><%= current_user.first_name %>
   </p>
   <p>
-    <strong>Last name: </strong><%= @user.last_name %>
+    <b>Last name: </b><%= current_user.last_name %>
   </p>
   <p>
-    <strong>Username: </strong><%= @user.username %>
+    <b>Username: </b><%= current_user.username %>
   </p>
   <p>
-    <strong>Bio: </strong><%= @user.bio %>
+    <b>Bio: </b><%= current_user.bio %>
   </p>
 
   <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn custom-blue">
@@ -33,10 +33,12 @@
   <h3>Your Current Projects</h3>
   <ul>
   <% current_user.projects.each do |project| %>
+    <a class="image-link" href="<%= user_project_path(user: project.user.slug, id: project.slug) %>"><img class="thumbnail" src="<%= project.image.url(:original) %>"></a>
     <li>Project Title: <%= project.title %></li>
     <li>Project Status: <%= project.status %></li>
     <li>Goal Amount: $<%= project.goal_amount %></li>
     <li>Description: <%= project.description %></li>
+    <li>Total Loans Received: $<%= project.total_loans_amount %></li>
     <li>Percent Funded: <%= project.percent_funded %>%</li>
     <br></br>
   <% end %>

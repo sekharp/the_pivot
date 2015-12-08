@@ -30,8 +30,9 @@ class RegisteredBorrowerLogsInTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Your Current Projects")
     assert page.has_content?("Project Title: Buy me a goat")
     assert page.has_content?("Goal Amount: $1000")
-    assert page.has_content?("Total Loans Made: $0")
+    assert page.has_content?("Total Loans Received: $0")
     assert page.has_content?("Percent Funded: 0%")
+    assert page.has_content?("Project Status: Pending")
   end
 
   test "borrowers percent funded increases" do

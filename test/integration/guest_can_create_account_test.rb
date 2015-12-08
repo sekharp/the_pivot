@@ -98,7 +98,6 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
   end
 
   test 'guest with cart registers as borrower' do
-    create_role 'borrower'
     borrower = create_borrower
     project = create_project
     borrower.projects << project
@@ -117,7 +116,7 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
   end
 
   test 'guest with cart registers as lender' do
-    create_roles
+    create_role 'lender'
     borrower = create_borrower
     project = create_project
     borrower.projects << project

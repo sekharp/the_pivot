@@ -44,7 +44,9 @@ class Seed
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         username: Faker::Internet.user_name + "#{i}",
-        password: Faker::Internet.password
+        password: Faker::Internet.password,
+        bio: Faker::Lorem.paragraph(2),
+        image: "http://www.bankingtech.com/wp-content/blogs.dir/94/files/2013/11/India-women.jpg"
       )
 
       admin.roles << @admin
@@ -58,7 +60,9 @@ class Seed
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         username: Faker::Internet.user_name + "#{i}",
-        password: Faker::Internet.password
+        password: Faker::Internet.password,
+        bio: Faker::Lorem.paragraph(2),
+        image: "http://www.bankingtech.com/wp-content/blogs.dir/94/files/2013/11/India-women.jpg"
       )
 
       borrower.roles << @borrower
@@ -72,7 +76,7 @@ class Seed
       project = Project.create!(
         title: Faker::Commerce.product_name + "#{i}",
         description: Faker::Lorem.paragraph,
-        image: "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg",
+        image: "http://cliparts.co/cliparts/Lid/5A6/Lid5A66zT.png",
         goal_amount: Random.new.rand(10000..20000),
         user_id: Role.find_by(name: "borrower").users.shuffle.first.id,
         category_id: Category.all.shuffle.first.id,
@@ -88,7 +92,9 @@ class Seed
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         username: Faker::Internet.user_name + "#{i}",
-        password: Faker::Internet.password
+        password: Faker::Internet.password,
+        bio: Faker::Lorem.paragraph(2),
+        image: "http://www.bankingtech.com/wp-content/blogs.dir/94/files/2013/11/India-women.jpg"
       )
 
       lender.roles << @lender
@@ -100,7 +106,9 @@ class Seed
     100.times do |i|
       lender = Role.find_by(name: "lender").users.shuffle.first
       project = Project.all.shuffle.first
-      Loan.create!(user_id: lender.id, amount: Random.new.rand(100..1000), project_id: project.id)
+      Loan.create!(user_id: lender.id,
+                   amount: Random.new.rand(100..1000),
+                   project_id: project.id)
     end
     puts "#{Loan.all.count} loans created!"
   end
@@ -110,7 +118,9 @@ class Seed
       first_name: "lender",
       last_name: "lender",
       username: "lender",
-      password: "password"
+      password: "password",
+      bio: Faker::Lorem.paragraph(2),
+      image: "http://www.bankingtech.com/wp-content/blogs.dir/94/files/2013/11/India-women.jpg"
     )
     lender.roles << @lender
 
@@ -118,7 +128,9 @@ class Seed
       first_name: "borrower",
       last_name: "borrower",
       username: "borrower",
-      password: "password"
+      password: "password",
+      bio: Faker::Lorem.paragraph(2),
+      image: "http://www.bankingtech.com/wp-content/blogs.dir/94/files/2013/11/India-women.jpg"
     )
     borrower.roles << @borrower
 
@@ -126,7 +138,9 @@ class Seed
       first_name: "combined",
       last_name: "combined",
       username: "combined",
-      password: "password"
+      password: "password",
+      bio: Faker::Lorem.paragraph(2),
+      image: "http://www.bankingtech.com/wp-content/blogs.dir/94/files/2013/11/India-women.jpg"
     )
     combined.roles << @lender
     combined.roles << @borrower
@@ -135,7 +149,9 @@ class Seed
       first_name: "admin",
       last_name: "admin",
       username: "admin",
-      password: "password"
+      password: "password",
+      bio: Faker::Lorem.paragraph(2),
+      image: "http://www.bankingtech.com/wp-content/blogs.dir/94/files/2013/11/India-women.jpg"
     )
     admin.roles << @admin
     puts "Sample accounts created for lender, borrower, combined and admin. The password is password for each."

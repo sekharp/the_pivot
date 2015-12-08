@@ -18,6 +18,11 @@ class Project < ActiveRecord::Base
 
   before_validation :set_slug
 
+  scope :completed, -> { where(status: "Completed") }
+  scope :pending, -> { where(status: "Pending") }
+  scope :cancelled, -> { where(status: "Cancelled") }
+  scope :active, -> { where(status: "Active") }
+
   def set_slug
     self.slug = title.parameterize
   end

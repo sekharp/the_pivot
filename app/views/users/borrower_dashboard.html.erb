@@ -1,5 +1,8 @@
 <div id="profile">
   <h2>Borrower Profile</h2>
+  <div class="col s4">
+    <a class="image-link"><img class="max-width" src="<%= current_user.image.url(:original) %>"></a>
+  </div>
   <p>
     <strong>First name: </strong><%= current_user.first_name %>
   </p>
@@ -9,9 +12,12 @@
   <p>
     <strong>Username: </strong><%= current_user.username %>
   </p>
+  <p>
+    <strong>Bio: </strong><%= current_user.bio %>
+  </p>
 
-  <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn blue">
-    <%= button_to "Edit Profile", @user, method: :put %>
+  <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn custom-blue">
+    <%= button_to "Edit Profile", edit_user_path(@user.id), method: :get %>
   </div>
 
   <h3>Your Current Projects</h3>
@@ -22,6 +28,7 @@
     <li>Goal Amount: $<%= project.goal_amount %></li>
     <li>Description: <%= project.description %></li>
     <li>Percent Funded: <%= project.percent_funded %>%</li>
+    <br></br>
   <% end %>
   </ul>
 

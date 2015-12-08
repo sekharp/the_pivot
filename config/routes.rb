@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#home"
   namespace :borrowers, path: ":user", as: :borrower do
-    resources :projects, only: [:new, :create, :show]
+    resources :projects, only: [:new, :create]
   end
   resources :projects, only: [:index, :show, :update]
   resources :categories, only: [:index, :show], param: :slug

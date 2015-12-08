@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20151208012450) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
-    t.string   "image_url"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
     t.integer  "category_id"
@@ -74,13 +73,18 @@ ActiveRecord::Schema.define(version: 20151208012450) do
     t.string   "last_name"
     t.string   "username"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.string   "slug"
+    t.string   "bio"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_foreign_key "loans", "projects"

@@ -11,7 +11,7 @@ class PermissionService
     if user.admin?
       admin_permissions
     elsif user.borrower? && user.lender?
-      combined_user_permissions
+      borrower_permissions || lender_permissions
     elsif user.borrower?
       borrower_permissions
     elsif user.lender?
@@ -35,20 +35,9 @@ class PermissionService
     return true if controller == "categories" && action.in?(%w(index show))
   end
 
-  def combined_user_permissions
-    return true if controller == "session" && action.in?(%w(new create destroy))
-    return true if controller == "users" && action.in?(%w(update combined_dashboard borrower_dashboard lender_dashboard))
-    return true if controller == "users/projects" && action.in?(%w(index show))
-    return true if controller == "projects" && action == "index"
-    return true if controller == "loans" && action.in?(%w(index show))
-    return true if controller == "home" && action == "home"
-    return true if controller == "cart" && action == "index"
-    return true if controller == "categories" && action.in?(%w(index show))
-  end
-
   def borrower_permissions
     return true if controller == "session" && action.in?(%w(new create destroy))
-    return true if controller == "users" && action.in?(%w(update borrower_dashboard))
+    return true if controller == "users" && action.in?(%w(edit update borrower_dashboard))
     return true if controller == "users/projects" && action.in?(%w(index show))
     return true if controller == "projects" && action == "index"
     return true if controller == "loans" && action.in?(%w(index show))
@@ -59,7 +48,7 @@ class PermissionService
 
   def lender_permissions
     return true if controller == "session" && action.in?(%w(new create destroy))
-    return true if controller == "users" && action.in?(%w(update lender_dashboard))
+    return true if controller == "users" && action.in?(%w(edit update lender_dashboard))
     return true if controller == "users/projects" && action.in?(%w(index show))
     return true if controller == "users/cart_projects" && action.in?(%w(new create))
     return true if controller == "projects" && action == "index"

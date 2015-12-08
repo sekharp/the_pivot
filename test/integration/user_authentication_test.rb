@@ -38,7 +38,7 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     visit root_path
 
     click_link "Login"
-    fill_in "Username", with: "matt"
+    fill_in "Username", with: "mdoe"
     fill_in "Password", with: "password"
     click_button "Login"
 
@@ -51,6 +51,7 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
 
   test "logged in user sees cart contents" do
     create_roles_borrower_project_and_lender
+    login_lender
     visit root_path
 
     click_button "Learn More"
@@ -60,24 +61,10 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     fill_in "Amount", with: "50"
     click_button "Lend!"
 
+    assert_equal cart_index_path, current_path
 
-    click_link "Login"
-    fill_in "Username", with: "matt"
-    fill_in "Password", with: "password"
-    click_button "Login"
-
-    assert_equal "/lender_dashboard", current_path
-
-    visit cart_index_path
     within("#cart-contents") do
       assert page.has_content?("50")
-    end
-
-    click_link "Logout"
-
-    within("#primary-navigation") do
-      assert page.has_content?("Login")
-      refute page.has_content?("Logout")
     end
   end
 end

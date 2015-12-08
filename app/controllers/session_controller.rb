@@ -7,10 +7,10 @@ class SessionController < ApplicationController
     if @user
       if @user.admin? && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
-        redirect_to admin_dashboard_index_path
+        redirect_to admin_dashboard_path(id: @user.id)
       elsif @user && @user.authenticate(params[:session][:password]) && @user.lender? && @user.borrower?
         session[:user_id] = @user.id
-        redirect_to combined_dashboard_path
+        redirect_to borrower_dashboard_path
       elsif @user && @user.authenticate(params[:session][:password]) && @user.lender?
         session[:user_id] = @user.id
         if @cart.contents.empty?

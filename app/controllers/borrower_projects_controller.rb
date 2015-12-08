@@ -1,4 +1,4 @@
-class Borrowers::ProjectsController < ApplicationController
+class BorrowerProjectsController < ApplicationController
   def new
     @project = Project.new
   end

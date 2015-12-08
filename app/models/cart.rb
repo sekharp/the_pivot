@@ -10,13 +10,13 @@ class Cart
     contents[project_id.to_s] += amount
   end
 
-  def subtract_sticker(sticker_id)
-    contents[sticker_id.to_s] -= 1 unless contents[sticker_id.to_s] < 1
-    remove_sticker(sticker_id) if contents[sticker_id.to_s] < 1
+  def update_loan(project_id, amount)
+    contents[project_id.to_s] = amount
+    remove_project(project_id) if contents[project_id.to_s] < 1
   end
 
-  def remove_sticker(sticker_id)
-    contents.delete(sticker_id.to_s)
+  def remove_project(project_id)
+    contents.delete(project_id.to_s)
   end
 
   def total_count
@@ -24,11 +24,11 @@ class Cart
   end
 
   def total_amount
-    projects.map(&:amount).reduce(:+)
+    contents.values.reduce(:+)
   end
 
-  def count_of(sticker_id)
-    contents[sticker_id.to_s]
+  def amount_of(project_id)
+    contents[project_id.to_s]
   end
 
   def projects

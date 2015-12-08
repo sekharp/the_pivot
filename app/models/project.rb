@@ -3,11 +3,13 @@ class Project < ActiveRecord::Base
                     uniqueness: true
   validates :goal_amount, presence: true
   validates :slug, presence: true
-  has_attached_file :image, styles: {
-    thumb: '100x100>',
-    square: '200x200#',
-    medium: '300x300>'
-  }
+  has_attached_file :image,
+                    styles: {
+                      thumb: '100x100>',
+                      square: '200x200#',
+                      medium: '300x300>'
+                    },
+                    default_url: "http://cliparts.co/cliparts/Lid/5A6/Lid5A66zT.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
@@ -16,6 +18,11 @@ class Project < ActiveRecord::Base
   has_many :loans
 
   before_validation :set_slug
+
+  scope :completed, -> { where(status: "Completed") }
+  scope :pending, -> { where(status: "Pending") }
+  scope :cancelled, -> { where(status: "Cancelled") }
+  scope :active, -> { where(status: "Active") }
 
   def set_slug
     self.slug = title.parameterize

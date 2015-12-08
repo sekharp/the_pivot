@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     @project.update(project_params)
+
     if @project.save
       flash[:success] = "#{@project.title} saved"
       redirect_to admin_projects_path
@@ -30,7 +31,7 @@ class ProjectsController < ApplicationController
     params.require(:sticker).permit(:title,
                                     :description,
                                     :goal_amount,
-                                    :image_file_name,
+                                    :image,
                                     :retired)
   end
 end

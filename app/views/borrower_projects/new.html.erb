@@ -7,5 +7,7 @@
   <%= f.text_field :goal_amount %>
   <%= f.label :description %>
   <%= f.text_field :description %>
+  <%= f.label :image %>
+  <%= f.file_field :image, class: 'form-control' %><br><br>
   <%= f.submit "Create Project", class: "btn custom-green" %>
-  <% end %>
+<% end %>

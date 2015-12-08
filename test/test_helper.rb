@@ -24,7 +24,8 @@ class ActionDispatch::IntegrationTest
     lender = User.create!(first_name: 'Matt',
                           last_name:  'Doe',
                           username:   'matt',
-                          password:   'password')
+                          password:   'password',
+                          bio:        'my bio')
     lender.roles << Role.find_by(name: "lender")
     lender
   end

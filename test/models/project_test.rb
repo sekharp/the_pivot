@@ -93,7 +93,7 @@ class ProjectTest < ActiveSupport::TestCase
     loan = Loan.create!(user_id: lender.id,
                         project_id: project.id,
                         amount: 100,
-                        status: "completed")
+                        status: "Completed")
 
     assert_equal loan, Loan.completed
   end
@@ -105,7 +105,7 @@ class ProjectTest < ActiveSupport::TestCase
     loan = Loan.create!(user_id: lender.id,
                         project_id: project.id,
                         amount: 100,
-                        status: "pending")
+                        status: "Pending")
 
     assert_equal [loan], Loan.pending
   end
@@ -117,7 +117,7 @@ class ProjectTest < ActiveSupport::TestCase
     loan = Loan.create!(user_id: lender.id,
                         project_id: project.id,
                         amount: 100,
-                        status: "cancelled")
+                        status: "Cancelled")
 
     assert_equal [loan], Loan.cancelled
   end
@@ -129,7 +129,7 @@ class ProjectTest < ActiveSupport::TestCase
     loan = Loan.create!(user_id: lender.id,
                         project_id: project.id,
                         amount: 100,
-                        status: "active")
+                        status: "Active")
 
     assert_equal [loan], Loan.active
   end

@@ -2,6 +2,8 @@ class Loan < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  validates :amount, presence: true
+
   scope :completed, -> { where(status: "completed") }
   scope :paid, -> { where(status: "paid") }
   scope :cancelled, -> { where(status: "cancelled") }

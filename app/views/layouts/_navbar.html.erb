@@ -14,7 +14,9 @@
           <li><%= link_to "Profile", admin_dashboard_path(current_user.id) %></li>
           <li><%= link_to "Logout", logout_path , method: :delete %></li>
         <% elsif current_user %>
-          <% if current_user.lender? %>
+          <% if current_user.lender? && current_user.borrower? %>
+          <li><%= link_to "Profiles", combined_dashboard_path %></li>
+          <% elsif current_user.lender? %>
             <li><%= link_to "Profile", lender_dashboard_path %></li>
           <% elsif current_user.borrower? %>
             <li><%= link_to "Profile", borrower_dashboard_path %></li>

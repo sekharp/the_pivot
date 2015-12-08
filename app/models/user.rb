@@ -5,6 +5,13 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :user_roles
   has_many :roles, through: :user_roles
+  has_attached_file :image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
 
   validates :username, presence: true,
                        uniqueness: true

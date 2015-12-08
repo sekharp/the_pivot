@@ -40,7 +40,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def lender_dashboard
+  def become_borrower
+    current_user.roles << Role.find_by(name: "borrower")
+    redirect_to borrower_dashboard_path
+  end
+
+  def become_lender
+    current_user.roles << Role.find_by(name: "lender")
+    redirect_to lender_dashboard_path
   end
 
   private

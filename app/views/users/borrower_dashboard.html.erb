@@ -4,21 +4,31 @@
     <a class="image-link"><img class="max-width" src="<%= current_user.image.url(:original) %>"></a>
   </div>
   <p>
-    <strong>First name: </strong><%= current_user.first_name %>
+    <strong>First name: </strong><%= @user.first_name %>
   </p>
   <p>
-    <strong>Last name: </strong><%= current_user.last_name %>
+    <strong>Last name: </strong><%= @user.last_name %>
   </p>
   <p>
-    <strong>Username: </strong><%= current_user.username %>
+    <strong>Username: </strong><%= @user.username %>
   </p>
   <p>
-    <strong>Bio: </strong><%= current_user.bio %>
+    <strong>Bio: </strong><%= @user.bio %>
   </p>
 
   <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn custom-blue">
     <%= button_to "Edit Profile", edit_user_path(@user.id), method: :get %>
   </div>
+
+  <% if current_user.lender? %>
+    <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn custom-blue">
+      <%= button_to "Lender Profile", lender_dashboard_path, method: :get %>
+    </div>
+  <% else %>
+    <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn custom-blue">
+      <%= button_to "Become a Lender", become_lender_path(@user.id), method: :put %>
+    </div>
+  <% end %>
 
   <h3>Your Current Projects</h3>
   <ul>

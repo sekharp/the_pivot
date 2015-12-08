@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#home"
-  namespace :borrowers, path: ":user", as: :borrower do
-    resources :projects, only: [:new, :create]
-  end
+  resources :borrower_projects, only: [:new, :create, :show]
+
   resources :projects, only: [:index, :show, :update]
   resources :categories, only: [:index, :show], param: :slug
   resources :cart_projects, only: [:create, :update, :index, :destroy]
@@ -18,6 +17,8 @@ Rails.application.routes.draw do
   delete '/logout', to: "session#destroy"
   put '/dashboard', to: "users#update"
   post '/checkout', to: "loans#create"
+  put '/become_borrower', to: "users#become_borrower"
+  put '/become_lender', to: "users#become_lender"
 
   namespace :admin do
     resources :dashboard, only: [:index, :show, :update]

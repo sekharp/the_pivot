@@ -24,8 +24,17 @@
   <% end %>
   </ul>
 
-  <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn custom-blue">
-    <%= button_to "Edit Profile", edit_user_path(@user.id), method: :get %>
+  <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn custom-blue">
+    <%= button_to "Edit Profile", edit_user_path(current_user.id), method: :get %>
   </div>
 
+  <% if current_user.borrower? %>
+    <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn custom-blue">
+      <%= button_to "Borrower Profile", borrower_dashboard_path, method: :get %>
+    </div>
+  <% else %>
+    <div id='user-<%= @user.id %>-button' class="waves-effect waves-light btn custom-blue">
+      <%= button_to "Become a Borrower", become_borrower_path(current_user.id), method: :put %>
+    </div>
+  <% end %>
 </div>

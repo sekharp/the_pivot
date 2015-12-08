@@ -68,6 +68,16 @@ class ActionDispatch::IntegrationTest
     Project.create!(goal_amount: 1000,
                     title:       "Buy me a goat",
                     description: "Mostly goat purchases",
+                    status:      "Active",
+                    image:       "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
+                    )
+  end
+
+  def create_pending_project
+    Project.create!(goal_amount: 22000,
+                    title:       "Pending goat project",
+                    description: "Eventually goat purchase, once this is approved",
+                    status:      "Pending",
                     image:       "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
                     )
   end

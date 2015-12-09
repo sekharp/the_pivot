@@ -4,7 +4,7 @@
   <ul class="collection">
     <% @cart.projects.each do |cart_project| %>
       <div class="collection-item bottom-margin-20" id="<%= cart_project.title %>-button">
-        <img class="right thumbnail col s1" src="<%= cart_project.image.url %>" alt='<%= cart_project.title %>'/>
+        <img class="right thumbnail circlec col s1" src="<%= cart_project.image.url %>" alt='<%= cart_project.title %>'/>
         <h3 class="col s4"><%= cart_project.title %> — <%= number_to_currency(cart_project.amount) %></h3>
         <p class=""><%= cart_project.description %></p>
         <li class="right waves-effect waves-light btn grey lighten-4 grey-text"><%= link_to "Remove", cart_project_path(id: cart_project.id), method: :delete %></li>

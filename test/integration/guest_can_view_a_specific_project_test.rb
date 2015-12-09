@@ -15,6 +15,7 @@ class GuestCanViewASpecificProjectTest < ActionDispatch::IntegrationTest
       assert page.has_content? 'Buy me a goat'
       assert page.has_content? 'Mostly goat purchases'
       assert page.has_content? '$1,000.00'
+      assert page.has_content? 'Amount Loaned: $0'
     end
 
     within '.borrower-info' do

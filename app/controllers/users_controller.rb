@@ -22,17 +22,21 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
 
-    flash.notice = "Profile Updated!"
-    if current_user.admin?
-      redirect_to admin_dashboard_path(id: current_user.id)
-    elsif current_user.borrower? && current_user.lender?
-      redirect_to borrower_dashboard_path
-    elsif current_user.lender?
-      redirect_to lender_dashboard_path(id: current_user.id)
+    if !@user.update(user_params)
+      flash[:error] = "Please enter your password"
+      redirect_to edit_user_path
     else
-      redirect_to borrower_dashboard_path(id: current_user.id)
+      flash.notice = "Profile Updated!"
+      if current_user.admin?
+        redirect_to admin_dashboard_path(id: current_user.id)
+      elsif current_user.borrower? && current_user.lender?
+        redirect_to borrower_dashboard_path
+      elsif current_user.lender?
+        redirect_to lender_dashboard_path(id: current_user.id)
+      else
+        redirect_to borrower_dashboard_path(id: current_user.id)
+      end
     end
   end
 

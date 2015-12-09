@@ -11,7 +11,7 @@ class GuestCanUpdateCartLoanAmountTest < ActionDispatch::IntegrationTest
 
     assert page.has_content? '$200.00'
 
-    within '.update-amount' do
+    within '.loan' do
       fill_in 'Amount', with: 100
       click_button 'Update'
     end
@@ -20,4 +20,3 @@ class GuestCanUpdateCartLoanAmountTest < ActionDispatch::IntegrationTest
     assert page.has_content? '$100.00'
   end
 end
-

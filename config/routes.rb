@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root to: "home#home"
   resources :borrower_projects, only: [:new, :create]
 
-  resources :projects, only: [:index, :show, :update]
+  resources :projects, only: [:index]
   resources :categories, only: [:index, :show], param: :slug
-  resources :cart_projects, only: [:create, :update, :destroy]
+
   resources :cart, only: [:index]
   resources :users, only: [:new, :create, :update, :edit]
   get "/lender_dashboard", to: "users#lender_dashboard"
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :users, path: ":user", as: :user do
     resources :projects, only: [:show]
-    resources :cart_projects, only: [:create, :new]
+    resources :cart_projects, only: [:create, :new, :update, :destroy]
   end
   get '*unmatched_route', to: 'application#not_found'
 end

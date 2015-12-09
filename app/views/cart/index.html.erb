@@ -15,7 +15,7 @@
                 <%= f.text_field :amount %>
 
                 <%= f.submit "Update", class: "bottom-margin-20 waves-effect waves-light btn btn-large custom-blue" %>
-                <%= link_to "Remove", cart_project_path(id: cart_project.id), method: :delete, class: "right bottom-margin-20 waves-effect waves-light btn btn-large custom-blue" %>
+                <%= link_to "Remove", user_cart_project_path(user: cart_project.user.slug, id: cart_project.id), method: :delete, class: "right bottom-margin-20 waves-effect waves-light btn btn-large custom-blue" %>
               <% end %>
           </div>
         </li>

@@ -32,4 +32,12 @@ class Users::CartProjectsController < ApplicationController
     end
     redirect_to cart_index_path
   end
+
+  def destroy
+    project = Project.find(params[:id])
+    @cart.remove_project(project.id)
+    session[:cart] = @cart.contents
+    flash[:success] = "Successfully removed #{view_context.link_to "#{project.title}", user_project_path(user: project.user.slug, id: project.slug)} loan from your cart.".html_safe
+    redirect_to cart_index_path
+  end
 end

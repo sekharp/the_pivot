@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   resources :projects, only: [:index, :show, :update]
   resources :categories, only: [:index, :show], param: :slug
-  resources :cart_projects, only: [:create, :update, :index, :destroy]
   resources :cart, only: [:index]
   resources :users, only: [:new, :create, :update, :edit]
   get "/lender_dashboard", to: "users#lender_dashboard"

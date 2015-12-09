@@ -19,7 +19,9 @@
         </div>
         <div class="card-action col s7 offset-s1">
           <div class="center">
-            <h5><strong>Funding Goal: <%= number_to_currency(project.goal_amount) %>, <%= project.percent_funded %>% complete</strong></h5>
+            <h5>Funding Goal: <%= number_to_currency(project.goal_amount) %></h5>
+            <h5 class="custom-orange-text">Amount Loaned <%= number_to_currency(project.total_loans_amount) %></h5>
+            <h5 class="custom-green-text"><%= project.percent_funded %>% complete</h5>
           </div>
           <div class="center">
           <span id='<%= project.title %>-button' class="col s5 left waves-effect waves-light btn custom-blue">

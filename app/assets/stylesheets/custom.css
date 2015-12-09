@@ -25,8 +25,14 @@
 .custom-orange {
   background-color: #FF9933 !important;
 }
+.custom-orange-text {
+  color: #FF9933 !important;
+}
 .custom-green {
   background-color: #138808 !important;
+}
+.custom-green-text {
+  color: #138808 !important;
 }
 .custom-blue {
   background-color: #000080 !important;

@@ -8,9 +8,8 @@ class GuestCanUpdateCartLoanAmountTest < ActionDispatch::IntegrationTest
     add_project_to_cart(project)
 
     visit '/cart'
-    within '#Buy me a goat-button' do
-      assert page.has_content? '$200.00'
-    end
+
+    assert page.has_content? '$200.00'
 
     within '.update-amount' do
       fill_in 'Amount', with: 100
@@ -18,10 +17,7 @@ class GuestCanUpdateCartLoanAmountTest < ActionDispatch::IntegrationTest
     end
 
     assert_equal '/cart', current_path
-
-    within '#Buy me a goat-button' do
-      assert page.has_content? '$100.00'
-    end
+    assert page.has_content? '$100.00'
   end
 end
 

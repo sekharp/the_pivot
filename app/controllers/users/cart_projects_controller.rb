@@ -18,4 +18,18 @@ class Users::CartProjectsController < ApplicationController
       redirect_to new_user_cart_project_path(user: project.user.slug, project: project)
     end
   end
+
+  def update
+    project = Project.find(params[:id])
+    amount = params[:project][:amount].to_f
+
+    if valid_amount?(amount, project)
+      @cart.update_loan(project.id, amount)
+      session[:cart] = @cart.contents
+      flash[:success] = "Successfully updated loan amount."
+    else
+      flash[:error] = "Sorry! That's not a valid loan amount."
+    end
+    redirect_to cart_index_path
+  end
 end

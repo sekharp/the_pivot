@@ -14,15 +14,13 @@ Rails.application.routes.draw do
   get '/login', to: "session#new"
   post '/login', to: "session#create"
   delete '/logout', to: "session#destroy"
-  put '/dashboard', to: "users#update"
   post '/checkout', to: "loans#create"
   put '/become_borrower', to: "users#become_borrower"
   put '/become_lender', to: "users#become_lender"
 
   namespace :admin do
-    resources :dashboard, only: [:index, :show, :update]
-    resources :loans, only: [:update]
-    resources :projects, only: [:new, :create, :index, :edit, :update]
+    resources :dashboard, only: [:index, :show]
+    resources :projects, only: [:update]
   end
 
   namespace :users, path: ":user", as: :user do

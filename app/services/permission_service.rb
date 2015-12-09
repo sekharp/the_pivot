@@ -50,7 +50,7 @@ class PermissionService
     return true if controller == "session" && action.in?(%w(new create destroy))
     return true if controller == "users" && action.in?(%w(edit update lender_dashboard become_borrower))
     return true if controller == "users/projects" && action.in?(%w(index show))
-    return true if controller == "users/cart_projects" && action.in?(%w(new create update))
+    return true if controller == "users/cart_projects" && action.in?(%w(new create update destroy))
     return true if controller == "projects" && action == "index"
     return true if controller == "loans" && action.in?(%w(index create))
     return true if controller == "home" && action == "home"

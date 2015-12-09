@@ -84,7 +84,7 @@ class Seed
     n = 40
     n.times do |i|
       project = Project.create!(
-        title: Faker::Commerce.product_name + "#{i}",
+        title: Faker::Commerce.product_name + " #{i}",
         description: Faker::Lorem.paragraph,
         image: "http://cliparts.co/cliparts/Lid/5A6/Lid5A66zT.png",
         goal_amount: Random.new.rand(10000..20000),

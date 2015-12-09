@@ -6,8 +6,8 @@ class HomeController < ApplicationController
   private
 
   def top_projects
-    binding.pry
     active = Project.where(status: "Active")
-    active.map { |pro| proj, proj.total_loans_amount }
+    h = active.map { |proj| [proj, proj.percent_funded]}.to_h
+    ordered = h.max_by(3) { |k,v| v }
   end
 end

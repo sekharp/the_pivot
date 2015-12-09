@@ -14,7 +14,24 @@
   max-width: 300px;
 }
 .thumbnail {
-  max-width: 80px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
 }
 .site-logo {
   max-width: 60px;
@@ -30,6 +47,9 @@
 }
 .custom-blue {
   background-color: #000080 !important;
+}
+#profile-title {
+  padding-top: 15px;
 }
 body {
   display: flex;

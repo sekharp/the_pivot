@@ -22,7 +22,7 @@ class SessionController < ApplicationController
         session[:user_id] = @user.id
         redirect_to borrower_dashboard_path
       else
-        flash.now[:error] = "Invalid username or password. Try again."
+        flash.now[:error] = "Invalid password. Try again."
         render :new
       end
     else

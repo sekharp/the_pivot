@@ -97,6 +97,18 @@ class GuestCanCreateAccountTest < ActionDispatch::IntegrationTest
     assert_equal '/borrower_dashboard', current_path
   end
 
+  test 'guest cannot create borrower account with invalid or missing data' do
+    create_role 'borrower'
+    visit 'borrowers/new'
+
+    fill_in 'Username', with: 'cmejia'
+    fill_in 'Password', with: 'password'
+
+    click_button 'Create Account'
+    assert_equal '/users', current_path
+    assert page.has_content?("Something went wrong. Please try again.")
+  end
+
   test 'guest with cart registers as borrower' do
     borrower = create_borrower
     project = create_project

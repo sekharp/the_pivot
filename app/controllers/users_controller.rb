@@ -16,16 +16,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = current_user
-  end
-
   def edit
     @user = current_user
   end
 
   def update
     @user = current_user
+
     if !@user.update(user_params)
       flash[:error] = "Please enter your password"
       redirect_to edit_user_path
@@ -34,7 +31,7 @@ class UsersController < ApplicationController
       if current_user.admin?
         redirect_to admin_dashboard_path(id: current_user.id)
       elsif current_user.borrower? && current_user.lender?
-        redirect_to combined_dashboard_path
+        redirect_to borrower_dashboard_path
       elsif current_user.lender?
         redirect_to lender_dashboard_path(id: current_user.id)
       else

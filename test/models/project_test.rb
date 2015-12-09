@@ -17,6 +17,13 @@ class ProjectTest < ActiveSupport::TestCase
     Category.create!(title: "my category")
   end
 
+  def create_project
+    Project.create!(title:       "my project",
+                    description: "my description",
+                    user_id:     1,
+                    goal_amount: 200)
+  end
+
   test "it is valid" do
     assert valid_project.valid?
   end
@@ -86,51 +93,41 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal 50.00, project.percent_funded
   end
 
-  test "completed returns completed loans" do
-    skip
-    lender = create_lender
+  test "completed returns completed projects" do
     project = create_project
-    loan = Loan.create!(user_id: lender.id,
-                        project_id: project.id,
-                        amount: 100,
-                        status: "Completed")
+    project.update_attribute(:status, "Completed")
 
-    assert_equal loan, Loan.completed
+    assert_equal [project], Project.completed
   end
 
-  test "pending returns pending loans" do
-    skip
-    lender = create_lender
+  test "pending returns pending projects" do
     project = create_project
-    loan = Loan.create!(user_id: lender.id,
-                        project_id: project.id,
-                        amount: 100,
-                        status: "Pending")
+    project.update_attribute(:status, "Pending")
 
-    assert_equal [loan], Loan.pending
+    assert_equal [project], Project.pending
   end
 
-  test "cancelled returns cancelled loans" do
-    skip
-    lender = create_lender
+  test "cancelled returns cancelled projects" do
     project = create_project
-    loan = Loan.create!(user_id: lender.id,
-                        project_id: project.id,
-                        amount: 100,
-                        status: "Cancelled")
+    project.update_attribute(:status, "Cancelled")
 
-    assert_equal [loan], Loan.cancelled
+    assert_equal [project], Project.cancelled
   end
 
-  test "active returns active loans" do
-    skip
-    lender = create_lender
+  test "active returns active projects" do
     project = create_project
-    loan = Loan.create!(user_id: lender.id,
-                        project_id: project.id,
-                        amount: 100,
-                        status: "Active")
+    project.update_attribute(:status, "Active")
 
-    assert_equal [loan], Loan.active
+    assert_equal [project], Project.active
+  end
+
+  test "finished returns whether project status is completed or cancelled" do
+    project = create_project
+    project.update_attribute(:status, "Completed")
+
+    assert_equal true, project.finished?
+
+    project.update_attribute(:status, "Cancelled")
+    assert_equal true, project.finished?
   end
 end

@@ -18,6 +18,18 @@
         <b>Username: </b><%= @user.username %>
       </p>
       <p>
+        <b>Street address: </b><%= current_user.street_address %>
+      </p>
+      <p>
+        <b>City: </b><%= current_user.city %>
+      </p>
+      <p>
+        <b>State: </b><%= current_user.state %>
+      </p>
+      <p>
+        <b>Zip: </b><%= current_user.zip %>
+      </p>
+      <p>
         <b>Bio: </b><%= current_user.bio %>
       </p>
       <div id='user-<%= current_user.id %>-button' class="waves-effect waves-light btn-small custom-blue white-text">

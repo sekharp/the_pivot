@@ -8,7 +8,7 @@ class RegisteredLenderViewsOnlyActiveProjectsTest < ActionDispatch::IntegrationT
     create_lender
     visit login_path
 
-    fill_in "Username", with: "matt"
+    fill_in "Username", with: "mdoe"
     fill_in "Password", with: "password"
     click_button "Login"
 
@@ -31,7 +31,7 @@ class RegisteredLenderViewsOnlyActiveProjectsTest < ActionDispatch::IntegrationT
     create_lender
     visit login_path
 
-    fill_in "Username", with: "matt"
+    fill_in "Username", with: "mdoe"
     fill_in "Password", with: "password"
     click_button "Login"
 

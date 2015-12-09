@@ -15,7 +15,7 @@ class RegisteredBorrowerCreatesProjectTest < ActionDispatch::IntegrationTest
     assert_equal "/borrower_dashboard", current_path
     click_button "Create A New Project"
 
-    assert_equal "/jdoe/projects/new", current_path
+    assert_equal "/borrower_projects/new", current_path
 
     fill_in "Title", with: "Test Project"
     fill_in "Goal amount", with: 3500

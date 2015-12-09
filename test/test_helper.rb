@@ -88,7 +88,6 @@ class ActionDispatch::IntegrationTest
     Project.create!(goal_amount: 22000,
                     title:       "Pending goat project",
                     description: "Eventually goat purchase, once this is approved",
-                    status:      "Pending",
                     image:       "https://rudrakshagemstones.files.wordpress.com/2013/06/lord-ganesha.jpg"
                     )
   end

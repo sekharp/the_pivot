@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@user.username}"
-      redirect_to user_dashboard_path(params[:user][:role])
+      redirect_to user_dashboard(current_user)
     else
       flash.now[:error] = "Something went wrong. Please try again."
       render :new
@@ -28,15 +28,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_path
     else
       flash.notice = "Profile Updated!"
-      if current_user.admin?
-        redirect_to admin_dashboard_path(id: current_user.id)
-      elsif current_user.borrower? && current_user.lender?
-        redirect_to borrower_dashboard_path
-      elsif current_user.lender?
-        redirect_to lender_dashboard_path(id: current_user.id)
-      else
-        redirect_to borrower_dashboard_path(id: current_user.id)
-      end
+      redirect_to user_dashboard(current_user)
     end
   end
 

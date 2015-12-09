@@ -41,16 +41,19 @@ class ApplicationController < ActionController::Base
     user
   end
 
-  def user_dashboard_path(role)
-    case role
-    when 'borrower'
+  def user_dashboard(user)
+    if current_user.admin?
+      admin_dashboard_path(id: current_user.id)
+    elsif current_user.borrower? && current_user.lender?
       borrower_dashboard_path
-    when 'lender'
+    elsif current_user.lender?
       if @cart.contents.empty?
-        lender_dashboard_path
+        lender_dashboard_path(id: current_user.id)
       else
         cart_index_path
       end
+    else
+      borrower_dashboard_path(id: current_user.id)
     end
   end
 

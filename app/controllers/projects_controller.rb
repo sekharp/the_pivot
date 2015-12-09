@@ -8,30 +8,13 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def show
-    @project = Project.find_by_slug(params[:id])
-  end
-
-  def update
-    @project = Project.find(params[:id])
-    @project.update(project_params)
-
-    if @project.save
-      flash[:success] = "#{@project.title} saved"
-      redirect_to admin_projects_path
-    else
-      flash[:error] = "Something went wrong. Try again."
-      render :edit
-    end
-  end
 
   private
 
   def project_params
-    params.require(:sticker).permit(:title,
+    params.require(:project).permit(:title,
                                     :description,
                                     :goal_amount,
-                                    :image,
-                                    :retired)
+                                    :image)
   end
 end

@@ -6,10 +6,6 @@ class Category < ActiveRecord::Base
 
   before_save :to_slug
 
-  def to_param
-    slug
-  end
-
   def to_slug
     self.slug = title.parameterize
   end

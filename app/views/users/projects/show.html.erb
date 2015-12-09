@@ -2,7 +2,9 @@
   <h2 class="center-align"><%= @project.title %></h2>
   <h5 class="borrower-info center-align"><em><%= @project.user.full_name %></em></h5>
   <p><%= @project.description %></p>
-  <h6><strong>Funding Goal: <%= number_to_currency(@project.goal_amount) %>, <%= @project.percent_funded %>% complete</strong></h6>
+  <h6><strong>Funding Goal: <%= number_to_currency(@project.goal_amount) %>
+  <h5 class="custom-orange-text">Amount Loaned: <%= number_to_currency(@project.total_loans_amount) %></h5>
+  <h5 class="custom-green-text"><%= @project.percent_funded %>% complete</h5>
   <div class="lend-btn">
     <%= link_to "Lend",
         new_user_cart_project_path(user: @project.user.slug,

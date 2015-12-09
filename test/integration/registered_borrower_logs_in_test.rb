@@ -32,7 +32,7 @@ class RegisteredBorrowerLogsInTest < ActionDispatch::IntegrationTest
     assert_equal "/borrower_dashboard", current_path
     assert page.has_content?("Your Current Projects")
     assert page.has_content?("Project Title: Pending goat project")
-    assert page.has_content?("Goal Amount: $22000")
+    assert page.has_content?("Goal Amount: $22,000.00")
     assert page.has_content?("Total Loans Received: $0")
     assert page.has_content?("Percent Funded: 0%")
     assert page.has_content?("Project Status: Pending")

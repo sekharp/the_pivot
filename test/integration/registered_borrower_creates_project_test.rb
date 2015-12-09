@@ -25,7 +25,8 @@ class RegisteredBorrowerCreatesProjectTest < ActionDispatch::IntegrationTest
     assert_equal "/borrower_dashboard", current_path
     assert_equal 1, current_user.projects.count
     assert page.has_content?("Test Project")
-    assert page.has_content?("$3500")
+    assert page.has_content?("Pending")
+    assert page.has_content?("$3,500.00")
     assert page.has_content?("Test Project Description")
   end
 end

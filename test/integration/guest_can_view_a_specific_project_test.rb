@@ -12,7 +12,6 @@ class GuestCanViewASpecificProjectTest < ActionDispatch::IntegrationTest
     assert_equal '/john-doe/projects/buy-me-a-goat', current_path
 
     within '.project-info' do
-      save_and_open_page
       assert page.has_content? 'Buy me a goat'
       assert page.has_content? 'Mostly goat purchases'
       assert page.has_content? '$1,000.00'

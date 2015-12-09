@@ -30,7 +30,7 @@ class UserCannotViewOtherUsersLoansTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Loans Made")
 
     assert page.has_content?("Buy me a goat")
-    assert page.has_content?("1800")
-    refute page.has_content?("500")
+    assert page.has_content?("$1,800.00 ")
+    refute page.has_content?("$500.00")
   end
 end

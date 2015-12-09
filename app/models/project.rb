@@ -36,6 +36,9 @@ class Project < ActiveRecord::Base
     (total_loans_amount / goal_amount * 100).round
   end
 
-  def retired?
+  def finished?
+    if status.include?("Completed") || status.include?("Cancelled")
+      true
+    end
   end
 end

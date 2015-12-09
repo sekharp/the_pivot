@@ -7,32 +7,6 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     end
   end
 
-  # test "visitor can create account and sign in" do
-  #   visit root_path
-  #
-  #   click_link "Create Account"
-  #   assert_equal "/users/new", current_path
-  #
-  #   fill_in "Username", with: "Matt"
-  #   fill_in "First name", with: "Matt"
-  #   fill_in "Last name", with: "Matt"
-  #   fill_in "Password", with: "password"
-  #   click_button "Create Account"
-  #
-  #   assert_equal '/dashboard', current_path
-  #   within("#nav-bar") do
-  #     assert page.has_content?("Logged in as Matt")
-  #   end
-  #   within("#profile") do
-  #     assert page.has_content?("Profile")
-  #     assert page.has_content?("Matt")
-  #   end
-  #   within("#primary-navigation") do
-  #     refute page.has_content?("Login")
-  #     assert page.has_content?("Logout")
-  #   end
-  # end
-
   test "lender can login" do
     create_roles_borrower_project_and_lender
     visit root_path
@@ -47,6 +21,26 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
       refute page.has_content?("Login")
       assert page.has_content?("Logout")
     end
+  end
+
+  test "lender can logout" do
+    create_roles_borrower_project_and_lender
+    visit root_path
+
+    click_link "Login"
+    fill_in "Username", with: "mdoe"
+    fill_in "Password", with: "password"
+    click_button "Login"
+
+    assert_equal "/lender_dashboard", current_path
+    within("#primary-navigation") do
+      refute page.has_content?("Login")
+      assert page.has_content?("Logout")
+    end
+
+    click_link "Logout"
+    assert page.has_content?("Goodbye!")
+    assert_equal login_path, current_path
   end
 
   test "logged in user sees cart contents" do
@@ -66,5 +60,31 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     within("#cart-contents") do
       assert page.has_content?("50")
     end
+  end
+
+  test "guest cannot login with invalid credentials" do
+    create_roles_borrower_project_and_lender
+    visit root_path
+
+    click_link "Login"
+    fill_in "Username", with: "terrible"
+    fill_in "Password", with: "stupid"
+    click_button "Login"
+
+    assert_equal login_path, current_path
+    assert page.has_content?("Please create account first")
+  end
+
+  test "user cannot login with invalid password" do
+    create_roles_borrower_project_and_lender
+    visit root_path
+
+    click_link "Login"
+    fill_in "Username", with: "mdoe"
+    fill_in "Password", with: "stupid"
+    click_button "Login"
+
+    assert_equal login_path, current_path
+    assert page.has_content?("Invalid password. Try again.")
   end
 end

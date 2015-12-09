@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def valid_amount?(amount, project)
-    amount > 0 && amount < project.goal_amount
+    amount > 0 && amount <= project.goal_amount
   end
 
   def add_role(user, role)

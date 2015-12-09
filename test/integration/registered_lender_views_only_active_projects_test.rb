@@ -1,12 +1,20 @@
 require 'test_helper'
 
-class GuestCanViewProjectsIndexTest < ActionDispatch::IntegrationTest
-  test "guest can view projects index" do
+class RegisteredLenderViewsOnlyActiveProjectsTest < ActionDispatch::IntegrationTest
+  test "lender can view projects index" do
     create_roles
     borrower = create_borrower
     borrower.projects << create_project
+    create_lender
+    visit login_path
+
+    fill_in "Username", with: "mdoe"
+    fill_in "Password", with: "password"
+    click_button "Login"
 
     visit "/"
+    assert page.has_content?("Logout")
+
     within "#primary-navigation" do
       click_link("Lend")
     end
@@ -15,11 +23,19 @@ class GuestCanViewProjectsIndexTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Buy me a goat")
   end
 
-  test "guest cannot view unapproved projects" do
+  test "lender cannot view unapproved projects" do
     create_roles
     borrower = create_borrower
     borrower.projects << create_project
     borrower.projects << create_pending_project
+    create_lender
+    visit login_path
+
+    fill_in "Username", with: "mdoe"
+    fill_in "Password", with: "password"
+    click_button "Login"
+
+    assert page.has_content?("Logout")
 
     visit "/"
 

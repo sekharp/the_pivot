@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
       @category = Category.find(params[:category_id])
       @projects = @category.projects.all
     else
-      @projects = Project.all
+      @projects = Project.where(status: "Active")
     end
   end
 

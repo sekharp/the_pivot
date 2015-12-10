@@ -17,7 +17,7 @@ class AdminCanSeeLoansForAProjectTest < ActionDispatch::IntegrationTest
 
     assert_equal '/admin/projects/buy-me-a-goat', current_path
     within '.loans' do
-      assert page.has_content? 'Lender: Matt Doe'
+      assert page.has_content? 'Matt Doe'
       assert page.has_content? 'Amount: $200.00'
     end
   end

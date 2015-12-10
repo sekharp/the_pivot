@@ -17,18 +17,25 @@
   </div>
 </div>
 
+<br><br>
+
 <div class="loans container">
-  <h3>Loans</h3>
+  <h3 class="center-align">Loans</h3>
 
   <ul class="collection">
     <% @loans.each do |loan| %>
       <li class="collection-item">
-        Lender: <%= loan.user.full_name %><br>
-        Amount: <%= number_to_currency(loan.amount) %>
+        <b><%= loan.user.full_name %></b><br>
+        Amount: <%= number_to_currency(loan.amount) %><br><br>
+        <div class="right-align">
+          <em>Created on <%= loan.created_at.strftime("%b %e, %Y") %></em>
+        </div>
       </li>
     <% end %>
   </ul>
 </div>
+
+<br><br>
 
 <div class="center-align">
   <%= link_to_projects_page %>

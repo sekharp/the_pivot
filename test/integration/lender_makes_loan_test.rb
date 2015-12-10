@@ -60,4 +60,21 @@ class LenderMakesLoanTest < ActionDispatch::IntegrationTest
       assert page.has_content? 'Loan submitted'
     end
   end
+
+  test 'lender cannot checkout with no loans in cart' do
+    create_roles
+    borrower = create_borrower
+    project = create_project
+    borrower.projects << project
+
+    lender = create_lender
+    login_lender
+
+    visit '/cart'
+    click_button 'Checkout'
+
+    assert_equal '/cart', current_path
+    assert page.has_content? "No loans in cart. Don't you want to loan money?"
+  end
+
 end

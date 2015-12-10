@@ -240,8 +240,8 @@ class Seed
 
     lentils = leelavathi.projects.create!(
       title: "Buy Lentil Seeds",
-      description: "My family is looking to buy a large quantity of lentil seed and the associated materials needed to plant five additional acres to farm. We would like to grow additional crops to sell at the nearby city.",
-      image: "http://www.releaseinternational.org/wp-content/uploads/2013/05/indian_water_buffalo.jpg",
+      description: "My family is looking to buy a large quantity of lentil seed and the associated materials needed to plant five additional acres to farm. We would like to grow excess crops to sell at the nearby city Vijayawada.",
+      image: "http://www.crs.org/sites/default/files/crs-files/ind2013077836_0.jpg",
       goal_amount: 1000,
       user_id: leelavathi.id,
       category_id: Category.all.find_by(title: "Andhra Pradesh").id,
@@ -251,7 +251,7 @@ class Seed
     rickshaw = gopal.projects.create!(
       title: "Buy a Rickshaw",
       description: "I am looking to buy one rickshaw, to build a driving business in our local city and help my support my family of 12.",
-      image: "http://www.releaseinternational.org/wp-content/uploads/2013/05/indian_water_buffalo.jpg",
+      image: "http://ventureburn.com/wp-content/uploads/2015/04/rickshaw.jpg",
       goal_amount: 2000,
       user_id: gopal.id,
       category_id: Category.all.find_by(title: "Gujarat").id,
@@ -259,11 +259,11 @@ class Seed
       )
 
     buffalo.loans.create( user_id: jeff.id,
-                          amount: 2700)
+                          amount: 2750)
     lentils.loans.create( user_id: jeff.id,
-                          amount: 700)
+                          amount: 650)
     rickshaw.loans.create(user_id: josh.id,
-                          amount: 1600)
+                          amount: 1500)
 
     jorge = User.create!(
       first_name: "Jorge",

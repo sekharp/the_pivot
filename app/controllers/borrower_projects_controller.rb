@@ -10,8 +10,8 @@ class BorrowerProjectsController < ApplicationController
       current_user.projects << @project
       redirect_to borrower_dashboard_path
     else
-      flash.now[:error] = "Something went wrong. Make sure you fill out all fields."
-      render :new
+      flash[:error] = "Something went wrong. Make sure you fill out all fields."
+      redirect_to new_borrower_project_path
     end
   end
 
@@ -21,7 +21,8 @@ class BorrowerProjectsController < ApplicationController
     params.require(:project).permit(:title,
                                     :goal_amount,
                                     :description,
-                                    :category_id
+                                    :category_id,
+                                    :image
                                     )
   end
 end

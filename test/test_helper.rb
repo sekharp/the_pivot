@@ -98,6 +98,12 @@ class ActionDispatch::IntegrationTest
     Role.create!(name: "admin")
   end
 
+  def create_categories
+    Category.create!(title: "test category 1")
+    Category.create!(title: "test category 2")
+    Category.create!(title: "test category 3")
+  end
+
   def create_roles_borrower_project_and_lender
     create_roles
     borrower = create_borrower

@@ -3,6 +3,7 @@ require 'test_helper'
 class RegisteredBorrowerCreatesProjectTest < ActionDispatch::IntegrationTest
   test "registered borrower creates a project" do
     create_roles
+    create_categories
     create_borrower
     visit "/"
     click_link "Login"
@@ -46,10 +47,11 @@ class RegisteredBorrowerCreatesProjectTest < ActionDispatch::IntegrationTest
 
     assert_equal "/borrower_projects/new", current_path
 
-    fill_in "Title", with: "Test Project"
+    fill_in "Goal amount", with: 123
+
     click_button "Create Project"
 
     assert page.has_content?("Something went wrong. Make sure you fill out all fields.")
-    assert_equal "/borrower_projects", current_path
+    assert_equal "/borrower_projects/new", current_path
   end
 end

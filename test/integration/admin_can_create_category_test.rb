@@ -21,7 +21,7 @@ class AdminCanCreatCategoryTest < ActionDispatch::IntegrationTest
     end
 
     assert_equal '/admin/categories', current_path
-    within 'categories' do
+    within '.categories' do
       assert page.has_content? 'My Category'
     end
   end

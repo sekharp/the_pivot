@@ -1,6 +1,7 @@
 class BorrowerProjectsController < ApplicationController
   def new
     @project = Project.new
+    @categories = Category.all
   end
 
   def create

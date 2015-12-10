@@ -13,8 +13,9 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
+  belongs_to :category
+
   has_many :loans
-  has_many :categories
 
   before_validation :set_slug
 

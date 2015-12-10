@@ -36,7 +36,7 @@
       <tbody>
         <% @projects.each do |project| %>
           <tr>
-            <td><%= link_to project.id, user_project_path(user: project.user.slug, id: project.slug) %></td>
+            <td><%= link_to project.title, admin_project_path(id: project.slug) %></td>
             <td><%= project.created_at.strftime("%B %d, %Y") %></td>
             <td><%= project.status unless project.status.nil? %></td>
 

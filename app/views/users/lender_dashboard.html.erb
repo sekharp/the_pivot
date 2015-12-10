@@ -2,7 +2,7 @@
     <div class="col s2 offset-s1">
     <a class="image-link"><img class="thumbnail circle" src="<%= current_user.image.url(:original) %>"></a>
     </div>
-    <h2 class="left"><%= current_user.username %>'s Lender Profile</h2>
+    <h4 class="left"><%= current_user.username %>'s Lender Profile</h4>
   </div>
 
 <div class="row">
@@ -40,7 +40,7 @@
 </div>
 
 <div class="row">
-  <h3 class="center">Loans Made</h3>
+  <h4 class="center">Loans Made</h4>
   <ul class="col s8 offset-s2">
   <% current_user.loans.reverse.each do |loan| %>
     <div class="row">

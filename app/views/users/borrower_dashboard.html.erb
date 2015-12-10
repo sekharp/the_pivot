@@ -3,7 +3,7 @@
     <div class="col s2 offset-s1">
       <a class="image-link"><img class="thumbnail circle" src="<%= current_user.image.url(:original) %>"></a>
     </div>
-    <h2 class="left"><%= current_user.username %>'s Borrower Profile</h2>
+    <h4 class="left"><%= current_user.username %>'s Borrower Profile</h4>
   </div>
 </div>
 <div class="row">
@@ -42,7 +42,7 @@
 </div>
 
 <div class="row">
-  <h3 class="center">Your Current Projects</h3>
+  <h4 class="center">Your Current Projects</h4>
   <ul class="col s10 offset-s2">
     <% current_user.projects.each do |project| %>
     <div class="row">

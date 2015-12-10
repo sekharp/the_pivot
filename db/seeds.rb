@@ -6,12 +6,12 @@ class Seed
   def generate
     create_categories
     create_roles
-    # create_admins
-    # create_borrowers
-    # create_projects
-    # create_lenders
-    # create_loans
-    # create_sample_accounts
+    create_admins
+    create_borrowers
+    create_projects
+    create_lenders
+    create_loans
+    create_sample_accounts
     create_sample_data
   end
 
@@ -21,18 +21,26 @@ class Seed
                   "Karnataka",
                   "Tamil Nadu",
                   "Kerala",
-                  "Madhya Pradesh",
                   "Uttar Pradesh",
                   "Maharashtra",
-                  "Rajasthan",
                   "Punjab",
                   "Gujarat",
                   "West Bengal"]
-
     categories.each do |title|
       Category.create!(title: title)
       puts "Created Category: #{title}"
     end
+
+    @ap = Category.find_by(title: "Andhra Pradesh")
+    @te = Category.find_by(title: "Telangana")
+    @ka = Category.find_by(title: "Karnataka")
+    @tn = Category.find_by(title: "Tamil Nadu")
+    @ke = Category.find_by(title: "Kerala")
+    @up = Category.find_by(title: "Uttar Pradesh")
+    @ma = Category.find_by(title: "Maharashtra")
+    @pu = Category.find_by(title: "Punjab")
+    @gu = Category.find_by(title: "Gujarat")
+    @wb = Category.find_by(title: "West Bengal")
 
     puts "Created #{categories.count} categories."
   end
@@ -45,7 +53,7 @@ class Seed
   end
 
   def create_admins
-    n = 5
+    n = 1
     n.times do |i|
       admin = User.create!(
         first_name: Faker::Name.first_name,
@@ -82,24 +90,133 @@ class Seed
     project_statuses = ["Pending", "Cancelled", "Active", "Completed"]
     borrowers = Role.find_by(name: "borrower").users
     categories = Category.all
-    n = 40
+    n = 50
     n.times do |i|
       project = Project.create!(
         title: Faker::Commerce.product_name + " #{i}",
         description: Faker::Lorem.paragraph,
-        image: "http://cliparts.co/cliparts/Lid/5A6/Lid5A66zT.png",
-        goal_amount: Random.new.rand(10000..20000),
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
         user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
-        category_id: categories[Random.new.rand(0..(categories.count - 1))].id,
+        category_id: @ap.id,
         status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
         )
       puts "#{project.title} Project created!"
     end
-    puts "#{n} projects created!"
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @te.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @ka.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @tn.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @ke.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @up.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @ma.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @pu.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @gu.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+    n.times do |i|
+      project = Project.create!(
+        title: Faker::Commerce.product_name + " #{i}",
+        description: Faker::Lorem.paragraph,
+        image: "http://static.news18.com/pix/2015/05/indian-cow.jpg",
+        goal_amount: Random.new.rand(40000..80000),
+        user_id: borrowers[Random.new.rand(0..(borrowers.count - 1))].id,
+        category_id: @wb.id,
+        status: project_statuses[Random.new.rand(0..(project_statuses.count - 1))]
+        )
+      puts "#{project.title} Project created!"
+    end
+
+    puts "1000 projects created!"
   end
 
   def create_lenders
-    n = 30
+    n = 100
     n.times do |i|
       lender = User.create!(
         first_name: Faker::Name.first_name,
@@ -118,12 +235,12 @@ class Seed
   def create_loans
     lenders = Role.find_by(name: "lender").users
     projects = Project.all
-    n = 100
+    n = 1000
     n.times do |i|
       lender_id = lenders[Random.new.rand(0..(lenders.count - 1))].id
       project_id = projects[Random.new.rand(0..(projects.count - 1))].id
       Loan.create!(user_id: lender_id,
-                   amount: Random.new.rand(100..1000),
+                   amount: Random.new.rand(10..100),
                    project_id: project_id)
     end
     puts "#{n} loans created!"
@@ -181,7 +298,7 @@ class Seed
     jeff = User.create!(
       first_name: "Jeff",
       last_name: "Casimir",
-      username: "jcasimir",
+      username: "jeff@turing.io",
       password: "password",
       bio: "Executive Director of the Turing School of Software & Design, based in Denver, Colorado. I love microfinance.",
       image: "http://frelow.smugmug.com/CodeNewbie/i-8hHRQd7/0/O/jeff.jpg"
@@ -248,21 +365,21 @@ class Seed
       status: "Active"
       )
 
-    rickshaw = gopal.projects.create!(
+    rickshaw = andrew.projects.create!(
       title: "Buy a Rickshaw",
       description: "I am looking to buy one rickshaw, to build a driving business in our local city and help my support my family of 12.",
       image: "http://ventureburn.com/wp-content/uploads/2015/04/rickshaw.jpg",
       goal_amount: 2000,
-      user_id: gopal.id,
+      user_id: andrew.id,
       category_id: Category.all.find_by(title: "Gujarat").id,
       status: "Active"
       )
 
     buffalo.loans.create( user_id: jeff.id,
                           amount: 2750)
-    lentils.loans.create( user_id: jeff.id,
+    lentils.loans.create( user_id: josh.id,
                           amount: 650)
-    rickshaw.loans.create(user_id: josh.id,
+    rickshaw.loans.create!(user_id: josh.id,
                           amount: 1500)
 
     jorge = User.create!(

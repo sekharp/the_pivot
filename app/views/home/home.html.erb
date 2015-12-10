@@ -4,7 +4,7 @@
   <% @top_projects.each do |project| %>
     <div class="card col s12">
       <div>
-        <div class="col s4">
+        <div class="col s4 top-margin-10">
           <a class="image-link" href="<%= user_project_path(user: project[0].user.slug, id: project[0].slug) %>"><img id="project-image" class="max-width" src="<%= project[0].image.url(:original) %>"></a>
         </div>
         <div class="col s7 offset-s1">

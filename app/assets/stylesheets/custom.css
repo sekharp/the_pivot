@@ -4,6 +4,9 @@
 .top-margin-40 {
   margin-top: 40px;
 }
+.top-margin-10 {
+  margin-top: 10px;
+}
 .bottom-margin-20 {
   margin-bottom: 20px;
 }
@@ -12,6 +15,9 @@
 }
 .max-width{
   max-width: 300px;
+}
+.portrait{
+  max-width: 100px;
 }
 .thumbnail {
   position: relative;

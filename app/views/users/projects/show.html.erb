@@ -1,6 +1,10 @@
 <div class="project-info container">
   <h2 class="center-align"><%= @project.title %></h2>
-  <h5 class="borrower-info center-align"><em><%= @project.user.full_name %></em></h5>
+  <h5 class="borrower-info left-align"><em>Borrower: <%= @project.user.full_name %></em></h5>
+  <div class="right-align col s2 offset-s1">
+    <a class="image-link"><img class="thumbnail circle" src="<%= @project.user.image.url(:original) %>"></a>
+  </div>
+  <a class="image-link" href="<%= user_project_path(user: @project.user.slug, id: @project.slug) %>"><img class="max-width" src="<%= @project.image.url(:original) %>"></a>
   <p><%= @project.description %></p>
   <h6><strong>Funding Goal: <%= number_to_currency(@project.goal_amount) %>
   <h5 class="custom-orange-text">Amount Loaned: <%= number_to_currency(@project.total_loans_amount) %></h5>

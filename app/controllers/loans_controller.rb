@@ -1,10 +1,6 @@
 class LoansController < ApplicationController
   before_action :require_login
 
-  def index
-    @loans = current_user.loans
-  end
-
   def create
     if session[:cart].nil? || session[:cart].empty?
       redirect_to '/cart'
@@ -18,15 +14,6 @@ class LoansController < ApplicationController
       session[:cart] = {}
       flash[:success] = "Loan submitted"
       redirect_to lender_dashboard_path
-    end
-  end
-
-  def show
-    loan = Loan.find(params[:id].to_i)
-    if current_user.id == loan.user.id
-      @loan = loan
-    else
-      redirect_to loans_path
     end
   end
 

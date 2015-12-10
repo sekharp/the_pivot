@@ -15,7 +15,11 @@
   </div>
   <div>
     <%= f.label :category %>
-    <%= f.text_field :category %>
+    <%= f.select(:category_id) do %>
+      <% [[1][2]].each do |c| %>
+        <%= content_tag(:option, c.first, value: c.last) %>
+        <% end %>
+        <% end %>
   </div>
   <div>
     <%= f.label :image %>

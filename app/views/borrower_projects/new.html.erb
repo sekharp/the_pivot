@@ -14,9 +14,10 @@
     <%= f.text_field :description, class: "project-desc" %>
   </div>
   <div>
-    <%= f.label :category %>
-    <%= f.text_field :category %>
+    <%= f.label :category %><br>
+    <%= f.collection_select :category_id, @categories, :id, :title, { prompt: "Choose a category" }, class: "browser-default" %>
   </div>
+  <br>
   <div>
     <%= f.label :image %>
     <%= f.file_field :image, class: 'form-control' %>

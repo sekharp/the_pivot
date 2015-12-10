@@ -1,8 +1,15 @@
-<h1 class="center-align">Categories</h1>
+<h1 class="center-align">Project Categories</h1>
 
-<%= link_to "Create Project Category", new_admin_category_path, class: "waves-effect waves-light btn custom-blue" %>
-<ul class="categories collection">
-  <% @categories.each do |category| %>
-    <li><%= link_to category.title, category_path(category) %></li>
-  <% end %>
-</ul>
+<div class="center-align">
+  <%= link_to "Create Project Category", new_admin_category_path, class: "waves-effect waves-light btn custom-blue" %>
+</div>
+
+<br>
+
+<div class="container">
+  <ul class="categories collection">
+    <% @categories.each do |category| %>
+      <li class="collection-item"><%= link_to category.title, category_path(category.slug) %></li>
+    <% end %>
+  </ul>
+</div>

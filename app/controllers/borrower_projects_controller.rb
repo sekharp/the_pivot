@@ -20,6 +20,7 @@ class BorrowerProjectsController < ApplicationController
     params.require(:project).permit(:title,
                                     :goal_amount,
                                     :description,
+                                    :image
                                     )
   end
 end

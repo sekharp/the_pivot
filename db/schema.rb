@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20151209170759) do
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.string   "slug"
-    t.money    "goal_amount",        scale: 2
+    t.money    "goal_amount",                  scale: 2
     t.string   "status",                       default: "Pending"
   end
 

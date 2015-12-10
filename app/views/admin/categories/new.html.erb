@@ -1,0 +1,8 @@
+<h1 class="center-align">Create a New Category</h1>
+
+<%= form_for @category do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.submit "Submit" %>
+<% end %>

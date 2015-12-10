@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index, :show]
     resources :projects, only: [:update]
+    resources :categories, only: [:index, :new]
   end
 
   namespace :users, path: ":user", as: :user do

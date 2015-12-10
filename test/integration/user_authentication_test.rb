@@ -72,7 +72,7 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     click_button "Login"
 
     assert_equal login_path, current_path
-    assert page.has_content?("Please create account first")
+    assert page.has_content?("Invalid login. Please create account or try again.")
   end
 
   test "user cannot login with invalid password" do
@@ -85,6 +85,6 @@ class UserAuthenticationTest < ActionDispatch::IntegrationTest
     click_button "Login"
 
     assert_equal login_path, current_path
-    assert page.has_content?("Invalid password. Try again.")
+    assert page.has_content?("Invalid login. Please create account or try again.")
   end
 end

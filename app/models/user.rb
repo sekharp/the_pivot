@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :user_roles
   has_many :roles, through: :user_roles
-  
+
   has_attached_file :image,
                     styles: {
                       thumb: '100x100>',

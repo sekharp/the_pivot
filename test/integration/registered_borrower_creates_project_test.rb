@@ -8,9 +8,9 @@ class RegisteredBorrowerCreatesProjectTest < ActionDispatch::IntegrationTest
     visit "/"
     click_link "Login"
     within(".login-form") do
-    fill_in "Username", with: "jdoe"
-    fill_in "Password", with: "password"
-    click_button "Login"
+      fill_in "Username", with: "jdoe"
+      fill_in "Password", with: "password"
+      click_button "Login"
     end
     current_user = User.last
     assert_equal "/borrower_dashboard", current_path

@@ -4,29 +4,11 @@ class SessionController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:session][:username])
-    if @user
-      if @user.admin? && @user.authenticate(params[:session][:password])
-        session[:user_id] = @user.id
-        redirect_to admin_dashboard_path(id: @user.id)
-      elsif @user && @user.authenticate(params[:session][:password]) && @user.lender? && @user.borrower?
-        session[:user_id] = @user.id
-        redirect_to borrower_dashboard_path
-      elsif @user && @user.authenticate(params[:session][:password]) && @user.lender?
-        session[:user_id] = @user.id
-        if @cart.contents.empty?
-          redirect_to lender_dashboard_path
-        else
-          redirect_to cart_index_path
-        end
-      elsif @user && @user.authenticate(params[:session][:password]) && @user.borrower?
-        session[:user_id] = @user.id
-        redirect_to borrower_dashboard_path
-      else
-        flash.now[:error] = "Invalid password. Try again."
-        render :new
-      end
+    if @user && @user.authenticate(params[:session][:password])
+      session[:user_id] = @user.id
+      redirect_to user_dashboard(@user)
     else
-      flash[:errors] = "Please create account first"
+      flash[:errors] = "Invalid login. Please create account or try again."
       redirect_to login_path
     end
   end

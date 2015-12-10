@@ -29,7 +29,7 @@ class Project < ActiveRecord::Base
   end
 
   def total_loans_amount
-    self.loans.map(&:amount).reduce(:+) || 0
+    loans.map(&:amount).reduce(:+) || 0
   end
 
   def percent_funded

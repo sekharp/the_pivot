@@ -112,4 +112,10 @@ class ActionDispatch::IntegrationTest
       click_button 'Lend!'
     end
   end
+
+  def create_loan(project, lender, amount)
+    Loan.create!(project_id: project.id,
+                 user_id:    lender.id,
+                 amount:     amount)
+  end
 end

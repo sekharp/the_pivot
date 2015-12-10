@@ -32,6 +32,7 @@ class PermissionService
     return true if controller == "home" && action == "home"
     return true if controller == "admin/dashboard" && action.in?(%w(index show))
     return true if controller == "admin/projects" && action.in?(%w(update))
+    return true if controller == "admin/categories" && action.in?(%w(index new create))
     return true if controller == "categories" && action.in?(%w(index show))
   end
 

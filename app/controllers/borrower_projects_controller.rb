@@ -21,6 +21,7 @@ class BorrowerProjectsController < ApplicationController
     params.require(:project).permit(:title,
                                     :goal_amount,
                                     :description,
+                                    :category_id
                                     )
   end
 end
